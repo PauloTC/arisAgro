@@ -8,7 +8,7 @@
                     li.tab.col.s4
                         a(href='#test2' @click='mostrar1 = true, mostrar2 = true') ZONA
                     li.tab.col.s4
-                        a(href='#test3' @click='mostrar1 = true, mostrar2 = true') VENDEDORES
+                        a(href='#test3' @click='mostrar1 = true, mostrar2 = true, defectoVendedores()') VENDEDORES
             #test1.col.s12(style='margin-top:3rem')
                 .col.s3
                     .mini-card
@@ -169,12 +169,12 @@
                             .modal-header
                                 h6 SELECCIONE VENDEDORES
                             .modal-content
-                                input.buscar(placeholder='Buscar por nombres o apellidos' @click='filtrarVendedor' v-model='valorInput')
-                                a.waves-effect
+                                input.buscar(placeholder='Buscar por nombres o apellidos' v-model='valorInput')
+                                a.waves-effect(@click='filtrarVendedores()')
                                     i.material-icons.left search
                                 .col.s6(style='padding:0')
                                     ul 
-                                        li(v-for='(item,i) in vendedores' @click='mostrarZonas(item,i)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
+                                        li(v-for='(item,i) in arrayVendedores' @click='mostrarZonas(item,i)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
                                 .col.s6(style='padding:0')
                                     .content-item(v-for='(item, i) in zonasVendedor' :class='{ check: valorCheckbox && i== index }')
                                         label.config-radio  
@@ -718,7 +718,9 @@
                 mostrar2: true,
                 falso: false,
                 valorCheckbox: false,
-                valorInput:''
+                valorInput:'',
+                arrayVendedores:[],
+                nombreVendedores:[]
             }
         },
         methods: {
@@ -838,9 +840,20 @@
                 this.index = i;
                 this.habilitar = false;
                 console.log(this.valorCheckbox)
+                console.log(this.valorInput);
             },
-            filtrarVendedor:function(){
-                
+            defectoVendedores:function(){
+                this.arrayVendedores = this.vendedores.map(e=>e);
+            },
+            filtrarVendedores:function(){
+                console.log(this.valorInput);
+                this.arrayVendedores = this.arrayVendedores.filter((element,i) => {
+                    const filtrado = element.nombre.toLowerCase();
+                    console.log(filtrado)
+                    return filtrado.indexOf(this.valorInput.toLowerCase()) > -1;
+                });
+
+                return this.arrayVendedores;
             }
         },
         filters:{
