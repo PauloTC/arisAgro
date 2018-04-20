@@ -164,7 +164,7 @@
                 .col.s3
                     .mini-card
                         span {{ nombreVendedor1 }}
-                        a.modal-trigger.cambiar(href='#modal7' @click='porDefecto') cambiar
+                        a.modal-trigger.cambiar(href='#modal7') cambiar
                         #modal7.modal.modal-fixed-footer
                             .modal-header
                                 h6 SELECCIONE VENDEDORES
@@ -191,12 +191,12 @@
                             .modal-header
                                 h6 SELECCIONE VENDEDORES
                             .modal-content
-                                input.buscar(placeholder='Buscar por nombres o apellidos')
+                                input.buscar(placeholder='Buscar por nombres o apellidos' v-model='valorInput')
                                 a.waves-effect
                                     i.material-icons.left search
                                 .col.s6(style='padding:0')
                                     ul 
-                                        li(v-for='(item,i) in vendedores' :key='i' @click='mostrarZonas(item,i)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
+                                        li(v-for='(item,i) in arrayVendedores' @click='mostrarZonas(item)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
                                 .col.s6(style='padding:0')
                                     .content-item(v-for='(item, i) in zonasVendedor')
                                         label.config-radio
@@ -676,7 +676,6 @@
                 items1:[],
                 items2:[],
                 items3:[],
-                zonasVendedor: [],
                 isactive: 0,
                 zonaClientes: [],
                 id: 0,
@@ -788,15 +787,12 @@
                 this.items2[2] = this.cliente;
             },
             //tab vendedores
-            porDefecto:function(){
-                this.zonasVendedor = this.vendedores[0].zonas;
-            },
             mostrarZonas:function(item){
-                this.zonasVendedor = item.zonas;
                 this.isactive = item.id;
                 this.cliente = item;
+                console.log(this.cliente)
                 this.nombre = item.nombre.toUpperCase();
-                // console.log(i)
+                this.zonasVendedor = item.zonas
             },
             cambiarVendedor1:function(){
                 this.mostrar = false;
@@ -858,15 +854,16 @@
         computed:{
             arrayVendedores:function(){
                 console.log(this.valorInput);
-                const vendedores = this.vendedores.filter((element,i) => {
-                    // this.index = i;
+                const vendedores = this.vendedores.filter((element,i) => {            
                     const filtrado = element.nombre.toLowerCase();
                     console.log(filtrado)
                     return filtrado.indexOf(this.valorInput.toLowerCase()) > -1;
                 });
                 return vendedores;
              },
-
+            zonasVendedor:function(){
+                return this.arrayVendedores[0].zonas;
+            }
         }
     }
 </script>
