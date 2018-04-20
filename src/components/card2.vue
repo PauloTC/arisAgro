@@ -63,7 +63,7 @@
                                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
                                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarTerritorio3()' :class='{ disabled: habilitar }') Aceptar
                 .col.s9
-                    canvas#myChart1(:width="800" :height="200")
+                    bar-chart(:chart-data="chartData.chart1" :width="970" :height="270")
                 .col.s12.lista-clientes(style='border-top:1px solid #E9EDF1;')
                     .listatop(v-for='item in items1' :class='{ "ocultar": mostrar }')
                         .title
@@ -148,7 +148,7 @@
                                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
                                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarZona3()' :class='{ disabled: habilitar }') Aceptar
                 .col.s9
-                    canvas#myChart2(:width="800" :height="200")
+                    bar-chart(:chart-data="chartData.chart1" :width="970" :height="270")
                 .col.s12.lista-clientes
                     .listatop(v-for='item in items2' :class='{ "ocultar": mostrar }')
                         .title
@@ -229,7 +229,7 @@
                                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
                                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor3()' :class='{ disabled: habilitar }') Aceptar
                 .col.s9
-                    canvas#myChart3(:width="800" :height="200")
+                    bar-chart(:chart-data="chartData.chart1" :width="970" :height="270")
                 .col.s12.lista-clientes
                     .listatop(v-for='item in items3' :class='{ "ocultar": mostrar }')
                         .title
@@ -688,8 +688,31 @@
                 falso: false,
                 valorCheckbox: false,
                 valorInput:'',
-                // arrayVendedores:[],
-                nombreVendedores:[]
+                nombreVendedores:[],
+
+                /** data de charts */
+                chartData: {
+                    chart1: {
+                        labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
+                        datasets: [
+                            {
+                                backgroundColor: 'rgb(73, 215, 187)',
+                                borderColor: 'rgb(255, 99, 132)',
+                                data: [30.000, 19.000, 15.000, 22.000, 26.000, 30.000, 36.000, 80.000, 56.000, 75.000, 25.000, 35.000],
+                            },
+                            {
+                                backgroundColor: 'rgb(118, 142, 166)',
+                                borderColor: 'rgb(255, 99, 132)',
+                                data: [20.000, 34.000, 52.000, 27.000, 29.000, 34.000, 42.000, 34.000, 73.000, 66.000, 16.000, 49.000],
+                            },
+                            {
+                                backgroundColor: 'rgb(188, 203, 218)',
+                                borderColor: 'rgb(255, 99, 132)',
+                                data: [16.000, 26.000, 35.000, 25.000, 23.000, 42.000, 85.000, 16.000, 57.000, 68.000, 55.000, 47.000],
+                            }    
+                        ]
+                    }
+                }
             }
         },
         methods: {
@@ -831,117 +854,6 @@
                         dismissible: false
                 });
             })
-            var ctx1 = $("#myChart1");//chartjs
-            var ctx2 = $("#myChart2");//chartjs
-            var ctx3 = $("#myChart3");//chartjs
-            var chart1 = new Chart(ctx1, {
-                type: 'bar',
-                data: {
-                    labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"],
-                    datasets: [
-                        {
-                            backgroundColor: 'rgb(73, 215, 187)',
-                            borderColor: 'rgb(255, 99, 132)',
-                            data: [30, 19, 15, 22, 26, 30, 36, 80, 56, 75, 25, 35],
-                        },
-                        {
-                            backgroundColor: 'rgb(118, 142, 166)',
-                            borderColor: 'rgb(255, 99, 132)',
-                            data: [20, 34, 52, 27, 29, 34, 42, 34, 73, 66, 16, 49],
-                        },
-                        {
-                            backgroundColor: 'rgb(188, 203, 218)',
-                            borderColor: 'rgb(255, 99, 132)',
-                            data: [16, 26, 35, 25, 23, 42, 85, 16, 57, 68, 55, 47],
-                        }    
-                    ]
-                },
-                options: {
-                    legend: {
-                        display: false
-                    },
-                    barThickness: 2,
-                        scales: {
-                            xAxes: [{
-                                barPercentage: 0.5,
-                                categoryPercentage: 0.4,
-                                // barThickness: 5
-                            }]
-                    }
-                }
-            });
-            var chart2 = new Chart(ctx2, {
-                type: 'bar',
-                data: {
-                    labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"],
-                    datasets: [
-                        {
-                            backgroundColor: 'rgb(73, 215, 187)',
-                            borderColor: 'rgb(255, 99, 132)',
-                            data: [30, 19, 15, 22, 26, 30, 36, 80, 56, 75, 25, 35],
-                        },
-                        {
-                            backgroundColor: 'rgb(118, 142, 166)',
-                            borderColor: 'rgb(255, 99, 132)',
-                            data: [20, 34, 52, 27, 29, 34, 42, 34, 73, 66, 16, 49],
-                        },
-                        {
-                            backgroundColor: 'rgb(188, 203, 218)',
-                            borderColor: 'rgb(255, 99, 132)',
-                            data: [16, 26, 35, 25, 23, 42, 85, 16, 57, 68, 55, 47],
-                        }    
-                    ]
-                },
-                options: {
-                    legend: {
-                        display: false
-                    },
-                    barThickness: 2,
-                        scales: {
-                            xAxes: [{
-                                barPercentage: 0.5,
-                                categoryPercentage: 0.4,
-                                // barThickness: 5
-                            }]
-                    }
-                }
-            });
-            var chart3 = new Chart(ctx3, {
-                type: 'bar',
-                data: {
-                    labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Setiembre", "Octubre", "Noviembre", "Diciembre"],
-                    datasets: [
-                        {
-                            backgroundColor: 'rgb(73, 215, 187)',
-                            borderColor: 'rgb(255, 99, 132)',
-                            data: [30, 19, 15, 22, 26, 30, 36, 80, 56, 75, 25, 35],
-                        },
-                        {
-                            backgroundColor: 'rgb(118, 142, 166)',
-                            borderColor: 'rgb(255, 99, 132)',
-                            data: [20, 34, 52, 27, 29, 34, 42, 34, 73, 66, 16, 49],
-                        },
-                        {
-                            backgroundColor: 'rgb(188, 203, 218)',
-                            borderColor: 'rgb(255, 99, 132)',
-                            data: [16, 26, 35, 25, 23, 42, 85, 16, 57, 68, 55, 47],
-                        }    
-                    ]
-                },
-                options: {
-                    legend: {
-                        display: false
-                    },
-                    barThickness: 2,
-                        scales: {
-                            xAxes: [{
-                                barPercentage: 0.5,
-                                categoryPercentage: 0.4,
-                                // barThickness: 5
-                            }]
-                    }
-                }
-            });
         },
         computed:{
             arrayVendedores:function(){
@@ -953,7 +865,8 @@
                     return filtrado.indexOf(this.valorInput.toLowerCase()) > -1;
                 });
                 return vendedores;
-             }
+             },
+
         }
     }
 </script>
@@ -983,7 +896,7 @@
     }
     .ambito2 .card-cont .tabs .indicator{
         background-color: #49D7BB;
-        /* left: 12rem!important; */
+        margin: 0 auto;
         width: 30px;
     }
     .ambito2 .card-cont .mini-card{

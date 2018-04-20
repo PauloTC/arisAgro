@@ -3,10 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 require('../node_modules/chart.js/dist/Chart.bundle.min.js')
-require('../node_modules/hchs-vue-charts/dist/vue-charts.js')
+import BarChart from './components/bar-chart'
+// require('../node_modules/hchs-vue-charts/dist/vue-charts.js')
 
-Vue.use(VueCharts);
+// Vue.use(VueCharts);
 Vue.config.productionTip = false
+
+Vue.component('bar-chart', BarChart)
 
 /* eslint-disable no-new */
 new Vue({
