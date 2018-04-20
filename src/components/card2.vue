@@ -8,7 +8,7 @@
                     li.tab.col.s4
                         a(href='#test2' @click='mostrar1 = true, mostrar2 = true') ZONA
                     li.tab.col.s4
-                        a(href='#test3' @click='mostrar1 = true, mostrar2 = true, defectoVendedores()') VENDEDORES
+                        a(href='#test3' @click='mostrar1 = true, mostrar2 = true') VENDEDORES
             #test1.col.s12(style='margin-top:3rem')
                 .col.s3
                     .mini-card
@@ -170,11 +170,11 @@
                                 h6 SELECCIONE VENDEDORES
                             .modal-content
                                 input.buscar(placeholder='Buscar por nombres o apellidos' v-model='valorInput')
-                                a.waves-effect(@keyup.enter="filtrarVendedores()" @click='filtrarVendedores()')
+                                a.waves-effect
                                     i.material-icons.left search
                                 .col.s6(style='padding:0')
                                     ul 
-                                        li(v-for='(item,i) in arrayVendedores' @click='mostrarZonas(item,i)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
+                                        li(v-for='(item,i) in arrayVendedores' @click='mostrarZonas(item)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
                                 .col.s6(style='padding:0')
                                     .content-item(v-for='(item, i) in zonasVendedor' :class='{ check: valorCheckbox && i== index }')
                                         label.config-radio  
@@ -688,7 +688,7 @@
                 falso: false,
                 valorCheckbox: false,
                 valorInput:'',
-                arrayVendedores:[],
+                // arrayVendedores:[],
                 nombreVendedores:[]
             }
         },
@@ -766,11 +766,11 @@
             },
             //tab vendedores
             porDefecto:function(){
-                // this.zonasVendedor = this.vendedores[0].zonas;
+                this.zonasVendedor = this.vendedores[0].zonas;
             },
-            mostrarZonas:function(item,i){
+            mostrarZonas:function(item){
                 this.zonasVendedor = item.zonas;
-                this.isactive = i;
+                this.isactive = item.id;
                 this.cliente = item;
                 this.nombre = item.nombre.toUpperCase();
                 // console.log(i)
@@ -810,21 +810,6 @@
                 this.habilitar = false;
                 console.log(this.valorCheckbox)
                 console.log(this.valorInput);
-            },
-            defectoVendedores:function(){
-                this.arrayVendedores = this.vendedores.map(e=>e);
-            },
-            filtrarVendedores:function(){
-                console.log(this.valorInput);
-                // this.arrayVendedores = [];
-                this.arrayVendedores = this.vendedores.filter((element,i) => {
-                    // this.index = i;
-                    const filtrado = element.nombre.toLowerCase();
-                    console.log(filtrado)
-                    return filtrado.indexOf(this.valorInput.toLowerCase()) > -1;
-                });
-
-                return this.arrayVendedores;
             }
         },
         filters:{
@@ -959,9 +944,16 @@
             });
         },
         computed:{
-            calcular:function(){
-                Console.log('hola')
-            }
+            arrayVendedores:function(){
+                console.log(this.valorInput);
+                const vendedores = this.vendedores.filter((element,i) => {
+                    // this.index = i;
+                    const filtrado = element.nombre.toLowerCase();
+                    console.log(filtrado)
+                    return filtrado.indexOf(this.valorInput.toLowerCase()) > -1;
+                });
+                return vendedores;
+             }
         }
     }
 </script>
@@ -1106,6 +1098,29 @@
         flex-direction: row-reverse;
         justify-content: space-between;
         align-items: center;
+    }
+    .ambito2 .config-radio [type="checkbox"].filled-in+span:not(.lever):after{
+        border-radius: 50%;
+        background-color: #FFFFFF;
+        border: 2px solid #768EA6;
+    }
+    .ambito2 .config-radio [type="checkbox"].filled-in:checked+span:not(.lever):before{
+        border-right: 2px solid #768EA6;
+        border-bottom: 2px solid #768EA6;
+    }
+    .ambito2 .config-radio [type="radio"]:not(:checked)+span:before, [type="radio"]:not(:checked)+span:after {
+        border: 2px solid #768EA6;
+    }
+    .ambito2 .config-radio [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after{
+        border: 2px solid #768EA6;
+    }
+    .ambito2 .config-radio [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
+        background-color: #768EA6;
+    }
+    .ambito2 .config-radio [type="radio"]+span:before, [type="radio"]+span:after {
+        font-family: 'Material Icons';
+        content: 'check';
+        color:#FFFFFF;
     }
     .ambito2 .card-cont #test2 .modal-content .content-item{
         background-color: #E9EDF1;
