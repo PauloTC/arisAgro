@@ -170,7 +170,7 @@
                                 h6 SELECCIONE VENDEDORES
                             .modal-content
                                 input.buscar(placeholder='Buscar por nombres o apellidos' v-model='valorInput')
-                                a.waves-effect(@click='filtrarVendedores()')
+                                a.waves-effect(@keyup.enter="filtrarVendedores()" @click='filtrarVendedores()')
                                     i.material-icons.left search
                                 .col.s6(style='padding:0')
                                     ul 
@@ -460,37 +460,6 @@
                             },
                             {
                                 nombre:'ESPARRAGOS DEL PERU',
-                                venta: 'USD 120.00'
-                            }
-                        ]
-                    },
-                    { 
-                        id:7,
-                        nombre:'Francisco Leonard',
-                        zonas:['Ayacucho','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
-                        clientes:[
-                            {
-                                nombre:'AGRICOLA CHAPI',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'KEYPERU',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'COMPLEJO AGROINDUSTRIAL',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'AGRICOLA ANDREA',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'COORPORACION ESPERANZA',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'CORTEZ MEDINA MAXIMO',
                                 venta: 'USD 120.00'
                             }
                         ]
@@ -797,14 +766,14 @@
             },
             //tab vendedores
             porDefecto:function(){
-                this.zonasVendedor = this.vendedores[0].zonas;
+                // this.zonasVendedor = this.vendedores[0].zonas;
             },
             mostrarZonas:function(item,i){
                 this.zonasVendedor = item.zonas;
                 this.isactive = i;
                 this.cliente = item;
                 this.nombre = item.nombre.toUpperCase();
-                
+                // console.log(i)
             },
             cambiarVendedor1:function(){
                 this.mostrar = false;
@@ -847,7 +816,9 @@
             },
             filtrarVendedores:function(){
                 console.log(this.valorInput);
-                this.arrayVendedores = this.arrayVendedores.filter((element,i) => {
+                // this.arrayVendedores = [];
+                this.arrayVendedores = this.vendedores.filter((element,i) => {
+                    // this.index = i;
                     const filtrado = element.nombre.toLowerCase();
                     console.log(filtrado)
                     return filtrado.indexOf(this.valorInput.toLowerCase()) > -1;
@@ -986,6 +957,11 @@
                     }
                 }
             });
+        },
+        computed:{
+            calcular:function(){
+                Console.log('hola')
+            }
         }
     }
 </script>
