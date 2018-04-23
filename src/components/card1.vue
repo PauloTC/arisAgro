@@ -6,8 +6,8 @@
                     i.material-icons.right chevron_left
                 a.waves-effect(@click='masMes')
                     i.material-icons.right chevron_right
-                span {{ meses[i] }}
-                span 2018
+                span {{ arrayMeses }}
+                span 
             .col.s12.m4.productos(style='padding:0')
                     h3 TOP PRODUCTOS
                     table
@@ -44,6 +44,7 @@
 </template>
 <script>
 import VueCircle from 'vue2-circle-progress'
+import moment from 'moment'
 
     export default {
         name:'card1',
@@ -54,8 +55,8 @@ import VueCircle from 'vue2-circle-progress'
             return{
                 fill1: { color: '#49D7BB' },
                 fill2: { color: '#768EA6' },
-                meses: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                i:0,
+                index: 0,
+                fecha:'',
                 productos:[
                     {nombre:'AZUFRE PANTERA', precio:'USD 0.87'},
                     {nombre:'ABAFIN', precio:'USD 3.76'},
@@ -78,11 +79,28 @@ import VueCircle from 'vue2-circle-progress'
                 // console.log("Circle progress end");
             },
             masMes(){
-                return this.i++;
+                if(this.index > 0){
+                    this.index--;
+                }
+                this.$emit('clicked', this.index)
             },
             menosMes(){
-                return this.i--;
-            }        }
+                if(this.index < 11){
+                    this.index++;
+                }
+                this.$emit('clicked', this.index) 
+            }        
+        },
+        computed:{
+            arrayMeses:function(){
+                moment.locale('es');
+                var dia = moment().format("YYYY-MM-DD")
+                var mes =  Array.apply(0, Array(12)).map(function(_,i){
+                    return moment(dia).subtract(i, 'months').format("MMMM YYYY")
+                })
+                return mes[this.index].toUpperCase();
+            }
+        }
     }
 </script>
 

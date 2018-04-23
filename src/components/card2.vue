@@ -176,9 +176,9 @@
                                     ul 
                                         li(v-for='(item,i) in arrayVendedores' @click='mostrarZonas(item)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
                                 .col.s6(style='padding:0')
-                                    .content-item(v-for='(item, i) in zonasVendedor' :class='{ check: valorCheckbox && i== index }')
+                                    .content-item(v-for='(item, i) in zonasVendedor' :class='{ check: i == index }')
                                         label.config-radio  
-                                            input(type='checkbox' class="filled-in" @click='background(i)' v-model='valorCheckbox')
+                                            input(type='checkbox' class="filled-in" @click='isChecked()')
                                             span
                                             p {{ item }}
                             .modal-footer
@@ -243,9 +243,12 @@
                                         td {{ elem.venta }}
 </template>
 <script>
+import moment from 'moment'
     export default {
         name:'card2',
+        props: ['dateSelected'],
         data:function(){
+            console.log(this.labelsCharts)
             return{
                 vendedores:[
                     { 
@@ -529,7 +532,7 @@
                                     }
                                 ]
                             },
-                        ]
+                        ],     
                     },
                     { 
                         id:'1',
@@ -688,30 +691,31 @@
                 valorCheckbox: false,
                 valorInput:'',
                 nombreVendedores:[],
-
+                ventaTerritorio:'',
                 /** data de charts */
                 chartData: {
                     chart1: {
-                        labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Set", "Oct", "Nov", "Dic"],
+                        labels: this.labelsCharts,
                         datasets: [
-                            {
-                                backgroundColor: 'rgb(73, 215, 187)',
-                                borderColor: 'rgb(255, 99, 132)',
-                                data: [30.000, 19.000, 15.000, 22.000, 26.000, 30.000, 36.000, 80.000, 56.000, 75.000, 25.000, 35.000],
-                            },
-                            {
-                                backgroundColor: 'rgb(118, 142, 166)',
-                                borderColor: 'rgb(255, 99, 132)',
-                                data: [20.000, 34.000, 52.000, 27.000, 29.000, 34.000, 42.000, 34.000, 73.000, 66.000, 16.000, 49.000],
-                            },
-                            {
-                                backgroundColor: 'rgb(188, 203, 218)',
-                                borderColor: 'rgb(255, 99, 132)',
-                                data: [16.000, 26.000, 35.000, 25.000, 23.000, 42.000, 85.000, 16.000, 57.000, 68.000, 55.000, 47.000],
-                            }    
+                            // {
+                            //     backgroundColor: 'rgb(73, 215, 187)',
+                            //     borderColor: 'rgb(255, 99, 132)',
+                            //     data: [30.000, 19.000, 15.000, 22.000, 26.000, 30.000, 36.000, 80.000, 56.000, 75.000, 25.000, 35.000],
+                            // },
+                            // {
+                            //     backgroundColor: 'rgb(118, 142, 166)',
+                            //     borderColor: 'rgb(255, 99, 132)',
+                            //     data: [20.000, 34.000, 52.000, 27.000, 29.000, 34.000, 42.000, 34.000, 73.000, 66.000, 16.000, 49.000],
+                            // },
+                            // {
+                            //     backgroundColor: 'rgb(188, 203, 218)',
+                            //     borderColor: 'rgb(255, 99, 132)',
+                            //     data: [16.000, 26.000, 35.000, 25.000, 23.000, 42.000, 85.000, 16.000, 57.000, 68.000, 55.000, 47.000],
+                            // }    
                         ]
                     }
-                }
+                },
+                indexTerrirorio: 0
             }
         },
         methods: {
@@ -731,8 +735,10 @@
                     this.nombreTerritorio1 = this.nombre; 
                 } 
                 this.id = this.index;
+                this.ventaTerritorio = this.cliente.forEach(e => e.clientes)
                 this.items1[0] = this.cliente; 
                 console.log(this.items1)
+                console.log(this.ventaTerritorio)
             },
             cambiarTerritorio2:function(){
                 this.mostrar2 = false; 
@@ -792,7 +798,8 @@
                 this.cliente = item;
                 console.log(this.cliente)
                 this.nombre = item.nombre.toUpperCase();
-                this.zonasVendedor = item.zonas
+                this.indexTerrirorio =  item.id
+                // this.zonasVendedor = item.zonas
             },
             cambiarVendedor1:function(){
                 this.mostrar = false;
@@ -824,11 +831,12 @@
                 }
                 this.items3[2] = this.cliente;
             },
-            background:function(i){
-                this.index = i;
+            isChecked:function(){
                 this.habilitar = false;
-                console.log(this.valorCheckbox)
-                console.log(this.valorInput);
+                
+            },
+            databar:function(){
+
             }
         },
         filters:{
@@ -845,24 +853,45 @@
         },
         mounted: function () {
             this.$nextTick(function () {
+                console.log(this.arrayVendedores)
                     $('.tabs').tabs();
                     $('.modal').modal({
                         dismissible: false
                 });
             })
         },
+        watch: {
+            dateSelected() {
+                this.chartData.chart1 = {
+                    labels: this.labelsCharts,
+                    datasets: []
+                }
+            }
+        },
         computed:{
             arrayVendedores:function(){
                 console.log(this.valorInput);
-                const vendedores = this.vendedores.filter((element,i) => {            
+                // debugger
+                const vendedores = this.vendedores.filter((element,i) => {
+                    // debugger            
                     const filtrado = element.nombre.toLowerCase();
                     console.log(filtrado)
                     return filtrado.indexOf(this.valorInput.toLowerCase()) > -1;
                 });
-                return vendedores;
+                // return vendedores.length ? vendedores : this.vendedores
+                return vendedores
              },
             zonasVendedor:function(){
-                return this.arrayVendedores[0].zonas;
+                return this.arrayVendedores.length ? this.arrayVendedores[this.indexTerrirorio].zonas : ''
+            },
+            labelsCharts:function(){
+              moment.locale('es');
+                var hoy   = moment().format("YYYY-MM-DD")
+                var fecha = moment(hoy).subtract(this.dateSelected, 'months').format("YYYY-MM-DD");
+                var mes   = Array.apply(0, Array(12)).map(function(_,i){
+                    return moment(fecha).subtract(i, 'months').format("MMM")
+                })
+                return mes.reverse();
             }
         }
     }

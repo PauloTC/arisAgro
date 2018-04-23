@@ -2,8 +2,8 @@
   div(id="app")
     toolbar
     buttons
-    card1
-    card2
+    card1(@clicked= 'pasarData')
+    card2(:dateSelected="dataSelected")
 </template>
 
 <script>
@@ -11,15 +11,29 @@ import toolbar from './components/toolbar'
 import buttons from './components/buttons'
 import card1 from './components/card1'
 import card2 from './components/card2'
+import moment from 'moment'
 
 export default {
   name: 'App',
   components: {
       toolbar,buttons,card1,card2
-  }
+  },
+  data() {
+    return {
+      dataSelected: '',
+    }
+  },
+  methods:{
+    pasarData:function(val) {
+      this.dataSelected = val;
+    }
+  }  
 }
 </script>
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+body{
+  /* background-color: #F1F5F9; */
+}
 </style>
