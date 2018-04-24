@@ -27,7 +27,10 @@ export default {
     pasarData:function(val) {
       this.dataSelected = val;
     }
-  }  
+  },
+  created() {
+    this.$store.dispatch('fechaActual')
+  }
 }
 </script>
 

@@ -2,17 +2,17 @@
     .row.ambito1(style='padding:0 5rem;margin-bottom:3rem')
         .card-cont.col.s12(style='padding:0')
             .col.s12.meses
-                a.waves-effect(@click='menosMes')
+                a.waves-effect(@click='cambiarMes(false)')
                     i.material-icons.right chevron_left
-                a.waves-effect(@click='masMes')
+                a.waves-effect(@click='cambiarMes(true)')
                     i.material-icons.right chevron_right
-                span {{ arrayMeses }}
+                span {{ mesActual }}
                 span 
             .col.s12.m4.productos(style='padding:0')
                     h3 TOP PRODUCTOS
                     table
                         tbody
-                            tr(v-for='(producto,i) in productos')
+                            tr(v-for='(producto,i) in productos' :key="i")
                                 td {{ i + 1 }}
                                 td {{ producto.nombre }}
                                 td {{ producto.precio }}
@@ -43,63 +43,35 @@
                                     td USd 6 000.00
 </template>
 <script>
-import VueCircle from 'vue2-circle-progress'
-import moment from 'moment'
+    import { mapGetters, mapActions, mapState } from 'vuex'
 
     export default {
         name:'card1',
-        components: {
-            VueCircle
-        },
         data(){
             return{
                 fill1: { color: '#49D7BB' },
                 fill2: { color: '#768EA6' },
                 index: 0,
-                fecha:'',
-                productos:[
-                    {nombre:'AZUFRE PANTERA', precio:'USD 0.87'},
-                    {nombre:'ABAFIN', precio:'USD 3.76'},
-                    {nombre:'AGAFORTE', precio:'USD 7.00'},
-                    {nombre:'BINOMIO', precio:'USD 0.87'},
-                    {nombre:'RAFAGA', precio:'USD 3.76'},
-                    {nombre:'BINOMIO', precio:'USD 7.00'},
-                    {nombre:'RAFAGA', precio:'USD 0.87'},
-                    {nombre:'BINOMIO', precio:'USD 3.76'},
-                    {nombre:'RAFAGA', precio:'USD 7.00'},
-                    {nombre:'RAFAGA', precio:'USD 7.00'}
-                ]
             }
         },
         methods:{
+            ...mapActions({
+                cambiarMes: 'cambiarMes',
+            }),
             progress(event,progress,stepValue){
                 // console.log(stepValue);
             },
             progress_end(event){
                 // console.log("Circle progress end");
-            },
-            masMes(){
-                if(this.index > 0){
-                    this.index--;
-                }
-                this.$emit('clicked', this.index)
-            },
-            menosMes(){
-                if(this.index < 11){
-                    this.index++;
-                }
-                this.$emit('clicked', this.index) 
             }        
         },
         computed:{
-            arrayMeses:function(){
-                moment.locale('es');
-                var dia = moment().format("YYYY-MM-DD")
-                var mes =  Array.apply(0, Array(12)).map(function(_,i){
-                    return moment(dia).subtract(i, 'months').format("MMMM YYYY")
-                })
-                return mes[this.index].toUpperCase();
-            }
+            ...mapState({
+                productos: state => state.productos
+            }),
+            ...mapGetters({
+               mesActual: 'mesActual' 
+            })
         }
     }
 </script>

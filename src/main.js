@@ -2,17 +2,17 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-require('../node_modules/chart.js/dist/Chart.bundle.min.js')
-import BarChart from './components/bar-chart'
+import store from './store'
+import './plugins/vue-moment'
+import './plugins/vu2-circle-progress'
+import './plugins/bar-chart'
 
 Vue.config.productionTip = false
 
-Vue.component('bar-chart', BarChart)
-
-Vue.use(require('vue-moment'));
 
 /* eslint-disable no-new */
 new Vue({
+  store,
   el: '#app',
   components: { App },
   template: '<App/>'

@@ -198,7 +198,7 @@
                                     ul 
                                         li(v-for='(item,i) in arrayVendedores' @click='mostrarZonas(item)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
                                 .col.s6(style='padding:0')
-                                    .content-item(v-for='(item, i) in zonasVendedor')
+                                    .content-item(v-for='(item, i) in zonasVendedor' :class='{ check: i == index }')
                                         label.config-radio
                                             input(type='checkbox' class="filled-in" @click='habilitar=false')
                                             span
@@ -218,9 +218,9 @@
                                     i.material-icons.left search
                                 .col.s6(style='padding: 0')
                                     ul 
-                                        li(v-for='(item, i) in vendedores' @click='mostrarZonas(item,i)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
+                                        li(v-for='(item, i) in arrayVendedores' @click='mostrarZonas(item,i)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
                                 .col.s6(style='padding:0')
-                                    .content-item(v-for='(item, i) in zonasVendedor')
+                                    .content-item(v-for='(item, i) in zonasVendedor' :class='{ check: i == index }')
                                         label.config-radio 
                                             input(type='checkbox' class="filled-in" @click='habilitar=false')
                                             span
@@ -243,7 +243,6 @@
                                         td {{ elem.venta }}
 </template>
 <script>
-import moment from 'moment'
     export default {
         name:'card2',
         props: ['dateSelected'],
@@ -821,15 +820,27 @@ import moment from 'moment'
                 this.habilitar = true;
                 if(this.nombre !==''){ 
                     this.nombreVendedor2 = this.nombre;
+                }else{
+                    this.nombreVendedor2 = this.vendedores[0].nombre.toUpperCase();
                 }
-                this.items3[1] = this.cliente;
+                if(this.cliente.length!==0){
+                    this.items3[1] = this.cliente;
+                }else{
+                    this.items3[1] = this.vendedores[0];
+                }     
             },
             cambiarVendedor3:function(){
                 this.habilitar = true;
                 if(this.nombre !==''){
                     this.nombreVendedor3 = this.nombre;
+                }else{
+                    this.nombreVendedor2 = this.vendedores[0].nombre.toUpperCase();
                 }
-                this.items3[2] = this.cliente;
+                if(this.cliente.length!==0){
+                    this.items3[2] = this.cliente;
+                }else{
+                    this.items3[2] = this.vendedores[0];
+                }  
             },
             isChecked:function(){
                 this.habilitar = false;
@@ -860,15 +871,18 @@ import moment from 'moment'
                 });
             })
         },
-        watch: {
-            dateSelected() {
-                this.chartData.chart1 = {
-                    labels: this.labelsCharts,
-                    datasets: []
-                }
-            }
-        },
+        // watch: {
+        //     dateSelected() {
+        //         this.chartData.chart1 = {
+        //             labels: this.labelsCharts,
+        //             datasets: []
+        //         }
+        //     }
+        // },
         computed:{
+            // ...mapGetters({
+            //    chartData.chart1.labels: 'chartDataset'
+            // }),
             arrayVendedores:function(){
                 console.log(this.valorInput);
                 // debugger
@@ -884,15 +898,15 @@ import moment from 'moment'
             zonasVendedor:function(){
                 return this.arrayVendedores.length ? this.arrayVendedores[this.indexTerrirorio].zonas : ''
             },
-            labelsCharts:function(){
-              moment.locale('es');
-                var hoy   = moment().format("YYYY-MM-DD")
-                var fecha = moment(hoy).subtract(this.dateSelected, 'months').format("YYYY-MM-DD");
-                var mes   = Array.apply(0, Array(12)).map(function(_,i){
-                    return moment(fecha).subtract(i, 'months').format("MMM")
-                })
-                return mes.reverse();
-            }
+            // labelsCharts:function(){
+            //   this.$moment.locale('es');
+            //     var hoy   = this.$moment().format("YYYY-MM-DD")
+            //     var fecha = this.$moment(hoy).subtract(this.dateSelected, 'months').format("YYYY-MM-DD");
+            //     var mes   = Array.apply(0, Array(12)).map((_,i) => {
+            //         return this.$moment(fecha).subtract(i, 'months').format("MMM")
+            //     })
+            //     return mes.reverse();
+            // }            
         }
     }
 </script>
