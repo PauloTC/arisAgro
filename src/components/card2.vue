@@ -27,7 +27,7 @@
                                             p {{ item.nombre }}
                             .modal-footer
                                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarTerritorio1()' :class='{ disabled: habilitar }') Aceptar
+                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarTerritorio1(),agregardata()' :class='{ disabled: habilitar }') Aceptar
                     .mini-card
                         span {{ nombreTerritorio2 }}
                         a.modal-trigger.cambiar(href='#modal2' :class='{ disabled: mostrar1 }') cambiar
@@ -178,12 +178,12 @@
                                 .col.s6(style='padding:0')
                                     .content-item(v-for='(item, i) in zonasVendedor' :class='{ check: i == index }')
                                         label.config-radio  
-                                            input(type='checkbox' class="filled-in" @click='isChecked()')
+                                            input(type='checkbox' class="filled-in" @click='isChecked(i)' v-model='checked')
                                             span
                                             p {{ item }}
                             .modal-footer
                                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor1()' :class='{ disabled: habilitar }') Aceptar
+                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor1(), agregardata()' :class='{ disabled: habilitar }') Aceptar
                     .mini-card
                         span {{ nombreVendedor2 }}
                         a.modal-trigger.cambiar(href='#modal8' :class='{ disabled: mostrar1 }') cambiar
@@ -200,9 +200,9 @@
                                 .col.s6(style='padding:0')
                                     .content-item(v-for='(item, i) in zonasVendedor' :class='{ check: i == index }')
                                         label.config-radio
-                                            input(type='checkbox' class="filled-in" @click='habilitar=false')
+                                            input(type='checkbox' class="filled-in" @click='isChecked(i)')
                                             span
-                                            p() {{ item }}
+                                            p {{ item }}
                             .modal-footer
                                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
                                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor2()' :class='{ disabled: habilitar }') Aceptar
@@ -222,15 +222,16 @@
                                 .col.s6(style='padding:0')
                                     .content-item(v-for='(item, i) in zonasVendedor' :class='{ check: i == index }')
                                         label.config-radio 
-                                            input(type='checkbox' class="filled-in" @click='habilitar=false')
+                                            input(type='checkbox' class="filled-in" @click='isChecked(i)')
                                             span
-                                            p() {{ item }}
+                                            p {{ item }}
                             .modal-footer
                                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
                                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor3()' :class='{ disabled: habilitar }') Aceptar
                 .col.s9
                     bar-chart(:chart-data="chartData.chart1" :width="970" :height="270")
                 .col.s12.lista-clientes
+                    div {{ chartData1 }}
                     .listatop(v-for='item in items3' :class='{ "ocultar": mostrar }')
                         .title
                             p TOP CLIENTES {{ item.nombre | upperCase }}
@@ -243,11 +244,11 @@
                                         td {{ elem.venta }}
 </template>
 <script>
+    import { mapGetters, mapActions } from 'vuex'
+
     export default {
         name:'card2',
-        props: ['dateSelected'],
         data:function(){
-            console.log(this.labelsCharts)
             return{
                 vendedores:[
                     { 
@@ -531,7 +532,8 @@
                                     }
                                 ]
                             },
-                        ],     
+                        ],
+                        ventas: [30.000, 19.000, 15.000, 22.000, 26.000, 30.000, 36.000, 80.000, 56.000, 75.000, 25.000, 35.000]     
                     },
                     { 
                         id:'1',
@@ -597,9 +599,10 @@
                                     }
                                 ]
                             }
-                        ]
+                        ],
+                        ventas: [16.000, 26.000, 35.000, 25.000, 23.000, 42.000, 85.000, 16.000, 57.000, 68.000, 55.000, 47.000]
                     },
-                                        {
+                    {
                         id:'2',
                         nombre:'SIERRA SUR',
                         clientes:[
@@ -661,7 +664,8 @@
                                     }
                                 ]
                             },
-                        ]
+                        ],
+                        ventas:[20.000, 34.000, 52.000, 27.000, 29.000, 34.000, 42.000, 34.000, 73.000, 66.000, 16.000, 49.000]
                     },
                 ],
                 nombreTerritorio1:'NINGUNO',
@@ -693,31 +697,16 @@
                 ventaTerritorio:'',
                 /** data de charts */
                 chartData: {
-                    chart1: {
-                        labels: this.labelsCharts,
-                        datasets: [
-                            // {
-                            //     backgroundColor: 'rgb(73, 215, 187)',
-                            //     borderColor: 'rgb(255, 99, 132)',
-                            //     data: [30.000, 19.000, 15.000, 22.000, 26.000, 30.000, 36.000, 80.000, 56.000, 75.000, 25.000, 35.000],
-                            // },
-                            // {
-                            //     backgroundColor: 'rgb(118, 142, 166)',
-                            //     borderColor: 'rgb(255, 99, 132)',
-                            //     data: [20.000, 34.000, 52.000, 27.000, 29.000, 34.000, 42.000, 34.000, 73.000, 66.000, 16.000, 49.000],
-                            // },
-                            // {
-                            //     backgroundColor: 'rgb(188, 203, 218)',
-                            //     borderColor: 'rgb(255, 99, 132)',
-                            //     data: [16.000, 26.000, 35.000, 25.000, 23.000, 42.000, 85.000, 16.000, 57.000, 68.000, 55.000, 47.000],
-                            // }    
-                        ]
-                    }
+                    chart1: this.chartData1
                 },
-                indexTerrirorio: 0
+                indexTerrirorio: 0,
+                checked: ''
             }
         },
         methods: {
+            ...mapActions({
+                agregardata: 'agregardata',
+            }),
             guardarIndex:function(i,item){
                 this.index = i;//indice de item zonaClientes
                 this.nombre = item.nombre;//almacena la propiedad nombre del item
@@ -726,7 +715,7 @@
                 console.log(this.cliente)
             },
             //tab territorio
-             cambiarTerritorio1:function(){
+            cambiarTerritorio1:function(){
                 this.mostrar = false; 
                 this.mostrar1 = false; 
                 this.habilitar = true;
@@ -734,8 +723,8 @@
                     this.nombreTerritorio1 = this.nombre; 
                 } 
                 this.id = this.index;
-                this.ventaTerritorio = this.cliente.forEach(e => e.clientes)
                 this.items1[0] = this.cliente; 
+                this.ventaTerritorio = this.cliente.clientes
                 console.log(this.items1)
                 console.log(this.ventaTerritorio)
             },
@@ -842,12 +831,9 @@
                     this.items3[2] = this.vendedores[0];
                 }  
             },
-            isChecked:function(){
+            isChecked:function(i){
                 this.habilitar = false;
-                
-            },
-            databar:function(){
-
+                this.index = i;
             }
         },
         filters:{
@@ -864,30 +850,25 @@
         },
         mounted: function () {
             this.$nextTick(function () {
-                console.log(this.arrayVendedores)
                     $('.tabs').tabs();
                     $('.modal').modal({
                         dismissible: false
                 });
             })
         },
-        // watch: {
-        //     dateSelected() {
-        //         this.chartData.chart1 = {
-        //             labels: this.labelsCharts,
-        //             datasets: []
-        //         }
-        //     }
-        // },
+        watch: {
+            nombreTerritorio1() {
+                this.chartData.chart1 = this.chartData1
+            }
+        },
         computed:{
-            // ...mapGetters({
-            //    chartData.chart1.labels: 'chartDataset'
-            // }),
+            ...mapGetters({
+               chartData1 : 'chartDataset',
+               mesActual: 'mesActual'
+            }),
             arrayVendedores:function(){
                 console.log(this.valorInput);
-                // debugger
-                const vendedores = this.vendedores.filter((element,i) => {
-                    // debugger            
+                const vendedores = this.vendedores.filter((element,i) => {         
                     const filtrado = element.nombre.toLowerCase();
                     console.log(filtrado)
                     return filtrado.indexOf(this.valorInput.toLowerCase()) > -1;
@@ -898,15 +879,6 @@
             zonasVendedor:function(){
                 return this.arrayVendedores.length ? this.arrayVendedores[this.indexTerrirorio].zonas : ''
             },
-            // labelsCharts:function(){
-            //   this.$moment.locale('es');
-            //     var hoy   = this.$moment().format("YYYY-MM-DD")
-            //     var fecha = this.$moment(hoy).subtract(this.dateSelected, 'months').format("YYYY-MM-DD");
-            //     var mes   = Array.apply(0, Array(12)).map((_,i) => {
-            //         return this.$moment(fecha).subtract(i, 'months').format("MMM")
-            //     })
-            //     return mes.reverse();
-            // }            
         }
     }
 </script>

@@ -2,8 +2,8 @@
   div(id="app")
     toolbar
     buttons
-    card1(@clicked= 'pasarData')
-    card2(:dateSelected="dataSelected")
+    card1
+    card2
 </template>
 
 <script>
@@ -30,6 +30,7 @@ export default {
   },
   created() {
     this.$store.dispatch('fechaActual')
+    this.$store.dispatch('agregardata')
   }
 }
 </script>

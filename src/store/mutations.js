@@ -13,7 +13,7 @@ export default {
     setProductos(state, productos) {
         state.productos = productos
     },
-    // setDataSet(state, dataset){
-    //     state.dataset = dataset
-    // }
+    setDataSet(state, datasets){
+        state.datasets = [ datasets ]
+    }
 }
