@@ -32,7 +32,7 @@ export default {
   created() {
     this.$store.dispatch('fechaActual')
     this.$store.dispatch('agregardata')
-    this.$store.dispatch('cambiarMes')
+    this.$store.dispatch('habilitar')
   }
 }
 </script>

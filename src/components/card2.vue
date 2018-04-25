@@ -11,7 +11,9 @@
                         a(href='#test3' @click='mostrar1 = true, mostrar2 = true') VENDEDORES
             #test1.col.s12(style='margin-top:3rem')
                 .col.s3
-                    minicard
+                    minicard(@clicked='pasarItem')
+                    minicard(@clicked='pasarItem')
+                    minicard(@clicked='pasarItem')
                     //- .mini-card
                         span {{ nombreTerritorio2 }}
                         a.modal-trigger.cambiar(href='#modal2' :class='{ disabled: mostrar1 }') cambiar
@@ -49,16 +51,12 @@
                 .col.s9
                     bar-chart(:chart-data="chartData.chart1" :width="970" :height="270")
                 .col.s12.lista-clientes(style='border-top:1px solid #E9EDF1;')
-                    .listatop(v-for='item in items1' :class='{ "ocultar": mostrar }')
+                    .listatop(v-for='item in items1')
                         .title
                             p TOP CLIENTES {{ item.nombre }}
                         div
                             table.striped
                                 tbody
-                                    tr(v-for='(elem,i) in item.clientes')
-                                        td {{ i + 1 }}
-                                        td {{ elem.nombre }}
-                                        td {{ elem.venta }}
                                     tr(v-for='(elem,i) in item.clientes')
                                         td {{ i + 1 }}
                                         td {{ elem.nombre }}
@@ -228,7 +226,7 @@
                                         td {{ elem.venta }}
 </template>
 <script>
-import minicard from './minicard'
+    import minicard from './minicard'
     import { mapGetters, mapActions } from 'vuex'
     export default {
         name:'card2',
@@ -459,9 +457,7 @@ import minicard from './minicard'
                     }
                 ],
                 territorios,
-                // nombreTerritorio1:'NINGUNO',
-                nombreTerritorio2:'NINGUNO',
-                nombreTerritorio3:'NINGUNO',
+                // territorio: null,
                 nombreZona1:'NINGUNO',
                 nombreZona2:'NINGUNO',
                 nombreZona3:'NINGUNO',
@@ -477,11 +473,11 @@ import minicard from './minicard'
                 zonaClientes: [],
                 id: 0,
                 index: '',
-                habilitar: true,
                 mostrar: true,
                 mostrar1: true,
                 mostrar2: true,
                 falso: false,
+                habilitar: true,
                 valorCheckbox: false,
                 valorInput:'',
                 nombreVendedores:[],
@@ -498,29 +494,31 @@ import minicard from './minicard'
             ...mapActions({
                 agregardata: 'agregardata',
             }),
+            pasarItem:function(val){
+                this.items1.push(val)
+                // this.items1[0] = val
+                console.log(this.items1)
+            },
             guardarIndex:function(i,item){
                 this.index = i;//indice de item zonaClientes
                 this.nombre = item.nombre;//almacena la propiedad nombre del item
                 this.cliente = item;
                 this.habilitar = false;
-                console.log(this.cliente)
-                console.log(this.habilitar)
             },
             //tab territorio
-            cambiarTerritorio1:function(){
-                this.territorioSeleccionado1 = this.territorioSeleccionado1Modal
-                this.mostrar = false; 
-                this.mostrar1 = false; 
-                this.habilitar = true;
-                if(this.nombre !==''){
-                    this.nombreTerritorio1 = this.nombre; 
-                } 
-                this.id = this.index;
-                this.items1[0] = this.cliente; 
-                this.ventaTerritorio = this.cliente.clientes
-                console.log(this.items1)
-                console.log(this.ventaTerritorio)
-            },
+            // cambiarTerritorio1:function(){
+            //     this.mostrar = false; 
+            //     this.mostrar1 = false; 
+            //     this.habilitar = true;
+            //     if(this.nombre !==''){
+            //         this.nombreTerritorio1 = this.nombre; 
+            //     } 
+            //     this.id = this.index;
+            //     this.items1[0] = this.cliente; 
+            //     this.ventaTerritorio = this.cliente.clientes
+            //     console.log(this.items1)
+            //     console.log(this.ventaTerritorio)
+            // },
             cambiarTerritorio2:function(){
                 this.mostrar2 = false; 
                 this.habilitar = true;

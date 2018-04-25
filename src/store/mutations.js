@@ -20,5 +20,8 @@ export default {
             // state.datasets[1].data = data[1].ventas
             // state.datasets[2].data = data[2].ventas
         } 
+    },
+    setMostrar(state,mostrar){
+        state.mostrar = mostrar
     }    
 }
