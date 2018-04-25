@@ -14,6 +14,7 @@
                     minicard(@clicked='pasarItem')
                     minicard(@clicked='pasarItem')
                     minicard(@clicked='pasarItem')
+                    
                     //- .mini-card
                         span {{ nombreTerritorio2 }}
                         a.modal-trigger.cambiar(href='#modal2' :class='{ disabled: mostrar1 }') cambiar
@@ -495,8 +496,8 @@
                 agregardata: 'agregardata',
             }),
             pasarItem:function(val){
-                this.items1.push(val)
-                // this.items1[0] = val
+                console.log(val)
+                this.items1.splice(0,1,val)
                 console.log(this.items1)
             },
             guardarIndex:function(i,item){
