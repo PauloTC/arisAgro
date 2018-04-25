@@ -11,24 +11,8 @@
                         a(href='#test3' @click='mostrar1 = true, mostrar2 = true') VENDEDORES
             #test1.col.s12(style='margin-top:3rem')
                 .col.s3
-                    .mini-card
-                        span {{ nombreTerritorio1 }}
-                        a.modal-trigger.cambiar(href='#modal1') cambiar
-                        #modal1.modal.modal-fixed-footer
-                            .modal-header
-                                h6 SELECCIONE TERRITORIO
-                            .modal-content
-                                h6.subtitle Territorio
-                                .col.s12(style='padding:0')
-                                    .content-item(v-for='(item, i) in territorios')
-                                        label.config-radio
-                                            input(type='radio' name='group1' @click='guardarIndex(i,item)')
-                                            span 
-                                            p {{ item.nombre }}
-                            .modal-footer
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarTerritorio1(),agregardata()' :class='{ disabled: habilitar }') Aceptar
-                    .mini-card
+                    minicard
+                    //- .mini-card
                         span {{ nombreTerritorio2 }}
                         a.modal-trigger.cambiar(href='#modal2' :class='{ disabled: mostrar1 }') cambiar
                         #modal2.modal.modal-fixed-footer
@@ -44,8 +28,8 @@
                                             p {{ item.nombre }}
                             .modal-footer
                                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarTerritorio2()' :class='{ disabled: habilitar }') Aceptar
-                    .mini-card
+                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarTerritorio2(); agregardata(items1)' :class='{ disabled: habilitar }') Aceptar
+                    //- .mini-card
                         span {{ nombreTerritorio3 }}
                         a.modal-trigger.cambiar(href='#modal3' :class='{ disabled: mostrar2 }') cambiar
                         #modal3.modal.modal-fixed-footer
@@ -61,7 +45,7 @@
                                             p {{ item.nombre }}
                             .modal-footer
                                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarTerritorio3()' :class='{ disabled: habilitar }') Aceptar
+                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarTerritorio3(); agregardata(items1)' :class='{ disabled: habilitar }') Aceptar
                 .col.s9
                     bar-chart(:chart-data="chartData.chart1" :width="970" :height="270")
                 .col.s12.lista-clientes(style='border-top:1px solid #E9EDF1;')
@@ -244,12 +228,18 @@
                                         td {{ elem.venta }}
 </template>
 <script>
+import minicard from './minicard'
     import { mapGetters, mapActions } from 'vuex'
-
     export default {
         name:'card2',
+        components: {
+            minicard
+         },
         data:function(){
+            const { territorios } = this.$store.state
             return{
+                territorioSeleccionado1Modal: null,
+                territorioSeleccionado1: null,
                 vendedores:[
                     { 
                         id:0,
@@ -468,207 +458,8 @@
                         ]
                     }
                 ],
-                territorios:[
-                    {
-                        id:'0',
-                        nombre:'SUR MEDIO 2',
-                        clientes:[
-                            {
-                                nombre: 'KEYPERU',
-                                venta:'USD 120.00'
-                            },
-                            {
-                                nombre:'COMPLEJO AGROINDUSTRIAL',
-                                venta:'USD 120.00'
-                            },
-                            {
-                                nombre:'AGRICOLA CHAPI',
-                                venta:'USD 120.00'
-                            }
-                        ],
-                        zonas:[
-                            { 
-                                id:'0',
-                                nombre:'APURIMAC', 
-                                clientes:[
-                                    {
-                                        nombre: 'KEYPERU',
-                                        venta:'USD 120.00'
-                                    },
-                                    {
-                                        nombre:'COMPLEJO AGROINDUSTRIAL',
-                                        venta:'USD 120.00'
-                                    }
-                                ]
-                            },                                   
-                            {
-                                 id:'1',
-                                 nombre:'NAZCA',
-                                 clientes:[
-                                     {
-                                         nombre:'AGRICOLA CHAPI',
-                                         venta:'USD 120.00'
-                                    },
-                                    {
-                                        nombre: 'KEYPERU',
-                                         venta:'USD 120.00'}
-                                ]
-                            },
-                            { 
-                                id:'2',
-                                nombre:'SELVA CENTRAL',
-                                clientes: [
-                                    {
-                                        nombre: 'KEYPERU',
-                                        venta:'USD 120.00'
-                                    },
-                                    {
-                                        nombre: 'COMPLEJO AGROINDUSTRIAL',
-                                        venta:'USD 120.00'
-                                    },
-                                    {
-                                        nombre: 'AGRICOLA CHAPI',
-                                        venta:'USD 120.00'
-                                    }
-                                ]
-                            },
-                        ],
-                        ventas: [30.000, 19.000, 15.000, 22.000, 26.000, 30.000, 36.000, 80.000, 56.000, 75.000, 25.000, 35.000]     
-                    },
-                    { 
-                        id:'1',
-                        nombre:'SUR GRANDE',
-                        clientes:[
-                            {
-                                nombre:'AGRICOLA CHAPI',
-                                venta:'USD 120.00'
-                            },
-                            {
-                                nombre: 'KEYPERU',
-                                venta:'USD 120.00'
-                            },
-                            {
-                                nombre:'COMPLEJO AGROINDUSTRIAL',
-                                venta:'USD 120.00'
-                            },
-                        ],
-                        zonas:[
-                            { 
-                                id:'2', 
-                                nombre:'SELVA CENTRAL',
-                                clientes: [
-                                    {
-                                        nombre: 'KEYPERU',
-                                        venta:'USD 120.00'
-                                    },
-                                    {
-                                        nombre: 'COMPLEJO AGROINDUSTRIAL',
-                                        venta:'USD 120.00'
-                                    },
-                                    {
-                                        nombre: 'AGRICOLA CHAPI',
-                                        venta:'USD 120.00'
-                                    }
-                                ]
-                            },
-                            { 
-                                id:'0',
-                                nombre:'APURIMAC',
-                                clientes:[
-                                    {
-                                        nombre: 'KEYPERU',
-                                        venta:'USD 120.00'
-                                    },
-                                    {
-                                        nombre:'COMPLEJO AGROINDUSTRIAL',
-                                        venta:'USD 120.00'
-                                    }
-                                ]
-                            },
-                            { 
-                                id:'1',
-                                nombre:'NAZCA',
-                                clientes:[
-                                    {
-                                        nombre:'AGRICOLA CHAPI',
-                                        venta:'USD 120.00'
-                                    },
-                                    {
-                                        nombre: 'KEYPERU',
-                                        venta:'USD 120.00'
-                                    }
-                                ]
-                            }
-                        ],
-                        ventas: [16.000, 26.000, 35.000, 25.000, 23.000, 42.000, 85.000, 16.000, 57.000, 68.000, 55.000, 47.000]
-                    },
-                    {
-                        id:'2',
-                        nombre:'SIERRA SUR',
-                        clientes:[
-                            {
-                                nombre: 'KEYPERU',
-                                venta:'USD 120.00'
-                            },
-                            {
-                                nombre:'COMPLEJO AGROINDUSTRIAL',
-                                venta:'USD 120.00'
-                            },
-                            {
-                                nombre:'AGRICOLA CHAPI',
-                                venta:'USD 120.00'
-                            }
-                        ],
-                        zonas:[
-                            { 
-                                id:'0', nombre:'APURIMAC', 
-                                clientes:[
-                                    {
-                                        nombre: 'KEYPERU',
-                                        venta:'USD 120.00'
-                                    },
-                                    {
-                                        nombre:'COMPLEJO AGROINDUSTRIAL',
-                                        venta:'USD 120.00'
-                                    }
-                                ]
-                            },                                   
-                            {
-                                 id:'1',
-                                 nombre:'NAZCA',
-                                 clientes:[
-                                     {
-                                         nombre:'AGRICOLA CHAPI',
-                                         venta:'USD 120.00'
-                                    },
-                                    {
-                                        nombre: 'KEYPERU',
-                                         venta:'USD 120.00'}
-                                ]
-                            },
-                            { 
-                                id:'2',
-                                nombre:'SELVA CENTRAL',
-                                clientes: [
-                                    {
-                                        nombre: 'KEYPERU',
-                                        venta:'USD 120.00'
-                                    },
-                                    {
-                                        nombre: 'COMPLEJO AGROINDUSTRIAL',
-                                        venta:'USD 120.00'
-                                    },
-                                    {
-                                        nombre: 'AGRICOLA CHAPI',
-                                        venta:'USD 120.00'
-                                    }
-                                ]
-                            },
-                        ],
-                        ventas:[20.000, 34.000, 52.000, 27.000, 29.000, 34.000, 42.000, 34.000, 73.000, 66.000, 16.000, 49.000]
-                    },
-                ],
-                nombreTerritorio1:'NINGUNO',
+                territorios,
+                // nombreTerritorio1:'NINGUNO',
                 nombreTerritorio2:'NINGUNO',
                 nombreTerritorio3:'NINGUNO',
                 nombreZona1:'NINGUNO',
@@ -700,7 +491,7 @@
                     chart1: this.chartData1
                 },
                 indexTerrirorio: 0,
-                checked: ''
+                checked: '',
             }
         },
         methods: {
@@ -713,9 +504,11 @@
                 this.cliente = item;
                 this.habilitar = false;
                 console.log(this.cliente)
+                console.log(this.habilitar)
             },
             //tab territorio
             cambiarTerritorio1:function(){
+                this.territorioSeleccionado1 = this.territorioSeleccionado1Modal
                 this.mostrar = false; 
                 this.mostrar1 = false; 
                 this.habilitar = true;
@@ -859,12 +652,17 @@
         watch: {
             nombreTerritorio1() {
                 this.chartData.chart1 = this.chartData1
+            },
+            mesActual(){
+                console.log('hola')
+                this.chartData.chart1 = this.chartData1
             }
         },
         computed:{
             ...mapGetters({
                chartData1 : 'chartDataset',
-               mesActual: 'mesActual'
+               mesActual: 'mesActual',
+               labels: 'labels'
             }),
             arrayVendedores:function(){
                 console.log(this.valorInput);

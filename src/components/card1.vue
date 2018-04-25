@@ -65,6 +65,11 @@
                 // console.log("Circle progress end");
             }        
         },
+        watch:{
+            mesActual(){
+                
+            }
+        },
         computed:{
             ...mapState({
                 productos: state => state.productos
