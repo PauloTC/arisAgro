@@ -12,9 +12,5 @@ export default {
     agregardata({ commit,state }, ventas){
         console.log(ventas)
         commit('setDataSet', ventas)
-    },
-    habilitar({ commit,state }){
-        
-        commit('setMostrar', false)
     }
 }

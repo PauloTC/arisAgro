@@ -11,187 +11,47 @@
                         a(href='#test3' @click='mostrar1 = true, mostrar2 = true') VENDEDORES
             #test1.col.s12(style='margin-top:3rem')
                 .col.s3
-                    minicard(@clicked='pasarItem')
-                    minicard(@clicked='pasarItem')
-                    minicard(@clicked='pasarItem')
-                    
-                    //- .mini-card
-                        span {{ nombreTerritorio2 }}
-                        a.modal-trigger.cambiar(href='#modal2' :class='{ disabled: mostrar1 }') cambiar
-                        #modal2.modal.modal-fixed-footer
-                            .modal-header
-                                h6 SELECCIONE TERRITORIO
-                            .modal-content
-                                h6.subtitle Territorio
-                                .col.s12(style='padding:0')
-                                    .content-item(v-for='(item,i) in territorios')
-                                        label.config-radio
-                                            input(type='radio' name='group' id='val' @click='guardarIndex(i,item)')
-                                            span 
-                                            p {{ item.nombre }}
-                            .modal-footer
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarTerritorio2(); agregardata(items1)' :class='{ disabled: habilitar }') Aceptar
-                    //- .mini-card
-                        span {{ nombreTerritorio3 }}
-                        a.modal-trigger.cambiar(href='#modal3' :class='{ disabled: mostrar2 }') cambiar
-                        #modal3.modal.modal-fixed-footer
-                            .modal-header
-                                h6 SELECCIONE TERRITORIO
-                            .modal-content
-                                h6.subtitle Territorio
-                                .col.s12(style='padding:0')
-                                    .content-item(v-for='(item,i) in territorios')
-                                        label.config-radio
-                                            input(type='radio' name='group' id='val' @click='guardarIndex(i,item)')
-                                            span
-                                            p {{ item.nombre }}
-                            .modal-footer
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarTerritorio3(); agregardata(items1)' :class='{ disabled: habilitar }') Aceptar
+                    minicard1(v-for='(n,i) in 3' :key="i" @clicked='pasarItem')
                 .col.s9
                     bar-chart(:chart-data="chartData.chart1" :width="970" :height="270")
                 .col.s12.lista-clientes(style='border-top:1px solid #E9EDF1;')
-                    .listatop(v-for='item in items1')
-                        .title
-                            p TOP CLIENTES {{ item.nombre }}
-                        div
-                            table.striped
-                                tbody
-                                    tr(v-for='(elem,i) in item.clientes')
-                                        td {{ i + 1 }}
-                                        td {{ elem.nombre }}
-                                        td {{ elem.venta }}
+                    topLista(v-for='(item,i) in items1' :key='i' :items='item')
+                                      
             #test2.col.s12(style='margin-top:3rem')
                 .col.s3
-                    .mini-card
-                        span {{ nombreZona1 }}
-                        a.modal-trigger.cambiar(href='#modal4' @click='zonaDefecto()') cambiar
-                        #modal4.modal.modal-fixed-footer
-                            .modal-header
-                                h6 SELECCIONE ZONA
-                            .modal-content
-                                .col.s6(style = 'padding:0')
-                                    h6.subtitle territorio
-                                    ul 
-                                        li(v-for='(item , i) in territorios' @click='zonasTerritorio(item,i)' :class='{ "activediv": item.id === isactive }') {{ item.nombre }}
-                                            <i class="material-icons" :class='{ show: item.id == isactive }'>chevron_right</i>
-                                .col.s6(style = 'padding:0')
-                                    h6.subtitle Zonas
-                                    .content-item(v-for='(item,i) in zonaClientes')
-                                        label.config-radio 
-                                            input(type='radio' name='group2' @click='guardarIndex(i,item)' :class='{ "activediv": item.id === isactive }')
-                                            span
-                                            p {{ item.nombre | capitalize }}
-                            .modal-footer
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarZona1()' :class='{ disabled: habilitar }') Aceptar
-                    .mini-card
-                        span {{ nombreZona2 }}
-                        a.modal-trigger.cambiar(href='#modal5' @click='zonaDefecto()' :class='{ disabled: mostrar1 }') cambiar
-                        #modal5.modal.modal-fixed-footer
-                            .modal-header
-                                h6 SELECCIONE ZONA
-                            .modal-content
-                                .col.s6(style = 'padding:0')
-                                    h6.subtitle territorio
-                                    ul 
-                                        li(v-for='(item , i) in territorios' @click='zonasTerritorio(item,i)' :class='{ "activediv": item.id === isactive }') {{ item.nombre }}
-                                            <i class="material-icons" :class='{ show: item.id == isactive }'>chevron_right</i>
-                                .col.s6(style = 'padding:0')
-                                    h6.subtitle Zonas
-                                    .content-item(v-for='(item,i) in zonaClientes')
-                                        label.config-radio 
-                                            input(type='radio' name='group2' @click='guardarIndex(i,item)' :class='{ "activediv": item.id === isactive }')
-                                            span
-                                            p {{ item.nombre | capitalize }}
-                            .modal-footer
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarZona2()' :class='{ disabled: habilitar }') Aceptar
-                    .mini-card
-                        span {{ nombreZona3 }}
-                        a.modal-trigger.cambiar(href='#modal6' @click='zonaDefecto()' :class='{ disabled: mostrar2 }') cambiar
-                        #modal6.modal.modal-fixed-footer
-                            .modal-header
-                                h6 SELECCIONE ZONA
-                            .modal-content
-                                .col.s6(style = 'padding:0')
-                                    h6.subtitle territorio
-                                    ul 
-                                        li(v-for='(item , i) in territorios' @click='zonasTerritorio(item,i)' :class='{ "activediv": item.id === isactive }') {{ item.nombre }}
-                                            <i class="material-icons" :class='{ show: item.id == isactive }'>chevron_right</i>
-                                .col.s6(style = 'padding:0')
-                                    h6.subtitle Zonas
-                                    .content-item(v-for='(item,i) in zonaClientes')
-                                        label.config-radio 
-                                            input(type='radio' name='group2' @click='guardarIndex(i,item)' :class='{ "activediv": item.id === isactive }')
-                                            span
-                                            p {{ item.nombre | capitalize }}
-                            .modal-footer
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarZona3()' :class='{ disabled: habilitar }') Aceptar
+                    minicard2(v-for='(n,i) in 3' :key="i" @clicked='pasarZonas')
                 .col.s9
                     bar-chart(:chart-data="chartData.chart1" :width="970" :height="270")
                 .col.s12.lista-clientes
-                    .listatop(v-for='item in items2' :class='{ "ocultar": mostrar }')
-                        .title
-                            p TOP CLIENTES {{ cliente.nombre }}
-                        div
-                            table.striped
-                                tbody
-                                    tr(v-for='( elem,i ) in item.clientes')
-                                        td {{ i + 1 }}
-                                        td {{ elem.nombre }}
-                                        td {{ elem.venta }}
+                    topLista(v-for='(item,i) in items2' :key='i' :items='item')
             #test3.col.s12(style='margin-top:3rem')
                 .col.s3
-                    .mini-card
-                        span {{ nombreVendedor1 }}
-                        a.modal-trigger.cambiar(href='#modal7') cambiar
-                        #modal7.modal.modal-fixed-footer
-                            .modal-header
-                                h6 SELECCIONE VENDEDORES
-                            .modal-content
-                                input.buscar(placeholder='Buscar por nombres o apellidos' v-model='valorInput')
-                                a.waves-effect
-                                    i.material-icons.left search
-                                .col.s6(style='padding:0')
-                                    ul 
-                                        li(v-for='(item,i) in arrayVendedores' @click='mostrarZonas(item)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
-                                .col.s6(style='padding:0')
-                                    .content-item(v-for='(item, i) in zonasVendedor' :class='{ check: i == index }')
-                                        label.config-radio  
-                                            input(type='checkbox' class="filled-in" @click='isChecked(i)' v-model='checked')
-                                            span
-                                            p {{ item }}
-                            .modal-footer
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor1(), agregardata()' :class='{ disabled: habilitar }') Aceptar
-                    .mini-card
-                        span {{ nombreVendedor2 }}
-                        a.modal-trigger.cambiar(href='#modal8' :class='{ disabled: mostrar1 }') cambiar
-                        #modal8.modal.modal-fixed-footer
-                            .modal-header
-                                h6 SELECCIONE VENDEDORES
-                            .modal-content
-                                input.buscar(placeholder='Buscar por nombres o apellidos' v-model='valorInput')
-                                a.waves-effect
-                                    i.material-icons.left search
-                                .col.s6(style='padding:0')
-                                    ul 
-                                        li(v-for='(item,i) in arrayVendedores' @click='mostrarZonas(item)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
-                                .col.s6(style='padding:0')
-                                    .content-item(v-for='(item, i) in zonasVendedor' :class='{ check: i == index }')
-                                        label.config-radio
-                                            input(type='checkbox' class="filled-in" @click='isChecked(i)')
-                                            span
-                                            p {{ item }}
-                            .modal-footer
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor2()' :class='{ disabled: habilitar }') Aceptar
-                    .mini-card
+                    minicard3(v-for='(n,i) in 3' :key="i")
+                    //- .mini-card
+                    //-     span {{ nombreVendedor2 }}
+                    //-     a.modal-trigger.cambiar(href='#modal8') cambiar
+                    //-     #modal8.modal.modal-fixed-footer
+                    //-         .modal-header
+                    //-             h6 SELECCIONE VENDEDORES
+                    //-         .modal-content
+                    //-             input.buscar(placeholder='Buscar por nombres o apellidos' v-model='valorInput')
+                    //-             a.waves-effect
+                    //-                 i.material-icons.left search
+                    //-             .col.s6(style='padding:0')
+                    //-                 ul 
+                    //-                     li(v-for='(item,i) in arrayVendedores' @click='mostrarZonas(item)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
+                    //-             .col.s6(style='padding:0')
+                    //-                 .content-item(v-for='(item, i) in zonasVendedor' :class='{ check: i == index }')
+                    //-                     label.config-radio
+                    //-                         input(type='checkbox' class="filled-in" @click='isChecked(i)')
+                    //-                         span
+                    //-                         p {{ item }}
+                    //-         .modal-footer
+                    //-             a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
+                    //-             a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor2()' :class='{ disabled: habilitar }') Aceptar
+                    //- .mini-card
                         span {{ nombreVendedor3 }}
-                        a.modal-trigger.cambiar(href='#modal9' :class='{ disabled: mostrar1 }') cambiar
+                        a.modal-trigger.cambiar(href='#modal9') cambiar
                         #modal9.modal.modal-fixed-footer
                             .modal-header
                                 h6 SELECCIONE VENDEDORES
@@ -214,8 +74,7 @@
                 .col.s9
                     bar-chart(:chart-data="chartData.chart1" :width="970" :height="270")
                 .col.s12.lista-clientes
-                    div {{ chartData1 }}
-                    .listatop(v-for='item in items3' :class='{ "ocultar": mostrar }')
+                    .listatop(v-for='item in items3')
                         .title
                             p TOP CLIENTES {{ item.nombre | upperCase }}
                         div
@@ -227,256 +86,25 @@
                                         td {{ elem.venta }}
 </template>
 <script>
-    import minicard from './minicard'
+    import minicard1 from './minicard1'
+    import minicard2 from './minicard2'
+    import minicard3 from './minicard3'
+    import topLista from './topLista'
     import { mapGetters, mapActions } from 'vuex'
     export default {
         name:'card2',
         components: {
-            minicard
+            minicard1, minicard2, minicard3, topLista
          },
         data:function(){
-            const { territorios } = this.$store.state
             return{
-                territorioSeleccionado1Modal: null,
-                territorioSeleccionado1: null,
-                vendedores:[
-                    { 
-                        id:0,
-                        nombre:'Francisco Leonard',
-                        zonas:['Ayacucho','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
-                        clientes:[
-                            {
-                                nombre:'KEYPERU',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'COMPLEJO AGROINDUSTRIAL',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'AGRICOLA CHAPI',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'SEGURINET',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'FUNDO SAN FERNANDO',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'ESPARRAGOS DEL PERU',
-                                venta: 'USD 120.00'
-                            }
-                        ]
-                    },
-                    { 
-                        id:1,
-                        nombre:'Randy Ingram',
-                        zonas:['Lima','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
-                        clientes:[
-                            {
-                                nombre:'AGRICOLA CHAPI',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'KEYPERU',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'COMPLEJO AGROINDUSTRIAL',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'AGRICOLA ANDREA',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'COORPORACION ESPERANZA',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'CORTEZ MEDINA MAXIMO',
-                                venta: 'USD 120.00'
-                            }
-                        ]
-                    }, 
-                    { 
-                        id:2,
-                        nombre:'Jayden McLaughlin',
-                        zonas:['Pisco','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
-                        clientes:[
-                            {
-                                nombre:'AGRICOLA CHAPI',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'KEYPERU',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'COMPLEJO AGROINDUSTRIAL',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'AGRICOLA ANDREA',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'COORPORACION ESPERANZA',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'CORTEZ MEDINA MAXIMO',
-                                venta: 'USD 120.00'
-                            }
-                        ] 
-                    },
-                    { 
-                        id:3,
-                        nombre:'Adele Fields', 
-                        zonas:['Puno','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
-                        clientes:[
-                            {
-                                nombre:'KEYPERU',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'COMPLEJO AGROINDUSTRIAL',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'AGRICOLA CHAPI',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'SEGURINET',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'FUNDO SAN FERNANDO',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'ESPARRAGOS DEL PERU',
-                                venta: 'USD 120.00'
-                            }
-                        ]
-                    },
-                    { 
-                        id:4,
-                        nombre:'Cynthia Vasquez',
-                        zonas:['Ayacucho','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
-                        clientes:[
-                            {
-                                nombre:'AGRICOLA CHAPI',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'KEYPERU',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'COMPLEJO AGROINDUSTRIAL',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'AGRICOLA ANDREA',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'COORPORACION ESPERANZA',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'CORTEZ MEDINA MAXIMO',
-                                venta: 'USD 120.00'
-                            }
-                        ]
-                    },
-                    { 
-                        id:5,
-                        nombre:'Rose Black',
-                        zonas:['Ayacucho','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
-                        clientes:[
-                            {
-                                nombre:'AGRICOLA CHAPI',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'KEYPERU',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'COMPLEJO AGROINDUSTRIAL',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'AGRICOLA ANDREA',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'COORPORACION ESPERANZA',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'CORTEZ MEDINA MAXIMO',
-                                venta: 'USD 120.00'
-                            }
-                        ]
-                    },
-                    { 
-                        id:6, nombre:'Ola Robbins',
-                        zonas:['Ayacucho','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
-                        clientes:[
-                            {
-                                nombre:'KEYPERU',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'COMPLEJO AGROINDUSTRIAL',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'AGRICOLA CHAPI',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'SEGURINET',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'FUNDO SAN FERNANDO',
-                                venta: 'USD 120.00'
-                            },
-                            {
-                                nombre:'ESPARRAGOS DEL PERU',
-                                venta: 'USD 120.00'
-                            }
-                        ]
-                    }
-                ],
-                territorios,
-                // territorio: null,
-                nombreZona1:'NINGUNO',
-                nombreZona2:'NINGUNO',
-                nombreZona3:'NINGUNO',
-                nombreVendedor1:'NINGUNO',
-                nombreVendedor2:'NINGUNO',
-                nombreVendedor3:'NINGUNO',
-                nombre: '',
                 cliente:[],
                 items1:[],
                 items2:[],
                 items3:[],
-                isactive: 0,
                 zonaClientes: [],
                 id: 0,
                 index: '',
-                mostrar: true,
-                mostrar1: true,
-                mostrar2: true,
                 falso: false,
                 habilitar: true,
                 valorCheckbox: false,
@@ -497,93 +125,26 @@
             }),
             pasarItem:function(val){
                 console.log(val)
-                this.items1.splice(0,1,val)
-                console.log(this.items1)
+                
+                    this.items1.splice(0,1,val);
+                              
+                console.log(this.items)
             },
-            guardarIndex:function(i,item){
-                this.index = i;//indice de item zonaClientes
-                this.nombre = item.nombre;//almacena la propiedad nombre del item
-                this.cliente = item;
-                this.habilitar = false;
-            },
-            //tab territorio
-            // cambiarTerritorio1:function(){
-            //     this.mostrar = false; 
-            //     this.mostrar1 = false; 
-            //     this.habilitar = true;
-            //     if(this.nombre !==''){
-            //         this.nombreTerritorio1 = this.nombre; 
-            //     } 
-            //     this.id = this.index;
-            //     this.items1[0] = this.cliente; 
-            //     this.ventaTerritorio = this.cliente.clientes
-            //     console.log(this.items1)
-            //     console.log(this.ventaTerritorio)
-            // },
-            cambiarTerritorio2:function(){
-                this.mostrar2 = false; 
-                this.habilitar = true;
-                this.id = this.index;
-                if(this.nombre !==''){
-                    this.nombreTerritorio2 = this.nombre;
-                }  
-                this.items1[1] = this.cliente;                
-            },
-            cambiarTerritorio3:function(){
-                this.habilitar = true;
-                this.id = this.index;
-                if(this.nombre !==''){
-                    this.nombreTerritorio3 = this.nombre; 
-                } 
-                this.items1[2] = this.cliente;              
+            pasarZonas:function(val){
+                console.log(val)
+                
+                    this.items2.splice(0,1,val);
+                              
+                console.log(this.items)
             },
             //tab zonas
             zonaDefecto:function(){
                 this.zonaClientes = this.territorios[0].zonas;
             },
-            zonasTerritorio:function(item,i){
-                this.isactive = i;
-                this.indice = i;
-                if(item.zonas!==undefined)
-                    this.zonaClientes = item.zonas.map(element => {
-                        return element;
-                }); 
-            },
-            cambiarZona1:function(){
-                this.mostrar = false;
-                this.mostrar1 = false; 
-                if(this.nombre !==''){
-                    this.nombreZona1 = this.nombre;
-                } 
-                this.items2[0] = this.cliente;//item de zonaClientes
-            },
-            cambiarZona2:function(){
-                this.mostrar2 = false;
-                this.habilitar = true;
-                if(this.nombre !==''){
-                     this.nombreZona2 = this.nombre;
-                } 
-                this.items2[1] = this.cliente;
-            },
-            cambiarZona3:function(){
-                this.habilitar = true;
-                if(this.nombre !==''){
-                    this.nombreZona3 = this.nombre;
-                } 
-                this.items2[2] = this.cliente;
-            },
             //tab vendedores
-            mostrarZonas:function(item){
-                this.isactive = item.id;
-                this.cliente = item;
-                console.log(this.cliente)
-                this.nombre = item.nombre.toUpperCase();
-                this.indexTerrirorio =  item.id
-                // this.zonasVendedor = item.zonas
-            },
             cambiarVendedor1:function(){
                 this.mostrar = false;
-                this.mostrar1 = false;
+                // this.mostrar1 = false;
                 this.habilitar = true;
                 if(this.nombre !==''){
                     this.nombreVendedor1 = this.nombre;
@@ -642,14 +203,11 @@
         },
         mounted: function () {
             this.$nextTick(function () {
-                    $('.tabs').tabs();
-                    $('.modal').modal({
-                        dismissible: false
-                });
+                $('.tabs').tabs();
             })
         },
         watch: {
-            nombreTerritorio1() {
+            nombreTerritorio() {
                 this.chartData.chart1 = this.chartData1
             },
             mesActual(){
@@ -663,19 +221,19 @@
                mesActual: 'mesActual',
                labels: 'labels'
             }),
-            arrayVendedores:function(){
-                console.log(this.valorInput);
-                const vendedores = this.vendedores.filter((element,i) => {         
-                    const filtrado = element.nombre.toLowerCase();
-                    console.log(filtrado)
-                    return filtrado.indexOf(this.valorInput.toLowerCase()) > -1;
-                });
-                // return vendedores.length ? vendedores : this.vendedores
-                return vendedores
-             },
-            zonasVendedor:function(){
-                return this.arrayVendedores.length ? this.arrayVendedores[this.indexTerrirorio].zonas : ''
-            },
+            // arrayVendedores:function(){
+            //     console.log(this.valorInput);
+            //     const vendedores = this.vendedores.filter((element,i) => {         
+            //         const filtrado = element.nombre.toLowerCase();
+            //         console.log(filtrado)
+            //         return filtrado.indexOf(this.valorInput.toLowerCase()) > -1;
+            //     });
+            //     // return vendedores.length ? vendedores : this.vendedores
+            //     return vendedores
+            //  },
+            // zonasVendedor:function(){
+            //     return this.arrayVendedores.length ? this.arrayVendedores[this.indexTerrirorio].zonas : ''
+            // }
         }
     }
 </script>
@@ -932,9 +490,7 @@
        margin-right: 1.7rem;
     }
     /* clases dinámicas */
-    .activediv{
-        background-color: #CDD8E3!important;
-    }
+   
     .activeZona{
         background-color: #E9EDF1!important;
     }
@@ -946,9 +502,7 @@
     .ocultar{
         display:none;
     }
-    .show{
-        opacity: 1!important;
-    }
+    
     .check{
         background-color: #768EA6!important;
         color: #ffffff!important;

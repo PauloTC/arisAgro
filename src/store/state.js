@@ -251,7 +251,224 @@ export default () => ({
             ventas:[20.000, 34.000, 52.000, 27.000, 29.000, 34.000, 42.000, 34.000, 73.000, 66.000, 16.000, 49.000]
         },
     ],
-    mostrar: true,
+    vendedores:[
+        { 
+            id:0,
+            nombre:'Francisco Leonard',
+            zonas:['Ayacucho','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
+            clientes:[
+                {
+                    nombre:'KEYPERU',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'COMPLEJO AGROINDUSTRIAL',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'AGRICOLA CHAPI',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'SEGURINET',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'FUNDO SAN FERNANDO',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'ESPARRAGOS DEL PERU',
+                    venta: 'USD 120.00'
+                }
+            ]
+        },
+        { 
+            id:1,
+            nombre:'Randy Ingram',
+            zonas:['Lima','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
+            clientes:[
+                {
+                    nombre:'AGRICOLA CHAPI',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'KEYPERU',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'COMPLEJO AGROINDUSTRIAL',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'AGRICOLA ANDREA',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'COORPORACION ESPERANZA',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'CORTEZ MEDINA MAXIMO',
+                    venta: 'USD 120.00'
+                }
+            ]
+        }, 
+        { 
+            id:2,
+            nombre:'Jayden McLaughlin',
+            zonas:['Pisco','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
+            clientes:[
+                {
+                    nombre:'AGRICOLA CHAPI',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'KEYPERU',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'COMPLEJO AGROINDUSTRIAL',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'AGRICOLA ANDREA',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'COORPORACION ESPERANZA',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'CORTEZ MEDINA MAXIMO',
+                    venta: 'USD 120.00'
+                }
+            ] 
+        },
+        { 
+            id:3,
+            nombre:'Adele Fields', 
+            zonas:['Puno','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
+            clientes:[
+                {
+                    nombre:'KEYPERU',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'COMPLEJO AGROINDUSTRIAL',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'AGRICOLA CHAPI',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'SEGURINET',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'FUNDO SAN FERNANDO',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'ESPARRAGOS DEL PERU',
+                    venta: 'USD 120.00'
+                }
+            ]
+        },
+        { 
+            id:4,
+            nombre:'Cynthia Vasquez',
+            zonas:['Ayacucho','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
+            clientes:[
+                {
+                    nombre:'AGRICOLA CHAPI',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'KEYPERU',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'COMPLEJO AGROINDUSTRIAL',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'AGRICOLA ANDREA',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'COORPORACION ESPERANZA',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'CORTEZ MEDINA MAXIMO',
+                    venta: 'USD 120.00'
+                }
+            ]
+        },
+        { 
+            id:5,
+            nombre:'Rose Black',
+            zonas:['Ayacucho','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
+            clientes:[
+                {
+                    nombre:'AGRICOLA CHAPI',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'KEYPERU',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'COMPLEJO AGROINDUSTRIAL',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'AGRICOLA ANDREA',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'COORPORACION ESPERANZA',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'CORTEZ MEDINA MAXIMO',
+                    venta: 'USD 120.00'
+                }
+            ]
+        },
+        { 
+            id:6, nombre:'Ola Robbins',
+            zonas:['Ayacucho','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
+            clientes:[
+                {
+                    nombre:'KEYPERU',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'COMPLEJO AGROINDUSTRIAL',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'AGRICOLA CHAPI',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'SEGURINET',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'FUNDO SAN FERNANDO',
+                    venta: 'USD 120.00'
+                },
+                {
+                    nombre:'ESPARRAGOS DEL PERU',
+                    venta: 'USD 120.00'
+                }
+            ]
+        }
+    ],
     datasets: [
             {
                 backgroundColor: 'rgb(73, 215, 187)',
