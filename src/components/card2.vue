@@ -11,79 +11,25 @@
                         a(href='#test3' @click='mostrar1 = true, mostrar2 = true') VENDEDORES
             #test1.col.s12(style='margin-top:3rem')
                 .col.s3
-                    minicard1(v-for='(n,i) in 3' :key="i" @clicked='pasarItem')
+                    minicard1(v-for='(n,i) in 3' :key="i" @territorio='pasarItem')
                 .col.s9
                     bar-chart(:chart-data="chartData.chart1" :width="970" :height="270")
                 .col.s12.lista-clientes(style='border-top:1px solid #E9EDF1;')
                     topLista(v-for='(item,i) in items1' :key='i' :items='item')
-                                      
             #test2.col.s12(style='margin-top:3rem')
                 .col.s3
-                    minicard2(v-for='(n,i) in 3' :key="i" @clicked='pasarZonas')
+                    minicard2(v-for='(n,i) in 3' :key="i" @zonas='pasarZonas')
                 .col.s9
                     bar-chart(:chart-data="chartData.chart1" :width="970" :height="270")
                 .col.s12.lista-clientes
                     topLista(v-for='(item,i) in items2' :key='i' :items='item')
             #test3.col.s12(style='margin-top:3rem')
                 .col.s3
-                    minicard3(v-for='(n,i) in 3' :key="i")
-                    //- .mini-card
-                    //-     span {{ nombreVendedor2 }}
-                    //-     a.modal-trigger.cambiar(href='#modal8') cambiar
-                    //-     #modal8.modal.modal-fixed-footer
-                    //-         .modal-header
-                    //-             h6 SELECCIONE VENDEDORES
-                    //-         .modal-content
-                    //-             input.buscar(placeholder='Buscar por nombres o apellidos' v-model='valorInput')
-                    //-             a.waves-effect
-                    //-                 i.material-icons.left search
-                    //-             .col.s6(style='padding:0')
-                    //-                 ul 
-                    //-                     li(v-for='(item,i) in arrayVendedores' @click='mostrarZonas(item)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
-                    //-             .col.s6(style='padding:0')
-                    //-                 .content-item(v-for='(item, i) in zonasVendedor' :class='{ check: i == index }')
-                    //-                     label.config-radio
-                    //-                         input(type='checkbox' class="filled-in" @click='isChecked(i)')
-                    //-                         span
-                    //-                         p {{ item }}
-                    //-         .modal-footer
-                    //-             a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                    //-             a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor2()' :class='{ disabled: habilitar }') Aceptar
-                    //- .mini-card
-                        span {{ nombreVendedor3 }}
-                        a.modal-trigger.cambiar(href='#modal9') cambiar
-                        #modal9.modal.modal-fixed-footer
-                            .modal-header
-                                h6 SELECCIONE VENDEDORES
-                            .modal-content
-                                input.buscar(placeholder='Buscar por nombres o apellidos')
-                                a.waves-effect
-                                    i.material-icons.left search
-                                .col.s6(style='padding: 0')
-                                    ul 
-                                        li(v-for='(item, i) in arrayVendedores' @click='mostrarZonas(item,i)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
-                                .col.s6(style='padding:0')
-                                    .content-item(v-for='(item, i) in zonasVendedor' :class='{ check: i == index }')
-                                        label.config-radio 
-                                            input(type='checkbox' class="filled-in" @click='isChecked(i)')
-                                            span
-                                            p {{ item }}
-                            .modal-footer
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor3()' :class='{ disabled: habilitar }') Aceptar
+                    minicard3(v-for='(n,i) in 3' :key="i" @zonas='pasarVendedor')
                 .col.s9
                     bar-chart(:chart-data="chartData.chart1" :width="970" :height="270")
                 .col.s12.lista-clientes
-                    .listatop(v-for='item in items3')
-                        .title
-                            p TOP CLIENTES {{ item.nombre | upperCase }}
-                        div
-                            table.striped
-                                tbody
-                                    tr(v-for='(elem, i) in item.clientes')
-                                        td {{ i + 1 }}
-                                        td {{ elem.nombre }}
-                                        td {{ elem.venta }}
+                    topLista(v-for='(item,i) in items3' :key='i' :items='item')
 </template>
 <script>
     import minicard1 from './minicard1'
@@ -102,21 +48,17 @@
                 items1:[],
                 items2:[],
                 items3:[],
-                zonaClientes: [],
-                id: 0,
-                index: '',
-                falso: false,
-                habilitar: true,
-                valorCheckbox: false,
-                valorInput:'',
-                nombreVendedores:[],
-                ventaTerritorio:'',
+                // zonaClientes: [],
+                // id: 0,
+                // index: '',
+                // falso: false,
+                // habilitar: true,
                 /** data de charts */
                 chartData: {
                     chart1: this.chartData1
                 },
-                indexTerrirorio: 0,
-                checked: '',
+                // indexTerrirorio: 0,
+                // checked: '',
             }
         },
         methods: {
@@ -125,65 +67,24 @@
             }),
             pasarItem:function(val){
                 console.log(val)
-                
-                    this.items1.splice(0,1,val);
-                              
-                console.log(this.items)
+                this.items1.splice(0,1,val);
+                console.log(this.items1)
             },
             pasarZonas:function(val){
                 console.log(val)
-                
-                    this.items2.splice(0,1,val);
-                              
-                console.log(this.items)
+                this.items2.splice(0,1,val);
+                console.log(this.items2)
+            },
+            pasarVendedor:function(val){
+                console.log(val)
+                this.items3.splice(0,1,val);
+                console.log(this.items3)
             },
             //tab zonas
             zonaDefecto:function(){
                 this.zonaClientes = this.territorios[0].zonas;
             },
             //tab vendedores
-            cambiarVendedor1:function(){
-                this.mostrar = false;
-                // this.mostrar1 = false;
-                this.habilitar = true;
-                if(this.nombre !==''){
-                    this.nombreVendedor1 = this.nombre;
-                }else{
-                    this.nombreVendedor1 = this.vendedores[0].nombre.toUpperCase();
-                }
-                if(this.cliente.length!==0){
-                    this.items3[0] = this.cliente;
-                }else{
-                    this.items3[0] = this.vendedores[0];
-                }
-            },
-            cambiarVendedor2:function(){
-                this.mostrar2 = false;
-                this.habilitar = true;
-                if(this.nombre !==''){ 
-                    this.nombreVendedor2 = this.nombre;
-                }else{
-                    this.nombreVendedor2 = this.vendedores[0].nombre.toUpperCase();
-                }
-                if(this.cliente.length!==0){
-                    this.items3[1] = this.cliente;
-                }else{
-                    this.items3[1] = this.vendedores[0];
-                }     
-            },
-            cambiarVendedor3:function(){
-                this.habilitar = true;
-                if(this.nombre !==''){
-                    this.nombreVendedor3 = this.nombre;
-                }else{
-                    this.nombreVendedor2 = this.vendedores[0].nombre.toUpperCase();
-                }
-                if(this.cliente.length!==0){
-                    this.items3[2] = this.cliente;
-                }else{
-                    this.items3[2] = this.vendedores[0];
-                }  
-            },
             isChecked:function(i){
                 this.habilitar = false;
                 this.index = i;
@@ -221,19 +122,6 @@
                mesActual: 'mesActual',
                labels: 'labels'
             }),
-            // arrayVendedores:function(){
-            //     console.log(this.valorInput);
-            //     const vendedores = this.vendedores.filter((element,i) => {         
-            //         const filtrado = element.nombre.toLowerCase();
-            //         console.log(filtrado)
-            //         return filtrado.indexOf(this.valorInput.toLowerCase()) > -1;
-            //     });
-            //     // return vendedores.length ? vendedores : this.vendedores
-            //     return vendedores
-            //  },
-            // zonasVendedor:function(){
-            //     return this.arrayVendedores.length ? this.arrayVendedores[this.indexTerrirorio].zonas : ''
-            // }
         }
     }
 </script>
@@ -501,8 +389,7 @@
     }
     .ocultar{
         display:none;
-    }
-    
+    }  
     .check{
         background-color: #768EA6!important;
         color: #ffffff!important;

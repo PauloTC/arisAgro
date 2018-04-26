@@ -32,23 +32,11 @@ export default {
             territorios
         }
     },
-    // watch:  {
-    //     nombreTerritorio() {
-    //         this.chartData.chart1 = this.chartData1
-    //     },
-    // },
     methods:{
         cambiarTerritorio:function(){
             this.territorioSeleccionado = this.territorioSeleccionadoModal;
-            this.$emit('clicked', this.territorioSeleccionado)
-    },
-    // computed:{
-    //     ...mapGetters({
-    //         chartData1 : 'chartDataset',
-    //         mesActual: 'mesActual',
-    //         labels: 'labels'
-    //     }),
-    // }      
+            this.$emit('territorio', this.territorioSeleccionado)
+    }     
   },
   mounted: function () {
         this.$nextTick(function () {

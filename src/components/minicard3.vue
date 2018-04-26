@@ -11,11 +11,11 @@
                     i.material-icons.left search
                 .col.s6(style='padding:0')
                     ul 
-                        li(v-for='(item,i) in arrayVendedores' @click='mostrarZonas(item)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
+                        li(v-for='(item,i) in arrayVendedores' @click='mostrarZonas(item,i)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
                 .col.s6(style='padding:0')
                     .content-item(v-for='(item, i) in zonasVendedor')
                         label.config-radio  
-                            input(type='checkbox' class="filled-in")
+                            input(type='checkbox' class="filled-in" name='group3')
                             span
                             p {{ item }}
             .modal-footer
@@ -34,19 +34,23 @@ export default {
             vendedorSeleccionado: null,
             valorInput:'',
             isactive:0,
+            index:'',
             indexTerrirorio:0,
             vendedores
         }
     },
     methods:{
-        mostrarZonas:function(item){
+        mostrarZonas:function(item,i){
+            console.log(item)
             this.isactive = item.id;
+            this.index = i
             this.vendedorSeleccionadoModal = item.nombre;
             
         },
         cambiarVendedor:function(){
             this.vendedorSeleccionado = this.vendedorSeleccionadoModal;
-            this.indexTerrirorio = this.vendedorSeleccionado.id;
+            this.indexTerrirorio = this.index;
+            this.$emit('vendedor', this.vendedorSeleccionado)
         }, 
     },
     computed:{
@@ -66,7 +70,7 @@ export default {
     },
     mounted: function () {
             this.$nextTick(function () {
-                    $('.modal').modal();
+                $('.modal').modal();
             })
     },
 }

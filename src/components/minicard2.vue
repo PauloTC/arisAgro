@@ -49,7 +49,8 @@ export default {
         },
         cambiarZona:function(){
             this.zonaSeleccionada = this.zonaSeleccionadaModal
-            this.$emit('clicked', this.zonaSeleccionada)
+            console.log(this.zonaSeleccionada)
+            this.$emit('zonas', this.zonaSeleccionada)
         }
     },
     mounted: function () {
