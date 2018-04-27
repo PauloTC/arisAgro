@@ -20,14 +20,14 @@
                 .col.s3
                     minicard2(v-for='(n,i) in 3' :key="i" @zonas='pasarZonas' :index='i')
                 .col.s9
-                    bar-chart(:chart-data="chartData.chart1" :width="970" :height="270")
+                    bar-chart(:chart-data="chartData.chart2" :width="970" :height="270")
                 .col.s12.lista-clientes
                     topLista(v-for='(item,i) in items2' :key='i' :items='item' :index='i')
             #test3.col.s12(style='margin-top:3rem')
                 .col.s3
-                    minicard3(v-for='(n,i) in 3' :key="i" @zonas='pasarVendedor')
+                    minicard3(v-for='(n,i) in 3' :key="i" @vendedor='pasarVendedor' :index='i')
                 .col.s9
-                    bar-chart(:chart-data="chartData.chart1" :width="970" :height="270")
+                    bar-chart(:chart-data="chartData.chart3" :width="970" :height="270")
                 .col.s12.lista-clientes
                     topLista(v-for='(item,i) in items3' :key='i' :items='item')
 </template>
@@ -36,7 +36,9 @@
     import minicard2 from './minicard2'
     import minicard3 from './minicard3'
     import topLista from './topLista'
-    import { mapGetters, mapActions } from 'vuex'
+
+    import { mapGetters } from 'vuex'
+
     export default {
         name:'card2',
         components: {
@@ -48,38 +50,26 @@
                 items1:[],
                 items2:[],
                 items3:[],
-                // index:'',
-                // zonaClientes: [],
-                // id: 0,
-                // index: '',
-                // falso: false,
-                // habilitar: true,
                 /** data de charts */
                 chartData: {
-                    chart1: this.chartData1
-                },
-                // indexTerrirorio: 0,
-                // checked: '',
+                    chart1: {},
+                    chart2: {},
+                    chart3: {}
+                }
             }
         },
         methods: {
-            ...mapActions({
-                agregardata: 'agregardata',
-            }),
             pasarItem:function(val){
-                console.log(val)
                 this.items1.splice(val.indice,1,val.valor);
-                console.log(this.items1)
+                this.chartData.chart1 = val.chartData;
             },
             pasarZonas:function(val){
-                // console.log(this.index)
                 this.items2.splice(val.indice,1,val.valor);
-                console.log(this.items2)
+                this.chartData.chart2 = val.chartData;
             },
             pasarVendedor:function(val){
-                // console.log(val)
                 this.items3.splice(val.indice,1,val.valor);
-                console.log(this.items3)
+                this.chartData.chart3 = val.chartData;
             },
             //tab zonas
             // zonaDefecto:function(){
@@ -109,24 +99,24 @@
                 $('.modal').modal({
                     dismissible: false
                 });
-                $('.modal').modal('close');
+                // $('.modal').modal('close');
             })
         },
         watch: {
-            nombreTerritorio() {
-                this.chartData.chart1 = this.chartData1
-            },
             mesActual(){
                 console.log('hola')
-                this.chartData.chart1 = this.chartData1
+                this.chartData.chart1.labels = this.labels
             }
         },
         computed:{
             ...mapGetters({
-               chartData1 : 'chartDataset',
-               mesActual: 'mesActual',
-               labels: 'labels'
+                chartDatos : 'chartDataset',
+                mesActual: 'mesActual',
+                // labels: 'labels'
             }),
+            chartDato:function(){
+                return this.chartData.chart1 = this.chartDatos
+            }
         }
     }
 </script>

@@ -9,8 +9,15 @@ export default {
         // commit('setProductos', state.productos.reverse())
         commit(aumentar ? 'aumentarFecha' : 'disminuirFecha')
     },
-    agregardata({ commit,state }, ventas){
-        console.log(ventas)
-        commit('setDataSet', ventas)
+    agregardata({ commit,state }, data){
+        commit('setDataSet', data)
+    },
+    agregardata1({ commit,state }, data){
+        console.log(data)
+        commit('setDataSet1', data)
+    },
+    agregardata2({ commit,state }, data){
+        // console.log(data)
+        commit('setDataSet2', data)
     }
 }

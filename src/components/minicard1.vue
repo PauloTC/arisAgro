@@ -8,19 +8,19 @@
             .modal-content
                 h6.subtitle Territorio
                 .col.s12(style='padding:0')
-                    .content-item(v-for='(item, i) in territorios')
+                    .content-item(v-for='(item, i) in territorios' :key='i')
                         label.config-radio
                             input(type='radio' name='group1' :value='item' v-model='territorioSeleccionadoModal')
                             span 
                             p {{ item.nombre }}
             .modal-footer
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarTerritorio()') Aceptar
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarTerritorio(), agregardata({territorioSeleccionado,index})') Aceptar
 </template>
 <script>
 import { v4 } from 'uuid'
 import index from 'vue';
-// import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
     name: 'minicard1',
@@ -36,12 +36,19 @@ export default {
         }
     },
     methods:{
+        ...mapActions({
+            agregardata: 'agregardata',
+        }),
         cambiarTerritorio:function(){
-            // console.log(this.i)
             this.territorioSeleccionado = this.territorioSeleccionadoModal;
-            this.$emit('territorio', {valor:this.territorioSeleccionado, indice:this.indice})
-    }     
-  }
+            this.$emit('territorio', {valor:this.territorioSeleccionado, indice:this.indice, chartData: this.chartData1 })
+        }
+    },
+    computed:{
+        ...mapGetters({
+            chartData1 : 'chartDataset'
+        })
+    }    
 }
 </script>
 <style>

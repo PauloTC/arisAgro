@@ -13,15 +13,20 @@ export default {
     setProductos(state, productos) {
         state.productos = productos
     },
-    setDataSet(state, data){
-        console.log(data)
-        if(data != undefined){
-            state.datasets[0].data = data[0].ventas
-            // state.datasets[1].data = data[1].ventas
-            // state.datasets[2].data = data[2].ventas
+    setDataSet(state, datos){
+        if(datos){
+            state.datasets[datos.index].data = datos.territorioSeleccionado.ventas
         } 
     },
-    setMostrar(state,mostrar){
-        state.mostrar = mostrar
+    setDataSet1(state, datos){
+        if(datos){
+            state.datasets[datos.index].data = datos.zonaSeleccionada.ventas
+        } 
+    },
+    setDataSet2(state, datos){
+        console.log(datos.vendedor)
+        if(datos){
+            state.datasets[datos.index].data = datos.vendedor.ventas
+        } 
     }    
 }

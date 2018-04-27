@@ -20,10 +20,12 @@
                             p {{ item }}
             .modal-footer
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor()') Aceptar
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor(), agregardata2({vendedor, index})') Aceptar
 </template>
 <script>
 import { v4 } from 'uuid';
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
     name: 'minicard3',
     props:['index'],
@@ -35,23 +37,28 @@ export default {
             vendedorSeleccionado: null,
             valorInput:'',
             isactive:0,
-            index:'',
+            index1:'',
             indexTerrirorio:0,
             vendedores,
-            indice: this.index
+            indice: this.index,
+            vendedor:[]
         }
     },
     methods:{
+        ...mapActions({
+            agregardata2: 'agregardata2',
+        }),
         mostrarZonas:function(item,i){
             console.log(item)
+            this.vendedor = item;
             this.isactive = item.id;
-            this.index = i
+            this.index1 = i
             this.vendedorSeleccionadoModal = item.nombre;      
         },
         cambiarVendedor:function(){
             this.vendedorSeleccionado = this.vendedorSeleccionadoModal;
-            this.indexTerrirorio = this.index;
-            this.$emit('vendedor', {valor:this.vendedorSeleccionado, indice:this.indice})
+            this.indexTerrirorio = this.index1;
+            this.$emit('vendedor', {valor:this.vendedorSeleccionado, indice:this.indice, chartData: this.chartData1})
         }, 
     },
     computed:{
@@ -67,8 +74,13 @@ export default {
         }, 
         zonasVendedor:function(){
             return this.arrayVendedores.length ? this.arrayVendedores[this.indexTerrirorio].zonas : ''  
-        }
-    },
+        },
+        ...mapGetters({
+            chartData1 : 'chartDataset',
+            mesActual: 'mesActual',
+            labels: 'labels'
+        }),
+    }
 }
 </script>
 <style>
