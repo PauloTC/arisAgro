@@ -15,21 +15,21 @@
                 .col.s9
                     bar-chart(:chart-data="chartData.chart1" :width="970" :height="270")
                 .col.s12.lista-clientes(style='border-top:1px solid #E9EDF1;')
-                    topLista(v-for='(item,i) in items1' :key='i' :items='item')
+                    topLista(v-for='(n,i) in 3' :key='i' :items='items1')
             #test2.col.s12(style='margin-top:3rem')
                 .col.s3
                     minicard2(v-for='(n,i) in 3' :key="i" @zonas='pasarZonas' :index='i')
                 .col.s9
                     bar-chart(:chart-data="chartData.chart2" :width="970" :height="270")
                 .col.s12.lista-clientes
-                    topLista(v-for='(item,i) in items2' :key='i' :items='item' :index='i')
+                    topLista(v-for='(n,i) in 3' :key='i' :items='items2')
             #test3.col.s12(style='margin-top:3rem')
                 .col.s3
                     minicard3(v-for='(n,i) in 3' :key="i" @vendedor='pasarVendedor' :index='i')
                 .col.s9
                     bar-chart(:chart-data="chartData.chart3" :width="970" :height="270")
                 .col.s12.lista-clientes
-                    topLista(v-for='(item,i) in items3' :key='i' :items='item')
+                    topLista(v-for='(n,i) in 3' :key='i' :items='items3')
 </template>
 <script>
     import minicard1 from './minicard1'
@@ -59,8 +59,10 @@
             }
         },
         methods: {
-            pasarItem:function(val){
+            pasarItem:function(val){ 
+                console.log(val.indice)
                 this.items1.splice(val.indice,1,val.valor);
+                console.log(this.items1)
                 this.chartData.chart1 = val.chartData;
             },
             pasarZonas:function(val){
@@ -70,16 +72,7 @@
             pasarVendedor:function(val){
                 this.items3.splice(val.indice,1,val.valor);
                 this.chartData.chart3 = val.chartData;
-            },
-            //tab zonas
-            // zonaDefecto:function(){
-            //     this.zonaClientes = this.territorios[0].zonas;
-            // },
-            // //tab vendedores
-            // isChecked:function(i){
-            //     this.habilitar = false;
-            //     this.index = i;
-            // }
+            }
         },
         filters:{
             upperCase:function(value){
@@ -276,9 +269,6 @@
     }
     .ambito2 .config-radio [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after{
         border: 2px solid #768EA6;
-    }
-    .ambito2 .config-radio [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
-        background-color: #768EA6;
     }
     .ambito2 .config-radio [type="radio"]+span:before, [type="radio"]+span:after {
         font-family: 'Material Icons';

@@ -1,7 +1,7 @@
 <template lang="pug">
     .listatop
-        .title
-            p TOP CLIENTES {{ items.nombre }}
+        .title 
+            p  {{ items.nombre ||'NINGUNO' }}
         div
             table.striped
                 tbody
@@ -14,9 +14,10 @@
 export default {
     name:'topLista',
     props:['items'],
-    // data:{
-    //     return:{
-    //     }
-    // }
+    data:function(){
+        return{
+            // element: this.items
+        }
+    }
 }
 </script>

@@ -10,14 +10,12 @@ export default {
         commit(aumentar ? 'aumentarFecha' : 'disminuirFecha')
     },
     agregardata({ commit,state }, data){
-        commit('setDataSet', data)
+        if(data) commit('setDataSet', data)  
     },
     agregardata1({ commit,state }, data){
-        console.log(data)
-        commit('setDataSet1', data)
+        if(data) commit('setDataSet1', data)
     },
     agregardata2({ commit,state }, data){
-        // console.log(data)
-        commit('setDataSet2', data)
+        if(data) commit('setDataSet2', data)
     }
 }

@@ -40,14 +40,17 @@ export default {
             agregardata: 'agregardata',
         }),
         cambiarTerritorio:function(){
-            this.territorioSeleccionado = this.territorioSeleccionadoModal;
+            this.territorioSeleccionado = this.territorioSeleccionadoModal; 
             this.$emit('territorio', {valor:this.territorioSeleccionado, indice:this.indice, chartData: this.chartData1 })
         }
     },
     computed:{
         ...mapGetters({
             chartData1 : 'chartDataset'
-        })
+        }),
+        // pasarTerritorio(){
+        //     return 
+        // }
     }    
 }
 </script>

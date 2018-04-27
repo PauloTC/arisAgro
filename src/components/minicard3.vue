@@ -15,12 +15,12 @@
                 .col.s6(style='padding:0')
                     .content-item(v-for='(item, i) in zonasVendedor')
                         label.config-radio  
-                            input(type='checkbox' class="filled-in" name='group3')
+                            input(type='checkbox' class="filled-in" name='group3' v-model='zonas')
                             span
                             p {{ item }}
             .modal-footer
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor(), agregardata2({vendedor, index})') Aceptar
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor(); agregardata2({vendedor, index})') Aceptar
 </template>
 <script>
 import { v4 } from 'uuid';
@@ -36,9 +36,9 @@ export default {
             vendedorSeleccionadoModal: null,
             vendedorSeleccionado: null,
             valorInput:'',
-            isactive:0,
+            isactive:'',
             index1:'',
-            indexTerrirorio:0,
+            indexVendedor:0,
             vendedores,
             indice: this.index,
             vendedor:[]
@@ -63,17 +63,19 @@ export default {
     },
     computed:{
         arrayVendedores:function(){
-            console.log(this.valorInput);
+            // console.log(this.valorInput);
             const vendedores = this.vendedores.filter((element,i) => {         
                 const filtrado = element.nombre.toLowerCase();
                 console.log(filtrado)
                 return filtrado.indexOf(this.valorInput.toLowerCase()) > -1;
             });
-            // return vendedores.length ? vendedores : this.vendedores
-                return vendedores
+            return vendedores.length ? vendedores : this.vendedores
+                // return vendedores
         }, 
         zonasVendedor:function(){
-            return this.arrayVendedores.length ? this.arrayVendedores[this.indexTerrirorio].zonas : ''  
+    
+                // return this.arrayVendedores.length ? this.arrayVendedores[this.indexVendedor].zonas : ''  
+            
         },
         ...mapGetters({
             chartData1 : 'chartDataset',

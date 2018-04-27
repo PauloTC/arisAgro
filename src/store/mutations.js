@@ -14,18 +14,17 @@ export default {
         state.productos = productos
     },
     setDataSet(state, datos){
-        if(datos){
+        if(datos.territorioSeleccionado!=null && datos.territorioSeleccionado){
             state.datasets[datos.index].data = datos.territorioSeleccionado.ventas
         } 
     },
     setDataSet1(state, datos){
-        if(datos){
+        if(datos.zonaSeleccionada!=null && datos.zonaSeleccionada){
             state.datasets[datos.index].data = datos.zonaSeleccionada.ventas
         } 
     },
     setDataSet2(state, datos){
-        console.log(datos.vendedor)
-        if(datos){
+        if(datos.vendedor!=null && datos.Vendedor){
             state.datasets[datos.index].data = datos.vendedor.ventas
         } 
     }    

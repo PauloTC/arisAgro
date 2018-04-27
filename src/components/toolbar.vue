@@ -8,6 +8,7 @@
             ul.right.hide-on-med-and-down.datos
                 li.name Eduardo Salas
                 li.cargo Admin
+            //- img(src:'./assets/')
 </template>
 
 <script>
