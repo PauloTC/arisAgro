@@ -11,18 +11,18 @@
                         a(href='#test3') VENDEDORES
             #test1.col.s12(style='margin-top:3rem')
                 .col.s3
-                    minicard1(v-for='(n,i) in 3' :key="i" @territorio='pasarItem')
+                    minicard1(v-for='(n,i) in 3' :key='i' @territorio='pasarItem' :index='i')
                 .col.s9
                     bar-chart(:chart-data="chartData.chart1" :width="970" :height="270")
                 .col.s12.lista-clientes(style='border-top:1px solid #E9EDF1;')
                     topLista(v-for='(item,i) in items1' :key='i' :items='item')
             #test2.col.s12(style='margin-top:3rem')
                 .col.s3
-                    minicard2(v-for='(n,i) in 3' :key="i" @zonas='pasarZonas')
+                    minicard2(v-for='(n,i) in 3' :key="i" @zonas='pasarZonas' :index='i')
                 .col.s9
                     bar-chart(:chart-data="chartData.chart1" :width="970" :height="270")
                 .col.s12.lista-clientes
-                    topLista(v-for='(item,i) in items2' :key='i' :items='item')
+                    topLista(v-for='(item,i) in items2' :key='i' :items='item' :index='i')
             #test3.col.s12(style='margin-top:3rem')
                 .col.s3
                     minicard3(v-for='(n,i) in 3' :key="i" @zonas='pasarVendedor')
@@ -48,6 +48,7 @@
                 items1:[],
                 items2:[],
                 items3:[],
+                // index:'',
                 // zonaClientes: [],
                 // id: 0,
                 // index: '',
@@ -67,17 +68,17 @@
             }),
             pasarItem:function(val){
                 console.log(val)
-                this.items1.splice(0,1,val);
+                this.items1.splice(val.indice,1,val.valor);
                 console.log(this.items1)
             },
             pasarZonas:function(val){
-                console.log(val)
-                this.items2.splice(0,1,val);
+                // console.log(this.index)
+                this.items2.splice(val.indice,1,val.valor);
                 console.log(this.items2)
             },
             pasarVendedor:function(val){
-                console.log(val)
-                this.items3.splice(0,1,val);
+                // console.log(val)
+                this.items3.splice(val.indice,1,val.valor);
                 console.log(this.items3)
             },
             //tab zonas

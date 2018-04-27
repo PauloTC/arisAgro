@@ -19,23 +19,27 @@
 </template>
 <script>
 import { v4 } from 'uuid'
+import index from 'vue';
 // import { mapGetters, mapActions } from 'vuex'
 
 export default {
     name: 'minicard1',
+    props:['index'],
     data:function(){
         const { territorios } = this.$store.state
         return{
             modalId: v4(),
             territorioSeleccionadoModal: null,
             territorioSeleccionado: null,
-            territorios
+            territorios,
+            indice: this.index
         }
     },
     methods:{
         cambiarTerritorio:function(){
+            // console.log(this.i)
             this.territorioSeleccionado = this.territorioSeleccionadoModal;
-            this.$emit('territorio', this.territorioSeleccionado)
+            this.$emit('territorio', {valor:this.territorioSeleccionado, indice:this.indice})
     }     
   }
 }

@@ -26,6 +26,7 @@
 import { v4 } from 'uuid';
 export default {
     name: 'minicard3',
+    props:['index'],
     data:function(){
         const { vendedores } = this.$store.state
         return{
@@ -36,7 +37,8 @@ export default {
             isactive:0,
             index:'',
             indexTerrirorio:0,
-            vendedores
+            vendedores,
+            indice: this.index
         }
     },
     methods:{
@@ -49,7 +51,7 @@ export default {
         cambiarVendedor:function(){
             this.vendedorSeleccionado = this.vendedorSeleccionadoModal;
             this.indexTerrirorio = this.index;
-            this.$emit('vendedor', this.vendedorSeleccionado)
+            this.$emit('vendedor', {valor:this.vendedorSeleccionado, indice:this.indice})
         }, 
     },
     computed:{

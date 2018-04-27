@@ -24,9 +24,11 @@
 </template>
 <script>
 import { v4 } from 'uuid';
+import index from 'vue';
 // import { mapGetters, mapActions } from 'vuex'
 export default {
     name: 'minicard2',
+    props:['index'],
     data:function(){
         const { territorios } = this.$store.state
         return{
@@ -35,7 +37,8 @@ export default {
             zonaSeleccionada: null,
             territorios,
             zonaClientes:[],
-            isactive: 0
+            isactive: 0,
+            indice: this.index
         }
     },
     methods:{
@@ -50,7 +53,7 @@ export default {
         cambiarZona:function(){
             this.zonaSeleccionada = this.zonaSeleccionadaModal
             console.log(this.zonaSeleccionada)
-            this.$emit('zonas', this.zonaSeleccionada)
+            this.$emit('zonas', {valor:this.zonaSeleccionada, indice:this.indice})
         }
     },  
 }
