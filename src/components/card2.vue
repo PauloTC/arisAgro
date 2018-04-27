@@ -6,9 +6,9 @@
                     li.tab.col.s4
                         a.active(href='#test1') TERRITORIO
                     li.tab.col.s4
-                        a(href='#test2' @click='mostrar1 = true, mostrar2 = true') ZONA
+                        a(href='#test2') ZONA
                     li.tab.col.s4
-                        a(href='#test3' @click='mostrar1 = true, mostrar2 = true') VENDEDORES
+                        a(href='#test3') VENDEDORES
             #test1.col.s12(style='margin-top:3rem')
                 .col.s3
                     minicard1(v-for='(n,i) in 3' :key="i" @territorio='pasarItem')
@@ -81,14 +81,14 @@
                 console.log(this.items3)
             },
             //tab zonas
-            zonaDefecto:function(){
-                this.zonaClientes = this.territorios[0].zonas;
-            },
-            //tab vendedores
-            isChecked:function(i){
-                this.habilitar = false;
-                this.index = i;
-            }
+            // zonaDefecto:function(){
+            //     this.zonaClientes = this.territorios[0].zonas;
+            // },
+            // //tab vendedores
+            // isChecked:function(i){
+            //     this.habilitar = false;
+            //     this.index = i;
+            // }
         },
         filters:{
             upperCase:function(value){
@@ -105,6 +105,10 @@
         mounted: function () {
             this.$nextTick(function () {
                 $('.tabs').tabs();
+                $('.modal').modal({
+                    dismissible: false
+                });
+                $('.modal').modal('close');
             })
         },
         watch: {

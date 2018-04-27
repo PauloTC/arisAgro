@@ -37,14 +37,7 @@ export default {
             this.territorioSeleccionado = this.territorioSeleccionadoModal;
             this.$emit('territorio', this.territorioSeleccionado)
     }     
-  },
-  mounted: function () {
-        this.$nextTick(function () {
-                $('.modal').modal({
-                    dismissible: false
-            });
-        })
-    },
+  }
 }
 </script>
 <style>

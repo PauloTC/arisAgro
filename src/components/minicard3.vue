@@ -44,8 +44,7 @@ export default {
             console.log(item)
             this.isactive = item.id;
             this.index = i
-            this.vendedorSeleccionadoModal = item.nombre;
-            
+            this.vendedorSeleccionadoModal = item.nombre;      
         },
         cambiarVendedor:function(){
             this.vendedorSeleccionado = this.vendedorSeleccionadoModal;
@@ -67,11 +66,6 @@ export default {
         zonasVendedor:function(){
             return this.arrayVendedores.length ? this.arrayVendedores[this.indexTerrirorio].zonas : ''  
         }
-    },
-    mounted: function () {
-            this.$nextTick(function () {
-                $('.modal').modal();
-            })
     },
 }
 </script>

@@ -52,13 +52,6 @@ export default {
             console.log(this.zonaSeleccionada)
             this.$emit('zonas', this.zonaSeleccionada)
         }
-    },
-    mounted: function () {
-        this.$nextTick(function () {
-                $('.modal').modal({
-                    dismissible: false
-            });
-        })
     },  
 }
 </script>
