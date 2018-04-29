@@ -177,6 +177,7 @@
         font-size: 12px;	
         line-height: 2px;
         box-sizing: border-box;
+        background: #ffffff;
     }
     /* tabs */
     .ambito2 .card-cont .tabs{

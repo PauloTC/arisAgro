@@ -83,6 +83,7 @@
         font-size: 12px;	
         line-height: 2px;
         box-sizing: border-box;
+        background-color: #ffffff;
     }
     .ambito1 .card-cont .meses{
         box-shadow: 0 3px 9px 0 rgba(0,0,0,0.12);
@@ -143,6 +144,9 @@
         font-size: 12px;
         letter-spacing: 0.12px;	
         line-height: 14px;  
+    }
+    .ambito1 .prog-bar table body{
+        background-color: #ffffff; 
     }
     .ambito1 .prog-bar .circle1 table{
          color: #49D7BB;
