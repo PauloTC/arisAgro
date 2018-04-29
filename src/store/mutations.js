@@ -20,11 +20,17 @@ export default {
     },
     setDataSet1(state, datos){
         if(datos.zonaSeleccionada!=null && datos.zonaSeleccionada){
+           for(let i=0; i<3 ;i++){
+            state.datasets[i].data =[];
+           }
             state.datasets[datos.indice].data = datos.zonaSeleccionada.ventas
         } 
     },
     setDataSet2(state, datos){
         if(datos.vendedor!=null && datos.Vendedor){
+            for(let i=0; i<3 ;i++){
+                state.datasets[i].data =[];
+            }
             state.datasets[datos.indice].data = datos.vendedor.ventas
         } 
     }    

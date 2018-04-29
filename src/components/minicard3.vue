@@ -1,6 +1,7 @@
 <template lang="pug">
     .mini-card
-        span {{ (vendedorSeleccionado || {}).nombre || 'NINGUNO'}}
+        .divleft
+        span.ninguno {{ (vendedorSeleccionado || {}).nombre || 'NINGUNO'}}
         a.modal-trigger.cambiar(:href='"#" + modalId') cambiar
          div(:id='modalId').modal.modal-fixed-footer.modal3
             .modal-header

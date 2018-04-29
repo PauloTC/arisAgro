@@ -5,10 +5,13 @@
                 a.brand-logo(href='#!')
                     i.material-icons dehaze 
                 span TABLERO GENERAL
-            ul.right.hide-on-med-and-down.datos
-                li.name Eduardo Salas
-                li.cargo Admin
-            //- img(src:'./assets/')
+            .right.hide-on-med-and-down.datos
+                .borde
+                .detalles
+                    span.name Eduardo Salas
+                    span.cargo Admin
+                .imagen
+                    //- img(src='../assets/images.png')
 </template>
 
 <script>
@@ -39,14 +42,22 @@ nav .nav-wrapper .icon-span span{
     font-size: 1.3rem;	
     line-height: 16px;
 }
-nav hr{
-    height: 3rem;
-}
 nav .datos {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0.5rem 1.5rem;
+    width: 17rem;
+}
+nav .datos .borde{
+    height: 37px;
+    width: 2px;
+    background-color: rgba(212, 216, 220, 0.7);
+}
+nav .detalles{
+    display: flex;
     flex-direction: column;
-    padding: 1.5rem;
-    
 }
 nav .name{
     color: #1D456B;
@@ -57,5 +68,13 @@ nav .cargo{
     font-size: 11px;	
     line-height: 13px;	
     text-align: right;
+}
+.imagen{
+    background-image: url('http://img4.wikia.nocookie.net/__cb20110819022447/simpsons/images/5/53/Bart-simpson-prank-phone-call.jpg');
+    background-size: cover;
+    height: 3rem;
+    border-radius: 50%;
+    width: 4rem;
+    margin-left: 10px;
 }
 </style>

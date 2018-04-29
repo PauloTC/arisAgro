@@ -10,66 +10,75 @@
                     li.tab.col.s4
                         a(href='#test3') VENDEDORES
             #test1.col.s12(style='margin-top:3rem')
-                .col.s3
+                .col.s4
                     minicard1(v-for='(n,i) in 3' :key='i' @territorio='pasarItem' :indice='i')
-                .col.s9
+                .col.s8
                     div(:class='{barchart:mostrarTerritorio}')
                         bar-chart(:chart-data="chartData.chart1" :width="970" :height="370")
                         p.text(:class='{text:mostrarTerritorio}') SELECCIONE UN TERRITORIO
                         div(:class='{capa:mostrarTerritorio}')
                 .col.s12.lista-clientes(style='border-top:1px solid #E9EDF1;')
                     .listatop
-                        .title 
+                        .title
+                            div 
                             p  TOP CLIENTES {{ (items1[0] || {}).nombre  || 'NINGUNO' }}
                         topLista(:items='items1[0]' :key="0")
                     .listatop
                         .title 
+                            div
                             p  TOP CLIENTES {{ (items1[1] || {}).nombre  || 'NINGUNO' }}  
                         topLista(:items='items1[1]' :key="1")
                     .listatop
                         .title 
+                            div
                             p  TOP CLIENTES {{ (items1[2] || {}).nombre  || 'NINGUNO' }}
                         topLista(:items='items1[2]' :key="2")
             #test2.col.s12(style='margin-top:3rem')
-                .col.s3
+                .col.s4
                     minicard2(v-for='(n,i) in 3' :key="i" @zonas='pasarZonas' :indice='i')
-                .col.s9
+                .col.s8
                     div(:class='{barchart:mostrarZona}')
                         bar-chart(:chart-data="chartData.chart2" :width="970" :height="370")
                         p.text(:class='{text:mostrarZona}') SELECCIONE UN TERRITORIO
                         div(:class='{capa:mostrarZona}')
                 .col.s12.lista-clientes
                     .listatop
-                        .title 
+                        .title
+                            div 
                             p  TOP CLIENTES {{ (items2[0] || {}).nombre  || 'NINGUNO' }}
                         topLista(:items='items2[0]' :key="4")
                     .listatop
-                        .title 
+                        .title
+                            div
                             p  TOP CLIENTES {{ (items2[1] || {}).nombre  || 'NINGUNO' }}  
                         topLista(:items='items2[1]' :key="5")
                     .listatop
-                        .title 
+                        .title
+                            div 
                             p  TOP CLIENTES {{ (items2[2] || {}).nombre  || 'NINGUNO' }}
                         topLista(:items='items2[2]' :key="6")
             #test3.col.s12(style='margin-top:3rem')
-                    .col.s3
+                    .col.s4
                         minicard3(v-for='(n,i) in 3' :key="i" @vendedor='pasarVendedor' :indice='i')
-                    .col.s9
+                    .col.s8
                         div(:class='{barchart:mostrarVendedor}')
                             bar-chart(:chart-data="chartData.chart3" :width="970" :height="370")
                             p.text(:class='{text:mostrarVendedor}') SELECCIONE UN TERRITORIO
                             div(:class='{capa:mostrarVendedor}')
                     .col.s12.lista-clientes
                         .listatop
-                            .title 
+                            .title
+                                div 
                                 p  TOP CLIENTES {{ (items3[0] || {}).nombre  || 'NINGUNO' }}
                             topLista(:items='items3[0]' :key="7")
                         .listatop
-                            .title 
+                            .title
+                                div 
                                 p  TOP CLIENTES {{ (items3[1] || {}).nombre  || 'NINGUNO' }}  
                             topLista(:items='items3[1]' :key="8")
                         .listatop
-                            .title 
+                            .title
+                                div 
                                 p  TOP CLIENTES {{ (items3[2] || {}).nombre  || 'NINGUNO' }}
                             topLista(:items='items3[2]' :key="9")
 </template>
@@ -190,16 +199,19 @@
         margin: 0 auto;
         width: 30px;
     }
+    /* minicards */
     .ambito2 .card-cont .mini-card{
         display: flex;
-        justify-content: space-between;
+        align-items: center;
+        height: 2.5rem;
         border: 1px solid #E9EDF1;	
         border-radius: 3px;
         box-sizing: border-box;
-        padding: 1.3rem 1rem;
         margin: 0 0 1rem 1.5rem;
     }
-    .ambito2 .card-cont .mini-card span{
+    .ambito2 .card-cont .mini-card .ninguno{
+        flex-grow: 1;
+        margin-left: 1rem;
         color: #768EA6;	
         font-size: 12px;	
         font-weight: bold;	
@@ -213,15 +225,21 @@
         line-height: 14px;
         text-decoration: underline;
         cursor: pointer;
+        margin-right: 1rem;
     }
-    .ambito2 .card-cont .mini-card:nth-child(1){
-        border-left: 4px solid #49D7BB;
+    .ambito2 .card-cont .mini-card .divleft{
+        width: 5px;
+        height: 34px;
+        border-radius: 27%;
     }
-    .ambito2 .card-cont .mini-card:nth-child(2){
-        border-left: 4px solid #768EA6;
+    .ambito2 .card-cont .mini-card:nth-child(1) .divleft{
+        background-color: #49D7BB;
     }
-    .ambito2 .card-cont .mini-card:nth-child(3){
-        border-left: 4px solid #BCCBDA;
+    .ambito2 .card-cont .mini-card:nth-child(2) .divleft{
+        background-color: #768EA6;
+    }
+    .ambito2 .card-cont .mini-card:nth-child(3) .divleft {
+        background-color:  #BCCBDA;
     }
     /* modal */
     .ambito2 .card-cont .modal.open{
@@ -377,39 +395,53 @@
         font-size: 13px;	
         font-weight: 500;	
         letter-spacing: 0.13px;
+        margin-top: 2rem;
     }
     .ambito2 .card-cont .lista-clientes .title{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
         font-size: 13px;	
         letter-spacing: 0.13px;	
-        padding: 0.2px;
-        margin-bottom: 1rem;
-        border-radius: 3px;
+    }
+    .ambito2 .lista-clientes .title div{
+        width: 6px;
+        height: 16px;
+        border-radius: 33%;
     }
     .ambito2 .card-cont .lista-clientes .title,
     .ambito2 .card-cont .lista-clientes .title p{
         margin-left: 1rem;
     }
-    .ambito2 .card-cont .lista-clientes .listatop:nth-child(1) .title{
+    .ambito2 .listatop{
+       width: 70%;
+       padding: 2rem 0;
+       margin-right: 1.7rem;
+    }
+    .ambito2 .listatop:nth-child(1) .title{
         color: #49D7BB;
-        border-left: 6px solid #49D7BB;
     }
-    .ambito2 .card-cont .lista-clientes .listatop:nth-child(2) .title{
+    .ambito2 .listatop:nth-child(1) .title div{
+        background-color: #49D7BB;
+    }
+    .ambito2 .listatop:nth-child(2) .title{
         color: #768EA6;
-        border-left: 6px solid #768EA6;
     }
-    .ambito2 .card-cont .lista-clientes .listatop:nth-child(3) .title{
+    .ambito2 .listatop:nth-child(2) .title div{
+        background-color: #768EA6;
+    }
+    .ambito2  .listatop:nth-child(3) .title{
         color: #BCCBDA;	
-        border-left: 6px solid #BCCBDA;
+    }
+    .ambito2 .listatop:nth-child(3) .title div{
+        background-color: #BCCBDA;
     }
     .ambito2 .card-cont .lista-clientes tr:nth-child(-n+3){
         color: #376075;
         font-weight: bold;
     }
-    .ambito2 .card-cont .lista-clientes .listatop{
-       width: 70%;
-       padding: 2rem 0;
-       margin-right: 1.7rem;
-    }
+    
     /* clases dinámicas */
    
     .activeZona{
@@ -432,14 +464,12 @@
     }
     .barchart{
         position: relative;
-        /* height:40vh; 
-        width:40vw */
     }
     .capa{
         position: absolute; 
         background-color: #F1F5F9;
         top: 0;
-        height: 207px;
+        height: 182px;
         width: 100%;
     }
     .text{
@@ -449,7 +479,7 @@
         font-weight: 500;
         line-height: 11px;
         top: 40%;
-        left: 37%;
+        left: 33%;
         z-index: 100;
     }
 </style>

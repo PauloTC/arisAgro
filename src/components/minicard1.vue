@@ -1,6 +1,7 @@
 <template lang="pug">
     .mini-card
-        span {{ (territorioSeleccionado || {}).nombre || 'NINGUNO' }}
+        .divleft
+        span.ninguno {{ (territorioSeleccionado || {}).nombre || 'NINGUNO' }}
         a.modal-trigger.cambiar(:href='"#" + modalId') cambiar
         div(:id='modalId').modal.modal-fixed-footer.modal1
             .modal-header
@@ -19,7 +20,6 @@
 </template>
 <script>
 import { v4 } from 'uuid'
-// import index from 'vue';
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
