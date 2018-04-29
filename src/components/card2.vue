@@ -1,7 +1,7 @@
 <template lang="pug">
     .row.ambito2(style='padding:0 5rem')
         .card-cont.col.s12(style='padding:0')
-            .col.s12
+            .col.s12(style='padding:0')
                 ul.tabs
                     li.tab.col.s4
                         a.active(href='#test1') TERRITORIO
@@ -11,25 +11,67 @@
                         a(href='#test3') VENDEDORES
             #test1.col.s12(style='margin-top:3rem')
                 .col.s3
-                    minicard1(v-for='(n,i) in 3' :key='i' @territorio='pasarItem' :index='i')
+                    minicard1(v-for='(n,i) in 3' :key='i' @territorio='pasarItem' :indice='i')
                 .col.s9
-                    bar-chart(:chart-data="chartData.chart1" :width="970" :height="270")
+                    div(:class='{barchart:mostrarTerritorio}')
+                        bar-chart(:chart-data="chartData.chart1" :width="970" :height="370")
+                        p.text(:class='{text:mostrarTerritorio}') SELECCIONE UN TERRITORIO
+                        div(:class='{capa:mostrarTerritorio}')
                 .col.s12.lista-clientes(style='border-top:1px solid #E9EDF1;')
-                    topLista(v-for='(n,i) in 3' :key='i' :items='items1')
+                    .listatop
+                        .title 
+                            p  TOP CLIENTES {{ (items1[0] || {}).nombre  || 'NINGUNO' }}
+                        topLista(:items='items1[0]' :key="0")
+                    .listatop
+                        .title 
+                            p  TOP CLIENTES {{ (items1[1] || {}).nombre  || 'NINGUNO' }}  
+                        topLista(:items='items1[1]' :key="1")
+                    .listatop
+                        .title 
+                            p  TOP CLIENTES {{ (items1[2] || {}).nombre  || 'NINGUNO' }}
+                        topLista(:items='items1[2]' :key="2")
             #test2.col.s12(style='margin-top:3rem')
                 .col.s3
-                    minicard2(v-for='(n,i) in 3' :key="i" @zonas='pasarZonas' :index='i')
+                    minicard2(v-for='(n,i) in 3' :key="i" @zonas='pasarZonas' :indice='i')
                 .col.s9
-                    bar-chart(:chart-data="chartData.chart2" :width="970" :height="270")
+                    div(:class='{barchart:mostrarZona}')
+                        bar-chart(:chart-data="chartData.chart2" :width="970" :height="370")
+                        p.text(:class='{text:mostrarZona}') SELECCIONE UN TERRITORIO
+                        div(:class='{capa:mostrarZona}')
                 .col.s12.lista-clientes
-                    topLista(v-for='(n,i) in 3' :key='i' :items='items2')
+                    .listatop
+                        .title 
+                            p  TOP CLIENTES {{ (items2[0] || {}).nombre  || 'NINGUNO' }}
+                        topLista(:items='items2[0]' :key="4")
+                    .listatop
+                        .title 
+                            p  TOP CLIENTES {{ (items2[1] || {}).nombre  || 'NINGUNO' }}  
+                        topLista(:items='items2[1]' :key="5")
+                    .listatop
+                        .title 
+                            p  TOP CLIENTES {{ (items2[2] || {}).nombre  || 'NINGUNO' }}
+                        topLista(:items='items2[2]' :key="6")
             #test3.col.s12(style='margin-top:3rem')
-                .col.s3
-                    minicard3(v-for='(n,i) in 3' :key="i" @vendedor='pasarVendedor' :index='i')
-                .col.s9
-                    bar-chart(:chart-data="chartData.chart3" :width="970" :height="270")
-                .col.s12.lista-clientes
-                    topLista(v-for='(n,i) in 3' :key='i' :items='items3')
+                    .col.s3
+                        minicard3(v-for='(n,i) in 3' :key="i" @vendedor='pasarVendedor' :indice='i')
+                    .col.s9
+                        div(:class='{barchart:mostrarVendedor}')
+                            bar-chart(:chart-data="chartData.chart3" :width="970" :height="370")
+                            p.text(:class='{text:mostrarVendedor}') SELECCIONE UN TERRITORIO
+                            div(:class='{capa:mostrarVendedor}')
+                    .col.s12.lista-clientes
+                        .listatop
+                            .title 
+                                p  TOP CLIENTES {{ (items3[0] || {}).nombre  || 'NINGUNO' }}
+                            topLista(:items='items3[0]' :key="7")
+                        .listatop
+                            .title 
+                                p  TOP CLIENTES {{ (items3[1] || {}).nombre  || 'NINGUNO' }}  
+                            topLista(:items='items3[1]' :key="8")
+                        .listatop
+                            .title 
+                                p  TOP CLIENTES {{ (items3[2] || {}).nombre  || 'NINGUNO' }}
+                            topLista(:items='items3[2]' :key="9")
 </template>
 <script>
     import minicard1 from './minicard1'
@@ -47,9 +89,12 @@
         data:function(){
             return{
                 cliente:[],
-                items1:[],
-                items2:[],
-                items3:[],
+                items1:[null,null,null],
+                items2:[null,null,null],
+                items3:[null,null,null],
+                mostrarTerritorio: true,
+                mostrarZona: true,
+                mostrarVendedor: true,
                 /** data de charts */
                 chartData: {
                     chart1: {},
@@ -60,18 +105,22 @@
         },
         methods: {
             pasarItem:function(val){ 
-                console.log(val.indice)
-                this.items1.splice(val.indice,1,val.valor);
-                console.log(this.items1)
-                this.chartData.chart1 = val.chartData;
+                if(val){
+                    this.items1.splice(val.indice,1,val.valor);
+                    console.log(this.items1)
+                    this.chartData.chart1 = val.chartData;
+                    this.mostrarTerritorio = false;
+                }   
             },
             pasarZonas:function(val){
                 this.items2.splice(val.indice,1,val.valor);
                 this.chartData.chart2 = val.chartData;
+                this.mostrarZona= false;
             },
             pasarVendedor:function(val){
                 this.items3.splice(val.indice,1,val.valor);
                 this.chartData.chart3 = val.chartData;
+                this.mostrarVendedor = false;
             }
         },
         filters:{
@@ -89,10 +138,9 @@
         mounted: function () {
             this.$nextTick(function () {
                 $('.tabs').tabs();
-                $('.modal').modal({
-                    dismissible: false
-                });
-                // $('.modal').modal('close');
+                // $('.modal').modal({
+                //     dismissible: false
+                // });
             })
         },
         watch: {
@@ -381,5 +429,27 @@
     }
     .white{
         color: #ffffff!important;
+    }
+    .barchart{
+        position: relative;
+        /* height:40vh; 
+        width:40vw */
+    }
+    .capa{
+        position: absolute; 
+        background-color: #F1F5F9;
+        top: 0;
+        height: 207px;
+        width: 100%;
+    }
+    .text{
+        position: absolute;
+        color: #768EA6;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 11px;
+        top: 40%;
+        left: 37%;
+        z-index: 100;
     }
 </style>

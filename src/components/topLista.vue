@@ -1,11 +1,8 @@
 <template lang="pug">
-    .listatop
-        .title 
-            p  {{ items.nombre ||'NINGUNO' }}
-        div
+        div 
             table.striped
-                tbody
-                    tr(v-for='(elem,i) in items.clientes')
+                tbody(v-if="items")
+                    tr(v-for='(elem,i) in items.clientes' :key="i")
                         td {{ i + 1 }}
                         td {{ elem.nombre }}
                         td {{ elem.venta }}

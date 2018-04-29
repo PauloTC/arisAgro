@@ -2,7 +2,7 @@
     .mini-card
         span {{ (territorioSeleccionado || {}).nombre || 'NINGUNO' }}
         a.modal-trigger.cambiar(:href='"#" + modalId') cambiar
-        div(:id='modalId').modal.modal-fixed-footer
+        div(:id='modalId').modal.modal-fixed-footer.modal1
             .modal-header
                 h6 SELECCIONE TERRITORIO
             .modal-content
@@ -15,16 +15,16 @@
                             p {{ item.nombre }}
             .modal-footer
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarTerritorio(), agregardata({territorioSeleccionado,index})') Aceptar
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarTerritorio(), agregardata({territorioSeleccionado,indice})') Aceptar
 </template>
 <script>
 import { v4 } from 'uuid'
-import index from 'vue';
+// import index from 'vue';
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
     name: 'minicard1',
-    props:['index'],
+    props:['indice'],
     data:function(){
         const { territorios } = this.$store.state
         return{
@@ -32,7 +32,6 @@ export default {
             territorioSeleccionadoModal: null,
             territorioSeleccionado: null,
             territorios,
-            indice: this.index
         }
     },
     methods:{
@@ -47,11 +46,15 @@ export default {
     computed:{
         ...mapGetters({
             chartData1 : 'chartDataset'
-        }),
-        // pasarTerritorio(){
-        //     return 
-        // }
-    }    
+        })
+    },
+    mounted: function () {
+        this.$nextTick(function () {
+            $('.modal1').modal({
+                dismissible: false
+            });
+        })
+    },    
 }
 </script>
 <style>

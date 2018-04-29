@@ -2,7 +2,7 @@
     .mini-card
         span {{ (vendedorSeleccionado || {}).nombre || 'NINGUNO'}}
         a.modal-trigger.cambiar(:href='"#" + modalId') cambiar
-         div(:id='modalId').modal.modal-fixed-footer
+         div(:id='modalId').modal.modal-fixed-footer.modal3
             .modal-header
                 h6 SELECCIONE VENDEDORES
             .modal-content
@@ -20,7 +20,7 @@
                             p {{ item }}
             .modal-footer
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor(); agregardata2({vendedor, index})') Aceptar
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor(); agregardata2({vendedor, indice})') Aceptar
 </template>
 <script>
 import { v4 } from 'uuid';
@@ -28,7 +28,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
     name: 'minicard3',
-    props:['index'],
+    props:['indice'],
     data:function(){
         const { vendedores } = this.$store.state
         return{
@@ -40,7 +40,6 @@ export default {
             index1:'',
             indexVendedor:0,
             vendedores,
-            indice: this.index,
             vendedor:[]
         }
     },
@@ -59,11 +58,11 @@ export default {
             this.vendedorSeleccionado = this.vendedorSeleccionadoModal;
             this.indexTerrirorio = this.index1;
             this.$emit('vendedor', {valor:this.vendedorSeleccionado, indice:this.indice, chartData: this.chartData1})
+            $('.modal3').modal('close');
         }, 
     },
     computed:{
         arrayVendedores:function(){
-            // console.log(this.valorInput);
             const vendedores = this.vendedores.filter((element,i) => {         
                 const filtrado = element.nombre.toLowerCase();
                 console.log(filtrado)
@@ -82,6 +81,14 @@ export default {
             mesActual: 'mesActual',
             labels: 'labels'
         }),
+    },
+    mounted: function () {
+        this.$nextTick(function () {
+            $('.modal3').modal({
+                dismissible: false
+            });
+            $('.modal3').modal('close');
+        })
     }
 }
 </script>
@@ -92,4 +99,7 @@ export default {
     .show{
         opacity: 1!important;
     }
+    /* .modal-close{
+        display:none;
+    } */
 </style>

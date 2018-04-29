@@ -7,3 +7,4 @@ Vue.use({
         vue.component('bar-chart', BarChart)
     }
 })
+

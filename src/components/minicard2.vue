@@ -2,7 +2,7 @@
     .mini-card
         span {{ (zonaSeleccionada || {}).nombre || 'NINGUNO' }}
         a.modal-trigger.cambiar(:href='"#" + modalId') cambiar
-        div(:id='modalId').modal.modal-fixed-footer
+        div(:id='modalId').modal.modal-fixed-footer.modal2
             .modal-header
                 h6 SELECCIONE ZONA
             .modal-content
@@ -20,16 +20,15 @@
                             p {{ item.nombre }}
             .modal-footer
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarZona(), agregardata1({zonaSeleccionada, index})') Aceptar
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarZona(), agregardata1({zonaSeleccionada, indice})') Aceptar
 </template>
 <script>
 import { v4 } from 'uuid';
-import index from 'vue';
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
     name: 'minicard2',
-    props:['index'],
+    props:['indice'],
     data:function(){
         const { territorios } = this.$store.state
         return{
@@ -39,7 +38,6 @@ export default {
             territorios,
             zonaClientes:[],
             isactive: '',
-            indice: this.index,
             i: ''
         }
     },
@@ -68,7 +66,14 @@ export default {
         ...mapGetters({
             chartData1 : 'chartDataset'
         }),
-    }
+    },
+    mounted: function () {
+        this.$nextTick(function () {
+            $('.modal2').modal({
+                dismissible: false
+            });
+        })
+    } 
 }
 </script>
 <style>
