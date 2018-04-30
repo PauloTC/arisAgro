@@ -10,9 +10,9 @@
                     li.tab.col.s4
                         a(href='#test3') VENDEDORES
             #test1.col.s12(style='margin-top:3rem')
-                .col.s4
+                .col.s3
                     minicard1(v-for='(n,i) in 3' :key='i' @territorio='pasarItem' :indice='i')
-                .col.s8
+                .col.s9
                     div(:class='{barchart:mostrarTerritorio}')
                         bar-chart(:chart-data="chartData.chart1" :width="970" :height="370")
                         p.text(:class='{ocultar:ocultar}') SELECCIONE UN TERRITORIO
@@ -34,9 +34,9 @@
                             p  TOP CLIENTES {{ (items1[2] || {}).nombre  || 'NINGUNO' }}
                         topLista(:items='items1[2]' :key="2")
             #test2.col.s12(style='margin-top:3rem')
-                .col.s4
+                .col.s3
                     minicard2(v-for='(n,i) in 3' :key="i" @zonas='pasarZonas' :indice='i')
-                .col.s8
+                .col.s9
                     div(:class='{barchart:mostrarZona}')
                         bar-chart(:chart-data="chartData.chart2" :width="970" :height="370")
                         p.text(:class='{text:mostrarZona}') SELECCIONE UN TERRITORIO
@@ -58,9 +58,9 @@
                             p  TOP CLIENTES {{ (items2[2] || {}).nombre  || 'NINGUNO' }}
                         topLista(:items='items2[2]' :key="6")
             #test3.col.s12(style='margin-top:3rem')
-                    .col.s4
+                    .col.s3
                         minicard3(v-for='(n,i) in 3' :key="i" @vendedor='pasarVendedor' :indice='i')
-                    .col.s8
+                    .col.s9
                         div(:class='{barchart:mostrarVendedor}')
                             bar-chart(:chart-data="chartData.chart3" :width="970" :height="370")
                             p.text(:class='{text:mostrarVendedor}') SELECCIONE UN TERRITORIO
@@ -407,10 +407,11 @@
     .ambito2 .card-cont .lista-clientes .title{
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         font-size: 13px;	
-        letter-spacing: 0.13px;	
+        letter-spacing: 0.13px;
+        margin-bottom: 1rem;	
     }
     .ambito2 .lista-clientes .title div{
         width: 6px;
@@ -467,7 +468,7 @@
         position: absolute; 
         background-color: #F1F5F9;
         top: 0;
-        height: 182px;
+        height: 93.5%;
         width: 100%;
     }
     .text{
@@ -477,7 +478,7 @@
         font-weight: 500;
         line-height: 11px;
         top: 40%;
-        left: 33%;
+        left: 43%;
         z-index: 100;
     }
 </style>
