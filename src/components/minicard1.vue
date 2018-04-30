@@ -10,13 +10,13 @@
                 h6.subtitle Territorio
                 .col.s12(style='padding:0')
                     .content-item(v-for='(item, i) in territorios' :key='i')
-                        label.config-radio
-                            input(type='radio' name='group1' :value='item' v-model='territorioSeleccionadoModal')
-                            span 
-                            p {{ item.nombre }}
+                            label.config-radio
+                                input(type='radio' name='group1' :value='item' v-model='territorioSeleccionadoModal')
+                                span 
+                                p {{ item.nombre }}
             .modal-footer
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarTerritorio(), agregardata({territorioSeleccionado,indice})') Aceptar
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarTerritorio(), agregardata1({territorioSeleccionado,indice})') Aceptar
 </template>
 <script>
 import { v4 } from 'uuid'
@@ -36,7 +36,7 @@ export default {
     },
     methods:{
         ...mapActions({
-            agregardata: 'agregardata',
+            agregardata1: 'agregardata1',
         }),
         cambiarTerritorio:function(){
             this.territorioSeleccionado = this.territorioSeleccionadoModal; 
@@ -45,7 +45,7 @@ export default {
     },
     computed:{
         ...mapGetters({
-            chartData1 : 'chartDataset'
+            chartData1 : 'chartDataset1'
         })
     },
     mounted: function () {

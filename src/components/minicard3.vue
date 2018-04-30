@@ -3,7 +3,7 @@
         .divleft
         span.ninguno {{ (vendedorSeleccionado || {}).nombre || 'NINGUNO'}}
         a.modal-trigger.cambiar(:href='"#" + modalId') cambiar
-         div(:id='modalId').modal.modal-fixed-footer.modal3
+        div(:id='modalId').modal.modal-fixed-footer.modal3
             .modal-header
                 h6 SELECCIONE VENDEDORES
             .modal-content
@@ -12,16 +12,16 @@
                     i.material-icons.left search
                 .col.s6(style='padding:0')
                     ul 
-                        li(v-for='(item,i) in arrayVendedores' @click='mostrarZonas(item,i)' :class='{ "activediv": item.id == indexVendedor }') {{ item.nombre }}
+                        li(v-for='(item,i) in arrayVendedores' :key='item.id'  @click='mostrarZonas(item,i)' :class='{ "activediv": item.id == indexVendedor }') {{ item.nombre }}
                 .col.s6(style='padding:0')
-                    .content-item(v-for='(item, i) in zonasVendedor' :class='{ check: item.id == i }')
+                    .content-item(v-for='(zona, i) in zonasVendedor' :class='{ check: zona.id == indexZona && valor }')
                         label.config-radio  
-                            input(type='checkbox' class="filled-in" name='group3' value='item' @click='zona(item)')
+                            input(type='checkbox'  class="filled-in" name='group3' :key='i' @click='selecionarZona(zona,i)')
                             span
-                            p {{ item }}
+                            p {{ zona.nombre }}
             .modal-footer
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor(); agregardata2({vendedor, indice})') Aceptar
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor(); agregardata3({vendedor, indice})') Aceptar
 </template>
 <script>
 import { v4 } from 'uuid';
@@ -37,32 +37,38 @@ export default {
             vendedorSeleccionadoModal: null,
             vendedorSeleccionado: null,
             valorInput:'',
-            indexVendedor:'',
-            isactiveRadio:'',
-            // index:'',
+            indexVendedor:null,
+            indexZona:'',
             indexZona:null,
             vendedores,
-            vendedor:[]
+            vendedor:[],
+            valor:false,
         }
     },
     methods:{
         ...mapActions({
-            agregardata2: 'agregardata2',
+            agregardata3: 'agregardata3',
         }),
         mostrarZonas:function(item,i){
-            console.log(item)
             this.vendedor = item;
             this.indexVendedor = item.id;
             this.vendedorSeleccionadoModal = item.nombre; 
-            console.log(this.zonasVendedor)    
+            console.log('Zonas:' + this.zonasVendedor)    
         },
         cambiarVendedor:function(){
+            console.log(this.vendedor)
             this.vendedorSeleccionado = this.vendedorSeleccionadoModal;
-            this.indexVendedor = this.isactive;
-            this.$emit('vendedor', {valor:this.vendedorSeleccionado, indice:this.indice, chartData: this.chartData1})
+            console.log(this.vendedorSeleccionado)
+            this.$emit('vendedor', {valor:this.vendedorSeleccionado, indice:this.indice, chartData: this.chartData3})
         },
-        zona(val){
-            console.log(val)
+        selecionarZona(zona,i){
+            this.indexZona = i;
+            console.log("zona id =" + zona.id)
+            console.log("indice zona =" + i)
+            if(!this.indexZona){
+                this.valor = true;
+            }
+            console.log(this.valor)
         } 
     },
     computed:{
@@ -74,12 +80,13 @@ export default {
             return vendedores.length ? vendedores : this.vendedores
         }, 
         zonasVendedor:function(){
-            if(this.indexZona!=null){
+            if(this.indexVendedor!=null){
+                console.log(this.arrayVendedores)
                 return this.arrayVendedores.length? this.arrayVendedores[this.indexVendedor].zonas: '';
             }                
         },
         ...mapGetters({
-            chartData1 : 'chartDataset',
+            chartData3 : 'chartDataset3',
             mesActual: 'mesActual',
             labels: 'labels'
         }),

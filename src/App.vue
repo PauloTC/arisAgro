@@ -20,7 +20,9 @@ export default {
   },
   created() {
     this.$store.dispatch('fechaActual')
-    this.$store.dispatch('agregardata')
+    this.$store.dispatch('agregardata1')
+    this.$store.dispatch('agregardata2')
+    this.$store.dispatch('agregardata3')
   }
 }
 </script>

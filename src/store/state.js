@@ -226,7 +226,41 @@ export default () => ({
         { 
             id:0,
             nombre:'Francisco Leonard',
-            zonas:['Ayacucho','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
+            zonas:[
+                {
+                    id:0,
+                    nombre:'Ayacucho'
+                },
+                {
+                    id:1,
+                    nombre:'Cuzco'
+                },
+                {   
+                    id:2,
+                    nombre:'Huancavelica'
+                },
+                {
+                    id:3,
+                    nombre:'Puno'
+                },
+                {
+                    id:4,
+                    nombre:'Apurimac'
+                }
+                ,
+                {
+                    id:5,
+                    nombre:'Ayacucho'
+                },
+                {   
+                    id:6,
+                    nombre:'Cuzco'
+                },
+                {
+                    id:7,
+                    nombre:'Huancavelica'
+                }
+            ],
             clientes:[
                 {
                     nombre:'KEYPERU',
@@ -258,7 +292,41 @@ export default () => ({
         { 
             id:1,
             nombre:'Randy Ingram',
-            zonas:['Lima','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
+            zonas:[  
+                {
+                    id:0,
+                    nombre:'Lima'
+                },
+                {
+                    id:1,
+                    nombre:'Huancavelica'
+                },
+                {   
+                    id:2,
+                    nombre:'Cuzco'
+                },
+                {
+                    id:3,
+                    nombre:'Puno'
+                },
+                {
+                    id:4,
+                    nombre:'Apurimac'
+                }
+                ,
+                {
+                    id:5,
+                    nombre:'Ayacucho'
+                },
+                {   
+                    id:6,
+                    nombre:'Cuzco'
+                },
+                {
+                    id:7,
+                    nombre:'Huancavelica'
+                }
+            ],
             clientes:[
                 {
                     nombre:'AGRICOLA CHAPI',
@@ -290,7 +358,41 @@ export default () => ({
         { 
             id:2,
             nombre:'Jayden McLaughlin',
-            zonas:['Pisco','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
+            zonas:[
+                {
+                    id:0,
+                    nombre:'Pisco'
+                },
+                {
+                    id:1,
+                    nombre:'Huancavelica'
+                },
+                {   
+                    id:2,
+                    nombre:'Puno'
+                },
+                {
+                    id:3,
+                    nombre:'Cuzco'
+                },
+                {
+                    id:4,
+                    nombre:'Lima'
+                }
+                ,
+                {
+                    id:5,
+                    nombre:'Ayacucho'
+                },
+                {   
+                    id:6,
+                    nombre:'Huancavelica'
+                },
+                {
+                    id:7,
+                    nombre:'Huancavelica'
+                }
+            ],
             clientes:[
                 {
                     nombre:'AGRICOLA CHAPI',
@@ -322,7 +424,41 @@ export default () => ({
         { 
             id:3,
             nombre:'Adele Fields', 
-            zonas:['Puno','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
+            zonas:[
+                {
+                    id:0,
+                    nombre:'Huancavelica'
+                },
+                {
+                    id:1,
+                    nombre:'Cuzco'
+                },
+                {   
+                    id:2,
+                    nombre:'Apurimac'
+                },
+                {
+                    id:3,
+                    nombre:'Cuzco'
+                },
+                {
+                    id:4,
+                    nombre:'Apurimac'
+                }
+                ,
+                {
+                    id:5,
+                    nombre:'Ayacucho'
+                },
+                {   
+                    id:6,
+                    nombre:'Cuzco'
+                },
+                {
+                    id:7,
+                    nombre:'Puno'
+                }
+            ],
             clientes:[
                 {
                     nombre:'KEYPERU',
@@ -354,7 +490,41 @@ export default () => ({
         { 
             id:4,
             nombre:'Cynthia Vasquez',
-            zonas:['Ayacucho','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
+            zonas:[
+                {
+                    id:0,
+                    nombre:'Ayacucho'
+                },
+                {
+                    id:1,
+                    nombre:'Cuzco'
+                },
+                {   
+                    id:2,
+                    nombre:'Ayacucho'
+                },
+                {
+                    id:3,
+                    nombre:'Cuzco'
+                },
+                {
+                    id:4,
+                    nombre:'Apurimac'
+                }
+                ,
+                {
+                    id:5,
+                    nombre:'Ayacucho'
+                },
+                {   
+                    id:6,
+                    nombre:'Huancavelica'
+                },
+                {
+                    id:7,
+                    nombre:'Puno'
+                }
+            ],
             clientes:[
                 {
                     nombre:'AGRICOLA CHAPI',
@@ -386,7 +556,41 @@ export default () => ({
         { 
             id:5,
             nombre:'Rose Black',
-            zonas:['Ayacucho','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
+            zonas:[
+                {
+                    id:0,
+                    nombre:'Apurimac'
+                },
+                {
+                    id:1,
+                    nombre:'Cuzco'
+                },
+                {   
+                    id:2,
+                    nombre:'Ayacucho'
+                },
+                {
+                    id:3,
+                    nombre:'Cuzco'
+                },
+                {
+                    id:4,
+                    nombre:'Apurimac'
+                }
+                ,
+                {
+                    id:5,
+                    nombre:'Ayacucho'
+                },
+                {   
+                    id:6,
+                    nombre:'Huancavelica'
+                },
+                {
+                    id:7,
+                    nombre:'Cuzco'
+                }
+            ],
             clientes:[
                 {
                     nombre:'AGRICOLA CHAPI',
@@ -417,7 +621,41 @@ export default () => ({
         },
         { 
             id:6, nombre:'Ola Robbins',
-            zonas:['Ayacucho','Cuzco','Huancavelica','Puno','Apurimac','Ayacucho','Cuzco','Huancavelica'],
+            zonas:[
+                {
+                    id:0,
+                    nombre:'Ancash'
+                },
+                {
+                    id:1,
+                    nombre:'Ica'
+                },
+                {   
+                    id:2,
+                    nombre:'Ayacucho'
+                },
+                {
+                    id:3,
+                    nombre:'Cuzco'
+                },
+                {
+                    id:4,
+                    nombre:'Loreto'
+                }
+                ,
+                {
+                    id:5,
+                    nombre:'Ayacucho'
+                },
+                {   
+                    id:6,
+                    nombre:'Tacna'
+                },
+                {
+                    id:7,
+                    nombre:'Cuzco'
+                }
+            ],
             clientes:[
                 {
                     nombre:'KEYPERU',
@@ -447,7 +685,7 @@ export default () => ({
             ventas: [30.000, 19.000, 15.000, 22.000, 26.000, 35.000, 36.000, 80.000, 56.000, 75.000, 55.000, 78.000]
         }
     ],
-    datasets: [
+    datasets1: [
             {
                 backgroundColor: 'rgb(73, 215, 187)',
                 borderColor: 'rgb(255, 99, 132)',
@@ -463,5 +701,39 @@ export default () => ({
                 borderColor: 'rgb(255, 99, 132)',
                 data: [0,0,0,0,0,0,0,0,0,0,0,0],
             }
-        ]     
+        ],
+    datasets2: [
+            {
+                backgroundColor: 'rgb(73, 215, 187)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [0,0,0,0,0,0,0,0,0,0,0,0],
+            },
+            {
+                backgroundColor: 'rgb(118, 142, 166)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [0,0,0,0,0,0,0,0,0,0,0,0],
+            },
+            {
+                backgroundColor: 'rgb(188, 203, 218)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [0,0,0,0,0,0,0,0,0,0,0,0],
+            }
+        ],
+    datasets3: [
+            {
+                backgroundColor: 'rgb(73, 215, 187)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [0,0,0,0,0,0,0,0,0,0,0,0],
+            },
+            {
+                backgroundColor: 'rgb(118, 142, 166)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [0,0,0,0,0,0,0,0,0,0,0,0],
+            },
+            {
+                backgroundColor: 'rgb(188, 203, 218)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [0,0,0,0,0,0,0,0,0,0,0,0],
+            }
+        ]               
 })

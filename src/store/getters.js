@@ -4,8 +4,16 @@ export default {
     labels: state =>{
         return  (state.fecha) ?  Array.apply(0,Array(12)).map((_i)=>(state.fecha).subtract(1, 'months').format('MMM')) : '--' ;
     },
-    chartDataset: (state, getters) => ({ 
+    chartDataset1: (state, getters) => ({ 
         labels: getters.labels, 
-        datasets: state.datasets     
+        datasets: state.datasets1     
+     }),
+     chartDataset2: (state, getters) => ({ 
+        labels: getters.labels, 
+        datasets: state.datasets2     
+     }),
+     chartDataset3: (state, getters) => ({ 
+        labels: getters.labels, 
+        datasets: state.datasets3     
      })
 }

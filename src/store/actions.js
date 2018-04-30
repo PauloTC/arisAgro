@@ -9,13 +9,13 @@ export default {
         // commit('setProductos', state.productos.reverse())
         commit(aumentar ? 'aumentarFecha' : 'disminuirFecha')
     },
-    agregardata({ commit,state }, data){
+    agregardata1({ commit,state }, data){
         if(data) commit('setDataSet', data)  
     },
-    agregardata1({ commit,state }, data){
+    agregardata2({ commit,state }, data){
         if(data) commit('setDataSet1', data)
     },
-    agregardata2({ commit,state }, data){
+    agregardata3({ commit,state }, data){
         if(data) commit('setDataSet2', data)
-    }
+    },
 }

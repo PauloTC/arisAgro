@@ -39,7 +39,7 @@
                 .col.s9
                     div(:class='{barchart:mostrarZona}')
                         bar-chart(:chart-data="chartData.chart2" :width="970" :height="370")
-                        p.text(:class='{text:mostrarZona}') SELECCIONE UN TERRITORIO
+                        p.text(:class='{ocultar:ocultar}') SELECCIONE UN TERRITORIO
                         div(:class='{capa:mostrarZona}')
                 .col.s12.lista-clientes
                     .listatop
@@ -63,7 +63,7 @@
                     .col.s9
                         div(:class='{barchart:mostrarVendedor}')
                             bar-chart(:chart-data="chartData.chart3" :width="970" :height="370")
-                            p.text(:class='{text:mostrarVendedor}') SELECCIONE UN TERRITORIO
+                            p.text(:class='{ocultar:ocultar}') SELECCIONE UN TERRITORIO
                             div(:class='{capa:mostrarVendedor}')
                     .col.s12.lista-clientes
                         .listatop
@@ -122,6 +122,7 @@
                     this.chartData.chart1 = val.chartData;
                     this.mostrarTerritorio = false;
                     this.ocultar = true;
+                    // console.log(this.chartData.chart1)
                 }   
             },
             pasarZonas:function(val){
@@ -163,14 +164,16 @@
         },
         watch: {
             labels(){
-                this.chartData.chart1 = this.chartDatos;
-                this.chartData.chart2 = this.chartDatos;
-                this.chartData.chart3 = this.chartDatos;
+                this.chartData.chart1 = this.chartDatos1;
+                this.chartData.chart2 = this.chartDatos2;
+                this.chartData.chart3 = this.chartDatos3;
             }
         },
         computed:{
             ...mapGetters({
-                chartDatos : 'chartDataset',
+                chartDatos1 : 'chartDataset1',
+                chartDatos2 : 'chartDataset2',
+                chartDatos3 : 'chartDataset3',
                 labels: 'labels'
             })
         }
@@ -328,25 +331,31 @@
         justify-content: space-between;
         align-items: center;
     }
-    .ambito2 .config-radio [type="checkbox"].filled-in+span:not(.lever):after{
+    .ambito2 .config-radio [type="checkbox"].filled-in+span:not(.lever)::after{
         border-radius: 50%;
         background-color: #FFFFFF;
         border: 2px solid #768EA6;
     }
-    .ambito2 .config-radio [type="checkbox"].filled-in:checked+span:not(.lever):before{
+    .ambito2 .config-radio [type="checkbox"].filled-in:checked+span:not(.lever)::before{
         border-right: 2px solid #768EA6;
         border-bottom: 2px solid #768EA6;
     }
-    .ambito2 .config-radio [type="radio"]:not(:checked)+span:before, [type="radio"]:not(:checked)+span:after {
+    .ambito2 .config-radio [type="radio"]:not(:checked)+span::before, [type="radio"]:not(:checked)+span:after {
         border: 2px solid #768EA6;
     }
-    .ambito2 .config-radio [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after{
+    .ambito2 .config-radio [type="radio"]:checked+span::after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after{
         border: 2px solid #768EA6;
     }
-    .ambito2 .config-radio [type="radio"]+span:before, [type="radio"]+span:after {
+    .ambito2 .config-radio [type="radio"]:checked+span::after, [type="radio"].with-gap:checked+span::after {
+        background-color: #768EA6;
+    }
+    .ambito2 .config-radio [type="radio"]+span::before, [type="radio"]+span::after {
         font-family: 'Material Icons';
         content: 'check';
         color:#FFFFFF;
+        line-height: 1.3;
+        font-size: 15px;
+        box-sizing: content-box;
     }
     .ambito2 .card-cont #test2 .modal-content .content-item{
         background-color: #E9EDF1;
@@ -468,7 +477,7 @@
         position: absolute; 
         background-color: #F1F5F9;
         top: 0;
-        height: 93.5%;
+        height: 95%;
         width: 100%;
     }
     .text{
@@ -478,7 +487,7 @@
         font-weight: 500;
         line-height: 11px;
         top: 40%;
-        left: 43%;
+        left: 37%;
         z-index: 100;
-    }
+    } 
 </style>

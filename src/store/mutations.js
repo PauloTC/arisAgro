@@ -15,23 +15,19 @@ export default {
     },
     setDataSet(state, datos){
         if(datos.territorioSeleccionado!=null && datos.territorioSeleccionado){
-            state.datasets[datos.indice].data = datos.territorioSeleccionado.ventas
+            state.datasets1[datos.indice].data = datos.territorioSeleccionado.ventas
         } 
     },
     setDataSet1(state, datos){
         if(datos.zonaSeleccionada!=null && datos.zonaSeleccionada){
-           for(let i=0; i<3 ;i++){
-            state.datasets[i].data =[];
-           }
-            state.datasets[datos.indice].data = datos.zonaSeleccionada.ventas
+            console.log(datos.indice)        
+            state.datasets2[datos.indice].data = datos.zonaSeleccionada.ventas;
         } 
     },
     setDataSet2(state, datos){
         if(datos.vendedor!=null && datos.Vendedor){
-            for(let i=0; i<3 ;i++){
-                state.datasets[i].data =[];
-            }
-            state.datasets[datos.indice].data = datos.vendedor.ventas
-        } 
+            state.datasets3[datos.indice].data = datos.vendedor.ventas
+        }
+        console.log(state.datasets3) 
     }    
 }

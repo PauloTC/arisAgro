@@ -8,7 +8,7 @@
                 h6 SELECCIONE ZONA
             .modal-content
                 .col.s6(style = 'padding:0')
-                    h6.subtitle territorio
+                    h6.subtitle Territorio
                     ul 
                         li(v-for='(item , i) in territorios' @click='zonasTerritorio(item,i)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
                             <i class="material-icons" :class='{ show: item.id == isactive }'>chevron_right</i>
@@ -21,7 +21,7 @@
                             p {{ item.nombre }}
             .modal-footer
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarZona(), agregardata1({zonaSeleccionada, indice})') Aceptar
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarZona(), agregardata2({zonaSeleccionada, indice})') Aceptar
 </template>
 <script>
 import { v4 } from 'uuid';
@@ -44,7 +44,7 @@ export default {
     },
     methods:{
         ...mapActions({
-            agregardata1: 'agregardata1',
+            agregardata2: 'agregardata2',
         }),
         zonasTerritorio:function(item,i){
             this.i='';
@@ -54,22 +54,21 @@ export default {
                     return element;
                 });
                 console.log(this.zonaClientes)
-            }        
+            }      
         },
         cambiarZona:function(){
             this.zonaSeleccionada = this.zonaSeleccionadaModal
-            console.log(this.zonaSeleccionada)
-            this.$emit('zonas', {valor:this.zonaSeleccionada, indice:this.indice, chartData: this.chartData1})
+            console.log(this.indice)
+            this.$emit('zonas', {valor:this.zonaSeleccionada, indice:this.indice, chartData: this.chartData2})
         },
         background(ind,item){
             this.i = ind;
             console.log(this.i)
-            console.log(item)
         }
     },
     computed:{
         ...mapGetters({
-            chartData1 : 'chartDataset'
+            chartData2 : 'chartDataset2'
         }),
     },
     mounted: function () {
