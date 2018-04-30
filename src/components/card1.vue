@@ -20,7 +20,7 @@
                 h3 MONTO TOTAL VENDIDO
                 .prog-bar
                     .circle1
-                        vue-circle(:progress='40', :size='200', :reverse='true', line-cap='round', :fill='fill1', empty-fill='rgba(0, 0, 0, .1)', :animation-start-value='0.0', :start-angle='4.7', insert-mode='append', :thickness= '14', :show-percent='true', @vue-circle-progress='progress', @vue-circle-end='progress_end')
+                        vue-circle(ref="progress1" :progress='40', :size='200', :reverse='true', line-cap='round', :fill='fill1', empty-fill='rgba(0, 0, 0, .1)', :animation-start-value='0.0', :start-angle='4.7', insert-mode='append', :thickness= '14', :show-percent='true', @vue-circle-progress='progress', @vue-circle-end='progress_end')
                             span.pos-mes1 2018
                         table.striped
                             body
@@ -31,7 +31,7 @@
                                     td Meta
                                     td USd 6 000.00
                     .circle2
-                        vue-circle(:progress='60', :size='200', :reverse='true', line-cap='round', :fill='fill2', empty-fill='rgba(0, 0, 0, .1)', :animation-start-value='0.0', :start-angle='4.7', insert-mode='append', :thickness= '14', :show-percent='true', @vue-circle-progress='progress', @vue-circle-end='progress_end')
+                        vue-circle(ref="progress2" :progress='60', :size='200', :reverse='true', line-cap='round', :fill='fill2', empty-fill='rgba(0, 0, 0, .1)', :animation-start-value='0.0', :start-angle='4.7', insert-mode='append', :thickness= '14', :show-percent='true', @vue-circle-progress='progress', @vue-circle-end='progress_end')
                             span.pos-mes2 2017
                         table.striped
                             body
@@ -72,6 +72,12 @@
             ...mapGetters({
                mesActual: 'mesActual' 
             })
+        },
+        watch:{
+            mesActual(){
+                this.$refs.progress1.updateProgress(Math.floor(Math.random() * (100 - 0)) + 0);
+                this.$refs.progress2.updateProgress(Math.floor(Math.random() * (100 - 0)) + 0);
+            }
         }
     }
 </script>

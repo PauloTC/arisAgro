@@ -16,7 +16,7 @@
                     h6.subtitle Zonas
                     .content-item(v-for='(item,ind) in zonaClientes' :class='{ "classCheck": item.id == i }')
                         label.config-radio 
-                            input(type='radio' name='group2' :value='item' v-model='zonaSeleccionadaModal' @click='background(ind)')
+                            input(type='radio' name='group2' :value='item' v-model='zonaSeleccionadaModal' @click='background(ind,item)')
                             span
                             p {{ item.nombre }}
             .modal-footer
@@ -49,18 +49,22 @@ export default {
         zonasTerritorio:function(item,i){
             this.i='';
             this.isactive = i;
-            if(item.zonas!==undefined)
+            if(item.zonas!==undefined){
                 this.zonaClientes = item.zonas.map(element => {
                     return element;
-            }); 
+                });
+                console.log(this.zonaClientes)
+            }        
         },
         cambiarZona:function(){
             this.zonaSeleccionada = this.zonaSeleccionadaModal
             console.log(this.zonaSeleccionada)
             this.$emit('zonas', {valor:this.zonaSeleccionada, indice:this.indice, chartData: this.chartData1})
         },
-        background(ind){
+        background(ind,item){
             this.i = ind;
+            console.log(this.i)
+            console.log(item)
         }
     },
     computed:{

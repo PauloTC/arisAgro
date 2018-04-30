@@ -12,11 +12,11 @@
                     i.material-icons.left search
                 .col.s6(style='padding:0')
                     ul 
-                        li(v-for='(item,i) in arrayVendedores' @click='mostrarZonas(item,i)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
+                        li(v-for='(item,i) in arrayVendedores' @click='mostrarZonas(item,i)' :class='{ "activediv": item.id == indexVendedor }') {{ item.nombre }}
                 .col.s6(style='padding:0')
-                    .content-item(v-for='(item, i) in zonasVendedor')
+                    .content-item(v-for='(item, i) in zonasVendedor' :class='{ check: item.id == i }')
                         label.config-radio  
-                            input(type='checkbox' class="filled-in" name='group3' v-model='zonas')
+                            input(type='checkbox' class="filled-in" name='group3' value='item' @click='zona(item)')
                             span
                             p {{ item }}
             .modal-footer
@@ -37,9 +37,10 @@ export default {
             vendedorSeleccionadoModal: null,
             vendedorSeleccionado: null,
             valorInput:'',
-            isactive:'',
-            index1:'',
-            indexVendedor:0,
+            indexVendedor:'',
+            isactiveRadio:'',
+            // index:'',
+            indexZona:null,
             vendedores,
             vendedor:[]
         }
@@ -51,31 +52,31 @@ export default {
         mostrarZonas:function(item,i){
             console.log(item)
             this.vendedor = item;
-            this.isactive = item.id;
-            this.index1 = i
-            this.vendedorSeleccionadoModal = item.nombre;      
+            this.indexVendedor = item.id;
+            this.vendedorSeleccionadoModal = item.nombre; 
+            console.log(this.zonasVendedor)    
         },
         cambiarVendedor:function(){
             this.vendedorSeleccionado = this.vendedorSeleccionadoModal;
-            this.indexTerrirorio = this.index1;
+            this.indexVendedor = this.isactive;
             this.$emit('vendedor', {valor:this.vendedorSeleccionado, indice:this.indice, chartData: this.chartData1})
-            $('.modal3').modal('close');
-        }, 
+        },
+        zona(val){
+            console.log(val)
+        } 
     },
     computed:{
         arrayVendedores:function(){
             const vendedores = this.vendedores.filter((element,i) => {         
                 const filtrado = element.nombre.toLowerCase();
-                console.log(filtrado)
                 return filtrado.indexOf(this.valorInput.toLowerCase()) > -1;
             });
             return vendedores.length ? vendedores : this.vendedores
-                // return vendedores
         }, 
         zonasVendedor:function(){
-    
-                // return this.arrayVendedores.length ? this.arrayVendedores[this.indexVendedor].zonas : ''  
-            
+            if(this.indexZona!=null){
+                return this.arrayVendedores.length? this.arrayVendedores[this.indexVendedor].zonas: '';
+            }                
         },
         ...mapGetters({
             chartData1 : 'chartDataset',
@@ -88,7 +89,6 @@ export default {
             $('.modal3').modal({
                 dismissible: false
             });
-            $('.modal3').modal('close');
         })
     }
 }
@@ -100,7 +100,8 @@ export default {
     .show{
         opacity: 1!important;
     }
-    /* .modal-close{
-        display:none;
-    } */
+    .check{
+        background-color: #768EA6!important;
+        color: #ffffff!important;
+    }
 </style>

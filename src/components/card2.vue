@@ -15,7 +15,7 @@
                 .col.s8
                     div(:class='{barchart:mostrarTerritorio}')
                         bar-chart(:chart-data="chartData.chart1" :width="970" :height="370")
-                        p.text(:class='{text:mostrarTerritorio}') SELECCIONE UN TERRITORIO
+                        p.text(:class='{ocultar:ocultar}') SELECCIONE UN TERRITORIO
                         div(:class='{capa:mostrarTerritorio}')
                 .col.s12.lista-clientes(style='border-top:1px solid #E9EDF1;')
                     .listatop
@@ -104,6 +104,7 @@
                 mostrarTerritorio: true,
                 mostrarZona: true,
                 mostrarVendedor: true,
+                ocultar: false,
                 /** data de charts */
                 chartData: {
                     chart1: {},
@@ -113,23 +114,31 @@
             }
         },
         methods: {
-            pasarItem:function(val){ 
-                if(val){
+            pasarItem:function(val){
+                console.log(val) 
+                if(val.valor!=null){
                     this.items1.splice(val.indice,1,val.valor);
                     console.log(this.items1)
                     this.chartData.chart1 = val.chartData;
                     this.mostrarTerritorio = false;
+                    this.ocultar = true;
                 }   
             },
             pasarZonas:function(val){
-                this.items2.splice(val.indice,1,val.valor);
-                this.chartData.chart2 = val.chartData;
-                this.mostrarZona= false;
+                if(val.valor!=null){
+                    this.items2.splice(val.indice,1,val.valor);
+                    this.chartData.chart2 = val.chartData;
+                    this.mostrarZona= false;
+                    this.ocultar = true;
+                }
             },
             pasarVendedor:function(val){
-                this.items3.splice(val.indice,1,val.valor);
-                this.chartData.chart3 = val.chartData;
-                this.mostrarVendedor = false;
+                if(val.valor!=null){
+                    this.items3.splice(val.indice,1,val.valor);
+                    this.chartData.chart3 = val.chartData;
+                    this.mostrarVendedor = false;
+                    this.ocultar = true;
+                }
             }
         },
         filters:{
@@ -153,20 +162,17 @@
             })
         },
         watch: {
-            mesActual(){
-                console.log('hola')
-                this.chartData.chart1.labels = this.labels
+            labels(){
+                this.chartData.chart1 = this.chartDatos;
+                this.chartData.chart2 = this.chartDatos;
+                this.chartData.chart3 = this.chartDatos;
             }
         },
         computed:{
             ...mapGetters({
                 chartDatos : 'chartDataset',
-                mesActual: 'mesActual',
-                // labels: 'labels'
-            }),
-            chartDato:function(){
-                return this.chartData.chart1 = this.chartDatos
-            }
+                labels: 'labels'
+            })
         }
     }
 </script>
@@ -448,18 +454,9 @@
     .activeZona{
         background-color: #E9EDF1!important;
     }
-    .disabled{
-        pointer-events: none!important;
-        cursor: default!important;
-        text-decoration: none!important;
-    }
     .ocultar{
         display:none;
     }  
-    .check{
-        background-color: #768EA6!important;
-        color: #ffffff!important;
-    }
     .white{
         color: #ffffff!important;
     }

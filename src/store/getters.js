@@ -6,11 +6,6 @@ export default {
     },
     chartDataset: (state, getters) => ({ 
         labels: getters.labels, 
-        datasets: state.datasets,
-        options:{
-            legend: {
-                display: false
-            },
-        }       
+        datasets: state.datasets     
      })
 }

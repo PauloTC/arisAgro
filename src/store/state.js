@@ -101,7 +101,7 @@ export default () => ({
             ],
             zonas:[
                 { 
-                    id:'2', 
+                    id:'0', 
                     nombre:'SELVA CENTRAL',
                     clientes: [
                         {
@@ -120,7 +120,7 @@ export default () => ({
                     ventas: [14.000, 26.000, 35.000, 25.000, 23.000, 42.000, 85.000, 16.000, 57.000, 68.000, 55.000, 47.000]
                 },
                 { 
-                    id:'0',
+                    id:'1',
                     nombre:'APURIMAC',
                     clientes:[
                         {
@@ -135,7 +135,7 @@ export default () => ({
                     ventas: [30.000, 19.000, 15.000, 22.000, 26.000, 30.000, 36.000, 80.000, 56.000, 75.000, 25.000, 35.000]
                 },
                 { 
-                    id:'1',
+                    id:'2',
                     nombre:'NAZCA',
                     clientes:[
                         {
