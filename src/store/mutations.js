@@ -25,7 +25,7 @@ export default {
         } 
     },
     setDataSet2(state, datos){
-        if(datos.vendedor!=null && datos.Vendedor){
+        if(datos.vendedor!=null && datos.vendedor){
             state.datasets3[datos.indice].data = datos.vendedor.ventas
         }
         console.log(state.datasets3) 

@@ -1,7 +1,7 @@
 <template lang="pug">
     .mini-card
         .divleft
-        span.ninguno {{ (vendedorSeleccionado || {}).nombre || 'NINGUNO'}}
+        span.ninguno {{ vendedorSeleccionado || 'NINGUNO'}}
         a.modal-trigger.cambiar(:href='"#" + modalId') cambiar
         div(:id='modalId').modal.modal-fixed-footer.modal3
             .modal-header
@@ -14,11 +14,11 @@
                     ul 
                         li(v-for='(item,i) in arrayVendedores' :key='item.id'  @click='mostrarZonas(item,i)' :class='{ "activediv": item.id == indexVendedor }') {{ item.nombre }}
                 .col.s6(style='padding:0')
-                    .content-item(v-for='(zona, i) in zonasVendedor' :class='{ check: zona.id == indexZona && valor }')
+                    .content-item(v-for='(zona, i) in zonasVendedor' :class='{ check: indexZona.indexOf(zona.id)>-1 }')
                         label.config-radio  
-                            input(type='checkbox'  class="filled-in" name='group3' :key='i' @click='selecionarZona(zona,i)')
+                            input(type='checkbox' class="filled-in" name='group3' :key='i' @click='selecionarZona(zona,i,$event.target)')
                             span
-                            p {{ zona.nombre }}
+                            p(:class='{ textwhite: indexZona.indexOf(zona.id)>-1 }') {{ zona.nombre }}
             .modal-footer
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor(); agregardata3({vendedor, indice})') Aceptar
@@ -38,11 +38,9 @@ export default {
             vendedorSeleccionado: null,
             valorInput:'',
             indexVendedor:null,
-            indexZona:'',
-            indexZona:null,
+            indexZona:[],
             vendedores,
-            vendedor:[],
-            valor:false,
+            vendedor:[]
         }
     },
     methods:{
@@ -52,23 +50,19 @@ export default {
         mostrarZonas:function(item,i){
             this.vendedor = item;
             this.indexVendedor = item.id;
-            this.vendedorSeleccionadoModal = item.nombre; 
-            console.log('Zonas:' + this.zonasVendedor)    
+            this.vendedorSeleccionadoModal = item.nombre;   
         },
         cambiarVendedor:function(){
-            console.log(this.vendedor)
             this.vendedorSeleccionado = this.vendedorSeleccionadoModal;
-            console.log(this.vendedorSeleccionado)
-            this.$emit('vendedor', {valor:this.vendedorSeleccionado, indice:this.indice, chartData: this.chartData3})
+            this.$emit('vendedor', {valor:this.vendedor, indice:this.indice, chartData: this.chartData3})
         },
-        selecionarZona(zona,i){
-            this.indexZona = i;
-            console.log("zona id =" + zona.id)
-            console.log("indice zona =" + i)
-            if(!this.indexZona){
-                this.valor = true;
+        selecionarZona(zona,i,event){
+            if(event.checked){
+                this.indexZona.push(i)
+            }else{
+                let zonaRemover=this.indexZona.indexOf(i);
+                this.indexZona.splice(zonaRemover,1)
             }
-            console.log(this.valor)
         } 
     },
     computed:{
@@ -81,7 +75,6 @@ export default {
         }, 
         zonasVendedor:function(){
             if(this.indexVendedor!=null){
-                console.log(this.arrayVendedores)
                 return this.arrayVendedores.length? this.arrayVendedores[this.indexVendedor].zonas: '';
             }                
         },
@@ -109,6 +102,8 @@ export default {
     }
     .check{
         background-color: #768EA6!important;
+    }
+    .textwhite{
         color: #ffffff!important;
     }
 </style>

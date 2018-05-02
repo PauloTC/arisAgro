@@ -13,10 +13,10 @@
                 .col.s3
                     minicard1(v-for='(n,i) in 3' :key='i' @territorio='pasarItem' :indice='i')
                 .col.s9
-                    div(:class='{barchart:mostrarTerritorio}')
+                    div(:class='{ barchart:mostrarTerritorio }')
                         bar-chart(:chart-data="chartData.chart1" :width="970" :height="370")
-                        p.text(:class='{ocultar:ocultar}') SELECCIONE UN TERRITORIO
-                        div(:class='{capa:mostrarTerritorio}')
+                        p.text(:class='{ ocultar:ocultarTerritorio }') SELECCIONE UN TERRITORIO
+                        div(:class='{ capa:mostrarTerritorio }')
                 .col.s12.lista-clientes(style='border-top:1px solid #E9EDF1;')
                     .listatop
                         .title
@@ -37,10 +37,10 @@
                 .col.s3
                     minicard2(v-for='(n,i) in 3' :key="i" @zonas='pasarZonas' :indice='i')
                 .col.s9
-                    div(:class='{barchart:mostrarZona}')
+                    div(:class='{ barchart:mostrarZona }')
                         bar-chart(:chart-data="chartData.chart2" :width="970" :height="370")
-                        p.text(:class='{ocultar:ocultar}') SELECCIONE UN TERRITORIO
-                        div(:class='{capa:mostrarZona}')
+                        p.text(:class='{ ocultar:ocultarZona }') SELECCIONE UN TERRITORIO
+                        div(:class='{ capa:mostrarZona }')
                 .col.s12.lista-clientes
                     .listatop
                         .title
@@ -58,29 +58,29 @@
                             p  TOP CLIENTES {{ (items2[2] || {}).nombre  || 'NINGUNO' }}
                         topLista(:items='items2[2]' :key="6")
             #test3.col.s12(style='margin-top:3rem')
-                    .col.s3
-                        minicard3(v-for='(n,i) in 3' :key="i" @vendedor='pasarVendedor' :indice='i')
-                    .col.s9
-                        div(:class='{barchart:mostrarVendedor}')
-                            bar-chart(:chart-data="chartData.chart3" :width="970" :height="370")
-                            p.text(:class='{ocultar:ocultar}') SELECCIONE UN TERRITORIO
-                            div(:class='{capa:mostrarVendedor}')
-                    .col.s12.lista-clientes
-                        .listatop
-                            .title
-                                div 
-                                p  TOP CLIENTES {{ (items3[0] || {}).nombre  || 'NINGUNO' }}
-                            topLista(:items='items3[0]' :key="7")
-                        .listatop
-                            .title
-                                div 
-                                p  TOP CLIENTES {{ (items3[1] || {}).nombre  || 'NINGUNO' }}  
-                            topLista(:items='items3[1]' :key="8")
-                        .listatop
-                            .title
-                                div 
-                                p  TOP CLIENTES {{ (items3[2] || {}).nombre  || 'NINGUNO' }}
-                            topLista(:items='items3[2]' :key="9")
+                .col.s3
+                    minicard3(v-for='(n,i) in 3' :key="i" @vendedor='pasarVendedor' :indice='i')
+                .col.s9
+                    div(:class='{ barchart:mostrarVendedor }')
+                        bar-chart(:chart-data="chartData.chart3" :width="970" :height="370")
+                        p.text(:class='{ ocultar:ocultarVendedor }') SELECCIONE UN TERRITORIO
+                        div(:class='{ capa:mostrarVendedor }')
+                .col.s12.lista-clientes
+                    .listatop
+                        .title
+                            div 
+                            p  TOP CLIENTES {{ (items3[0] || {}).nombre  || 'NINGUNO' | upperCase }}
+                        topLista(:items='items3[0]' :key="7")
+                    .listatop
+                        .title
+                            div 
+                            p  TOP CLIENTES {{ (items3[1] || {}).nombre  || 'NINGUNO' | upperCase }}  
+                        topLista(:items='items3[1]' :key="8")
+                    .listatop
+                        .title
+                            div 
+                            p  TOP CLIENTES {{ (items3[2] || {}).nombre  || 'NINGUNO' | upperCase }}
+                        topLista(:items='items3[2]' :key="9")
 </template>
 <script>
     import minicard1 from './minicard1'
@@ -104,7 +104,9 @@
                 mostrarTerritorio: true,
                 mostrarZona: true,
                 mostrarVendedor: true,
-                ocultar: false,
+                ocultarTerritorio: false,
+                ocultarZona: false,
+                ocultarVendedor: false,             
                 /** data de charts */
                 chartData: {
                     chart1: {},
@@ -121,7 +123,7 @@
                     console.log(this.items1)
                     this.chartData.chart1 = val.chartData;
                     this.mostrarTerritorio = false;
-                    this.ocultar = true;
+                    this.ocultarTerrtorio = true;
                     // console.log(this.chartData.chart1)
                 }   
             },
@@ -130,7 +132,7 @@
                     this.items2.splice(val.indice,1,val.valor);
                     this.chartData.chart2 = val.chartData;
                     this.mostrarZona= false;
-                    this.ocultar = true;
+                    this.ocultarZona = true;
                 }
             },
             pasarVendedor:function(val){
@@ -138,7 +140,7 @@
                     this.items3.splice(val.indice,1,val.valor);
                     this.chartData.chart3 = val.chartData;
                     this.mostrarVendedor = false;
-                    this.ocultar = true;
+                    this.ocultarVendedor = true;
                 }
             }
         },
@@ -333,7 +335,7 @@
     }
     .ambito2 .config-radio [type="checkbox"].filled-in+span:not(.lever)::after{
         border-radius: 50%;
-        background-color: #FFFFFF;
+        background-color: #F1F5F9;
         border: 2px solid #768EA6;
     }
     .ambito2 .config-radio [type="checkbox"].filled-in:checked+span:not(.lever)::before{
@@ -352,7 +354,7 @@
     .ambito2 .config-radio [type="radio"]+span::before, [type="radio"]+span::after {
         font-family: 'Material Icons';
         content: 'check';
-        color:#FFFFFF;
+        color:#F1F5F9;
         line-height: 1.3;
         font-size: 15px;
         box-sizing: content-box;
