@@ -69,17 +69,17 @@
                     .listatop
                         .title
                             div 
-                            p  TOP CLIENTES {{ (items3[0] || {}).nombre  || 'NINGUNO' | upperCase }}
+                            p  TOP CLIENTES {{ nombreVendedor[0]  || 'NINGUNO' | upperCase }}
                         topLista(:items='items3[0]' :key="7")
                     .listatop
                         .title
                             div 
-                            p  TOP CLIENTES {{ (items3[1] || {}).nombre  || 'NINGUNO' | upperCase }}  
+                            p  TOP CLIENTES {{ nombreVendedor[1] || 'NINGUNO' | upperCase }}  
                         topLista(:items='items3[1]' :key="8")
                     .listatop
                         .title
                             div 
-                            p  TOP CLIENTES {{ (items3[2] || {}).nombre  || 'NINGUNO' | upperCase }}
+                            p  TOP CLIENTES {{ nombreVendedor[2] || 'NINGUNO' | upperCase }}
                         topLista(:items='items3[2]' :key="9")
 </template>
 <script>
@@ -89,6 +89,7 @@
     import topLista from './topLista'
 
     import { mapGetters } from 'vuex'
+import { functionDeclaration } from 'babel-types';
 
     export default {
         name:'card2',
@@ -106,7 +107,8 @@
                 mostrarVendedor: true,
                 ocultarTerritorio: false,
                 ocultarZona: false,
-                ocultarVendedor: false,             
+                ocultarVendedor: false,
+                nombreVendedor:[],             
                 /** data de charts */
                 chartData: {
                     chart1: {},
@@ -117,7 +119,6 @@
         },
         methods: {
             pasarItem:function(val){
-                console.log(val) 
                 if(val.valor!=null){
                     this.items1.splice(val.indice,1,val.valor);
                     console.log(this.items1)
@@ -135,11 +136,30 @@
                 }
             },
             pasarVendedor:function(val){
+                console.log(val.zonas)
+                let clientes = val.zonas.map(element => {
+                    return element.clientes                      
+                });
+                let ventas = []
+                clientes.forEach(elemento => elemento.map((elem)=> ventas.push(elem))) 
+                
+                ventas = ventas.sort(function(a,b){
+                    let x = (a.venta),
+                        y = (b.venta);
+
+                    return ((x > y)? -1:((x < y)? 1: 0))
+                })
+                if (ventas.length >= 5){
+                    ventas = ventas.slice(0,10);
+                }
+
                 if(val.valor!=null){
-                    this.items3.splice(val.indice,1,val.valor);
+                    this.items3.splice(val.indice,1,ventas);
+                    this.nombreVendedor.splice(val.indice,1,val.valor.nombre)
                     this.chartData.chart3 = val.chartData;
                     this.mostrarVendedor = false;
                     this.ocultarVendedor = true;
+                    console.log(this.items3)
                 }
             }
         },

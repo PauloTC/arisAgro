@@ -229,62 +229,45 @@ export default () => ({
             zonas:[
                 {
                     id:0,
-                    nombre:'Ayacucho'
+                    nombre:'Ayacucho',
+                    clientes:[
+                        {
+                            nombre:'KEYPERU',
+                            venta: '598.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta: '432.00'
+                        },
+                    ]
                 },
                 {
                     id:1,
-                    nombre:'Cuzco'
+                    nombre:'Cuzco',
+                    clientes:[
+                        {
+                            nombre:'KEYPERU',
+                            venta: '675.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta: '896.00'
+                        },
+                    ]
                 },
                 {   
                     id:2,
-                    nombre:'Huancavelica'
-                },
-                {
-                    id:3,
-                    nombre:'Puno'
-                },
-                {
-                    id:4,
-                    nombre:'Apurimac'
-                }
-                ,
-                {
-                    id:5,
-                    nombre:'Ayacucho'
-                },
-                {   
-                    id:6,
-                    nombre:'Cuzco'
-                },
-                {
-                    id:7,
-                    nombre:'Huancavelica'
-                }
-            ],
-            clientes:[
-                {
-                    nombre:'KEYPERU',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'COMPLEJO AGROINDUSTRIAL',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'AGRICOLA CHAPI',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'SEGURINET',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'FUNDO SAN FERNANDO',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'ESPARRAGOS DEL PERU',
-                    venta: 'USD 120.00'
+                    nombre:'Huancavelica',
+                    clientes:[
+                        {
+                            nombre:'FUNDO SAN FERNANDO',
+                            venta: '524.00'
+                        },
+                        {
+                            nombre:'ESPARRAGOS DEL PERU',
+                            venta: '422.00'
+                        }
+                    ]
                 }
             ],
             ventas: [20.000, 29.000, 15.080, 22.000, 24.000, 30.000, 36.000, 80.000, 56.000, 75.000, 25.000, 35.000]
@@ -295,62 +278,57 @@ export default () => ({
             zonas:[  
                 {
                     id:0,
-                    nombre:'Lima'
+                    nombre:'Lima',
+                    clientes:[
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta: '985.00'
+                        },
+                        {
+                            nombre:'SEGURINET',
+                            venta: '365.00'
+                        },
+                        {
+                            nombre:'FUNDO SAN FERNANDO',
+                            venta: '952.00'
+                        },
+                    ]
                 },
                 {
                     id:1,
-                    nombre:'Huancavelica'
+                    nombre:'Huancavelica',
+                    clientes:[
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta: '365.00'
+                        },
+                        {
+                            nombre:'SEGURINET',
+                            venta: '965.00'
+                        },
+                        {
+                            nombre:'FUNDO SAN FERNANDO',
+                            venta: '665.00'
+                        },
+                    ]
                 },
                 {   
                     id:2,
-                    nombre:'Cuzco'
-                },
-                {
-                    id:3,
-                    nombre:'Puno'
-                },
-                {
-                    id:4,
-                    nombre:'Apurimac'
-                }
-                ,
-                {
-                    id:5,
-                    nombre:'Ayacucho'
-                },
-                {   
-                    id:6,
-                    nombre:'Cuzco'
-                },
-                {
-                    id:7,
-                    nombre:'Huancavelica'
-                }
-            ],
-            clientes:[
-                {
-                    nombre:'AGRICOLA CHAPI',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'KEYPERU',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'COMPLEJO AGROINDUSTRIAL',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'AGRICOLA ANDREA',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'COORPORACION ESPERANZA',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'CORTEZ MEDINA MAXIMO',
-                    venta: 'USD 120.00'
+                    nombre:'Cuzco',
+                    clientes:[
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta: '321.00'
+                        },
+                        {
+                            nombre:'SEGURINET',
+                            venta: '987.00'
+                        },
+                        {
+                            nombre:'FUNDO SAN FERNANDO',
+                            venta: '369.00'
+                        },
+                    ]
                 }
             ],
             ventas:[20.000, 34.000, 52.000, 27.000, 29.000, 34.000, 42.000, 34.000, 73.000, 66.000, 16.000, 49.000]
@@ -361,62 +339,75 @@ export default () => ({
             zonas:[
                 {
                     id:0,
-                    nombre:'Pisco'
+                    nombre:'Pisco',
+                    clientes:[
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta: '365.00'
+                        },
+                        {
+                            nombre:'SEGURINET',
+                            venta: '322.00'
+                        },
+                        {
+                            nombre:'FUNDO SAN FERNANDO',
+                            venta: '222.00'
+                        },
+                    ]
                 },
                 {
                     id:1,
-                    nombre:'Huancavelica'
+                    nombre:'Huancavelica',
+                    clientes:[
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta: '454.00'
+                        },
+                        {
+                            nombre:'SEGURINET',
+                            venta: '125.00'
+                        },
+                        {
+                            nombre:'FUNDO SAN FERNANDO',
+                            venta: '333.00'
+                        },
+                    ]
                 },
                 {   
                     id:2,
-                    nombre:'Puno'
+                    nombre:'Puno',
+                    clientes:[
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta: '266.00'
+                        },
+                        {
+                            nombre:'SEGURINET',
+                            venta: '337.00'
+                        },
+                        {
+                            nombre:'FUNDO SAN FERNANDO',
+                            venta: '898.00'
+                        },
+                    ]
                 },
                 {
                     id:3,
-                    nombre:'Cuzco'
-                },
-                {
-                    id:4,
-                    nombre:'Lima'
-                }
-                ,
-                {
-                    id:5,
-                    nombre:'Ayacucho'
-                },
-                {   
-                    id:6,
-                    nombre:'Huancavelica'
-                },
-                {
-                    id:7,
-                    nombre:'Huancavelica'
-                }
-            ],
-            clientes:[
-                {
-                    nombre:'AGRICOLA CHAPI',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'KEYPERU',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'COMPLEJO AGROINDUSTRIAL',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'AGRICOLA ANDREA',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'COORPORACION ESPERANZA',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'CORTEZ MEDINA MAXIMO',
-                    venta: 'USD 120.00'
+                    nombre:'Cuzco',
+                    clientes:[
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta: '788.00'
+                        },
+                        {
+                            nombre:'SEGURINET',
+                            venta: '989.00'
+                        },
+                        {
+                            nombre:'FUNDO SAN FERNANDO',
+                            venta: '122.00'
+                        },
+                    ]
                 }
             ],
             ventas: [30.400, 16.000, 15.000, 26.000, 26.000, 30.000, 39.000, 87.000, 56.000, 74.000, 22.000, 39.000]
@@ -427,62 +418,75 @@ export default () => ({
             zonas:[
                 {
                     id:0,
-                    nombre:'Huancavelica'
+                    nombre:'Huancavelica',
+                    clientes:[
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta: '130.00'
+                        },
+                        {
+                            nombre:'SEGURINET',
+                            venta: '120.00'
+                        },
+                        {
+                            nombre:'FUNDO SAN FERNANDO',
+                            venta: '150.00'
+                        },
+                    ]
                 },
                 {
                     id:1,
-                    nombre:'Cuzco'
+                    nombre:'Cuzco',
+                    clientes: [
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta: '160.00'
+                        },
+                        {
+                            nombre:'SEGURINET',
+                            venta: '180.00'
+                        },
+                        {
+                            nombre:'FUNDO SAN FERNANDO',
+                            venta: '420.00'
+                        },
+                    ]
                 },
                 {   
                     id:2,
-                    nombre:'Apurimac'
+                    nombre:'Apurimac',
+                    clientes:[
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta: '135.00'
+                        },
+                        {
+                            nombre:'SEGURINET',
+                            venta: '230.00'
+                        },
+                        {
+                            nombre:'FUNDO SAN FERNANDO',
+                            venta: '156.00'
+                        },
+                    ]
                 },
                 {
                     id:3,
-                    nombre:'Cuzco'
-                },
-                {
-                    id:4,
-                    nombre:'Apurimac'
-                }
-                ,
-                {
-                    id:5,
-                    nombre:'Ayacucho'
-                },
-                {   
-                    id:6,
-                    nombre:'Cuzco'
-                },
-                {
-                    id:7,
-                    nombre:'Puno'
-                }
-            ],
-            clientes:[
-                {
-                    nombre:'KEYPERU',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'COMPLEJO AGROINDUSTRIAL',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'AGRICOLA CHAPI',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'SEGURINET',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'FUNDO SAN FERNANDO',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'ESPARRAGOS DEL PERU',
-                    venta: 'USD 120.00'
+                    nombre:'Cuzco',
+                    clientes:[
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta: '231.00'
+                        },
+                        {
+                            nombre:'SEGURINET',
+                            venta: '412.00'
+                        },
+                        {
+                            nombre:'FUNDO SAN FERNANDO',
+                            venta: '230.00'
+                        },
+                    ]
                 }
             ],
             ventas: [32.200, 19.000, 15.200, 25.000, 23.000, 39.000, 36.000, 80.000, 54.000, 75.000, 25.000, 35.000]
@@ -493,196 +497,79 @@ export default () => ({
             zonas:[
                 {
                     id:0,
-                    nombre:'Ayacucho'
+                    nombre:'Ayacucho',
+                    clientes:[
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta: '256.00'
+                        },
+                        {
+                            nombre:'SEGURINET',
+                            venta: '320.00'
+                        },
+                        {
+                            nombre:'FUNDO SAN FERNANDO',
+                            venta: '452.00'
+                        },
+                    ]
                 },
                 {
                     id:1,
-                    nombre:'Cuzco'
+                    nombre:'Cuzco',
+                    clientes:[
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta: '320.00'
+                        },
+                        {
+                            nombre:'SEGURINET',
+                            venta: '327.00'
+                        },
+                        {
+                            nombre:'FUNDO SAN FERNANDO',
+                            venta: '159.00'
+                        },
+                    ]
                 },
                 {   
                     id:2,
-                    nombre:'Ayacucho'
+                    nombre:'Ayacucho',
+                    clientes:[
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta: '365.00'
+                        },
+                        {
+                            nombre:'SEGURINET',
+                            venta: '485.00'
+                        },
+                        {
+                            nombre:'FUNDO SAN FERNANDO',
+                            venta: '369.00'
+                        },
+                    ]
                 },
                 {
                     id:3,
-                    nombre:'Cuzco'
+                    nombre:'Cuzco',
+                    clientes:[
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta: '777.00'
+                        },
+                        {
+                            nombre:'SEGURINET',
+                            venta: '234.00'
+                        },
+                        {
+                            nombre:'FUNDO SAN FERNANDO',
+                            venta: '788.00'
+                        },
+                    ]
                 },
-                {
-                    id:4,
-                    nombre:'Apurimac'
-                }
-                ,
-                {
-                    id:5,
-                    nombre:'Ayacucho'
-                },
-                {   
-                    id:6,
-                    nombre:'Huancavelica'
-                },
-                {
-                    id:7,
-                    nombre:'Puno'
-                }
-            ],
-            clientes:[
-                {
-                    nombre:'AGRICOLA CHAPI',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'KEYPERU',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'COMPLEJO AGROINDUSTRIAL',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'AGRICOLA ANDREA',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'COORPORACION ESPERANZA',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'CORTEZ MEDINA MAXIMO',
-                    venta: 'USD 120.00'
-                }
+    
             ],
             ventas:[20.000, 34.000, 52.000, 27.000, 29.000, 34.000, 42.000, 34.000, 73.000, 66.000, 16.000, 49.000]
-        },
-        { 
-            id:5,
-            nombre:'Rose Black',
-            zonas:[
-                {
-                    id:0,
-                    nombre:'Apurimac'
-                },
-                {
-                    id:1,
-                    nombre:'Cuzco'
-                },
-                {   
-                    id:2,
-                    nombre:'Ayacucho'
-                },
-                {
-                    id:3,
-                    nombre:'Cuzco'
-                },
-                {
-                    id:4,
-                    nombre:'Apurimac'
-                }
-                ,
-                {
-                    id:5,
-                    nombre:'Ayacucho'
-                },
-                {   
-                    id:6,
-                    nombre:'Huancavelica'
-                },
-                {
-                    id:7,
-                    nombre:'Cuzco'
-                }
-            ],
-            clientes:[
-                {
-                    nombre:'AGRICOLA CHAPI',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'KEYPERU',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'COMPLEJO AGROINDUSTRIAL',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'AGRICOLA ANDREA',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'COORPORACION ESPERANZA',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'CORTEZ MEDINA MAXIMO',
-                    venta: 'USD 120.00'
-                }
-            ],
-            ventas: [20.000, 29.000, 15.080, 22.000, 24.000, 30.000, 36.000, 80.000, 56.000, 75.000, 25.000, 35.000]
-        },
-        { 
-            id:6, nombre:'Ola Robbins',
-            zonas:[
-                {
-                    id:0,
-                    nombre:'Ancash'
-                },
-                {
-                    id:1,
-                    nombre:'Ica'
-                },
-                {   
-                    id:2,
-                    nombre:'Ayacucho'
-                },
-                {
-                    id:3,
-                    nombre:'Cuzco'
-                },
-                {
-                    id:4,
-                    nombre:'Loreto'
-                }
-                ,
-                {
-                    id:5,
-                    nombre:'Ayacucho'
-                },
-                {   
-                    id:6,
-                    nombre:'Tacna'
-                },
-                {
-                    id:7,
-                    nombre:'Cuzco'
-                }
-            ],
-            clientes:[
-                {
-                    nombre:'KEYPERU',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'COMPLEJO AGROINDUSTRIAL',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'AGRICOLA CHAPI',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'SEGURINET',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'FUNDO SAN FERNANDO',
-                    venta: 'USD 120.00'
-                },
-                {
-                    nombre:'ESPARRAGOS DEL PERU',
-                    venta: 'USD 120.00'
-                }
-            ],
-            ventas: [30.000, 19.000, 15.000, 22.000, 26.000, 35.000, 36.000, 80.000, 56.000, 75.000, 55.000, 78.000]
         }
     ],
     datasets1: [

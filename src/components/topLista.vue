@@ -2,10 +2,10 @@
         div 
             table.striped
                 tbody(v-if="items")
-                    tr(v-for='(elem,i) in items.clientes' :key="i")
+                    tr(v-for='(elem,i) in items' :key="i")
                         td {{ i + 1 }}
                         td {{ elem.nombre }}
-                        td {{ elem.venta }}
+                        td USD {{ elem.venta }}
 </template>
 <script>
 export default {

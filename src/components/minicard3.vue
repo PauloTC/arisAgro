@@ -21,7 +21,7 @@
                             p(:class='{ textwhite: indexZona.indexOf(zona.id)>-1 }') {{ zona.nombre }}
             .modal-footer
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarVendedor(); agregardata3({vendedor, indice})') Aceptar
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='seleccionarVendedor(); agregardata3({vendedor, indice})') Aceptar
 </template>
 <script>
 import { v4 } from 'uuid';
@@ -41,7 +41,7 @@ export default {
             indexZona:[],
             vendedores,
             vendedor:[],
-            values:[]
+            zonasSeleccionadas:[],
         }
     },
     methods:{
@@ -56,19 +56,22 @@ export default {
             $(".zonas").prop("checked", false);
         },
         selecionarZona(zona,i,event){
-
-            console.log(this.values)
             if(event.checked){
-                this.indexZona.push(i)
+                this.indexZona.push(i);
+                this.zonasSeleccionadas.push(zona)
+                console.log(this.zonasSeleccionadas)
             }else{
-                let zonaRemover=this.indexZona.indexOf(i);
-                this.indexZona.splice(zonaRemover,1)
+                let indexRemover=this.indexZona.indexOf(i);
+                this.indexZona.splice(indexRemover,1);
+                let zonaRemover=this.zonasSeleccionadas.indexOf(zona);
+                this.zonasSeleccionadas.splice(zonaRemover,1);
             }
         }, 
-        cambiarVendedor:function(){
+        seleccionarVendedor:function(){
             this.indexZona= [];
             this.vendedorSeleccionado = this.vendedorSeleccionadoModal;
-            this.$emit('vendedor', {valor:this.vendedor, indice:this.indice, chartData: this.chartData3})
+            this.$emit('vendedor', {valor:this.vendedor, zonas: this.zonasSeleccionadas, indice:this.indice, chartData: this.chartData3})
+            $(".zonas").prop("checked", false);
         }
     },
     computed:{
@@ -77,7 +80,7 @@ export default {
                 const filtrado = element.nombre.toLowerCase();
                 return filtrado.indexOf(this.valorInput.toLowerCase()) > -1;
             });
-            return vendedores.length ? vendedores : this.vendedores
+            return vendedores.length ? vendedores : '';
         }, 
         zonasVendedor:function(){
             if(this.indexVendedor!=null){
