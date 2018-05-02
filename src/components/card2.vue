@@ -123,8 +123,7 @@
                     console.log(this.items1)
                     this.chartData.chart1 = val.chartData;
                     this.mostrarTerritorio = false;
-                    this.ocultarTerrtorio = true;
-                    // console.log(this.chartData.chart1)
+                    this.ocultarTerritorio = true;
                 }   
             },
             pasarZonas:function(val){
@@ -159,9 +158,6 @@
         mounted: function () {
             this.$nextTick(function () {
                 $('.tabs').tabs();
-                // $('.modal').modal({
-                //     dismissible: false
-                // });
             })
         },
         watch: {
@@ -215,9 +211,9 @@
     .ambito2 .card-cont .mini-card{
         display: flex;
         align-items: center;
-        height: 2.5rem;
+        height: 3.3rem;
         border: 1px solid #E9EDF1;	
-        border-radius: 3px;
+        border-radius:5%;
         box-sizing: border-box;
         margin: 0 0 1rem 1.5rem;
     }
@@ -241,8 +237,8 @@
     }
     .ambito2 .card-cont .mini-card .divleft{
         width: 5px;
-        height: 34px;
-        border-radius: 27%;
+        height: 100%;
+        border-radius: 35%;
     }
     .ambito2 .card-cont .mini-card:nth-child(1) .divleft{
         background-color: #49D7BB;

@@ -16,7 +16,7 @@
                 .col.s6(style='padding:0')
                     .content-item(v-for='(zona, i) in zonasVendedor' :class='{ check: indexZona.indexOf(zona.id)>-1 }')
                         label.config-radio  
-                            input(type='checkbox' class="filled-in" name='group3' :key='i' @click='selecionarZona(zona,i,$event.target)')
+                            input(class='zonas' type='checkbox' class="filled-in" name='group3' :key='i' @click='selecionarZona(zona,i,$event.target)')
                             span
                             p(:class='{ textwhite: indexZona.indexOf(zona.id)>-1 }') {{ zona.nombre }}
             .modal-footer
@@ -40,7 +40,8 @@ export default {
             indexVendedor:null,
             indexZona:[],
             vendedores,
-            vendedor:[]
+            vendedor:[],
+            values:[]
         }
     },
     methods:{
@@ -51,19 +52,24 @@ export default {
             this.vendedor = item;
             this.indexVendedor = item.id;
             this.vendedorSeleccionadoModal = item.nombre;   
-        },
-        cambiarVendedor:function(){
-            this.vendedorSeleccionado = this.vendedorSeleccionadoModal;
-            this.$emit('vendedor', {valor:this.vendedor, indice:this.indice, chartData: this.chartData3})
+            this.indexZona= [];
+            $(".zonas").prop("checked", false);
         },
         selecionarZona(zona,i,event){
+
+            console.log(this.values)
             if(event.checked){
                 this.indexZona.push(i)
             }else{
                 let zonaRemover=this.indexZona.indexOf(i);
                 this.indexZona.splice(zonaRemover,1)
             }
-        } 
+        }, 
+        cambiarVendedor:function(){
+            this.indexZona= [];
+            this.vendedorSeleccionado = this.vendedorSeleccionadoModal;
+            this.$emit('vendedor', {valor:this.vendedor, indice:this.indice, chartData: this.chartData3})
+        }
     },
     computed:{
         arrayVendedores:function(){
