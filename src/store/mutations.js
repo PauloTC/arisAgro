@@ -25,8 +25,22 @@ export default {
         } 
     },
     setDataSet2(state, datos){
+        let venta=0;
+        let ventaTotal='';
+        let ids=[];    
         if(datos.vendedor!=null && datos.vendedor){
-            state.datasets3[datos.indice].data = datos.vendedor.ventas
+            ids = datos.zonasSeleccionadas.map(element=>element.id);
+            
+            const arrayVentas = datos.vendedor.ventas;
+
+            venta = arrayVentas.map((element,i) => {
+                if(ids.indexOf(i)>-1){
+                    return element.venta
+                }               
+            }).filter(e=> e!=undefined)
+             ventaTotal = venta.reduce((a, b)=> a + b);
+             console.log(ventaTotal)
+            state.datasets3[datos.indice].data = [ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal]
         }
         console.log(state.datasets3) 
     }    

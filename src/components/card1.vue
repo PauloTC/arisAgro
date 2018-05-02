@@ -2,9 +2,9 @@
     .row.ambito1(style='padding:0 5rem;margin-bottom:3rem')
         .card-cont.col.s12(style='padding:0')
             .col.s12.meses
-                a.waves-effect(@click='cambiarMes(true)')
-                    i.material-icons.right chevron_left
                 a.waves-effect(@click='cambiarMes(false)')
+                    i.material-icons.right chevron_left
+                a.waves-effect(@click='cambiarMes(true)')
                     i.material-icons.right chevron_right
                 span {{ mesActual }}
                 span 

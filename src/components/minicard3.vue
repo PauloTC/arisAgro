@@ -21,7 +21,7 @@
                             p(:class='{ textwhite: indexZona.indexOf(zona.id)>-1 }') {{ zona.nombre }}
             .modal-footer
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='seleccionarVendedor(); agregardata3({vendedor, indice})') Aceptar
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='seleccionarVendedor(); agregardata3({vendedor, indice,zonasSeleccionadas})') Aceptar
 </template>
 <script>
 import { v4 } from 'uuid';

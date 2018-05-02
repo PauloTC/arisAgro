@@ -270,7 +270,20 @@ export default () => ({
                     ]
                 }
             ],
-            ventas: [20.000, 29.000, 15.080, 22.000, 24.000, 30.000, 36.000, 80.000, 56.000, 75.000, 25.000, 35.000]
+            ventas: [
+                {
+                    zona:'Ayacucho',
+                    venta:20.000, 
+                },
+                {
+                    zona:'Cuzco',
+                    venta:29.000,
+                },
+                {
+                    zona:'Huancavelica',
+                    venta: 15.080
+                }
+            ]
         },
         { 
             id:1,
@@ -331,7 +344,20 @@ export default () => ({
                     ]
                 }
             ],
-            ventas:[20.000, 34.000, 52.000, 27.000, 29.000, 34.000, 42.000, 34.000, 73.000, 66.000, 16.000, 49.000]
+            ventas: [
+                {
+                    zona:'Lima',
+                    venta: 52.000, 
+                },
+                {
+                    zona:'Huancavelica',
+                    venta:34.000,
+                },
+                {
+                    zona:'Cuzco',
+                    venta: 73.000
+                }
+            ]
         }, 
         { 
             id:2,
@@ -410,7 +436,20 @@ export default () => ({
                     ]
                 }
             ],
-            ventas: [30.400, 16.000, 15.000, 26.000, 26.000, 30.000, 39.000, 87.000, 56.000, 74.000, 22.000, 39.000]
+            ventas: [
+                {
+                    zona:'Pisco',
+                    venta: 87.000, 
+                },
+                {
+                    zona:'Huancavelica',
+                    venta: 22.000,
+                },
+                {
+                    zona:'Puno',
+                    venta: 15.000
+                }
+            ]
         },
         { 
             id:3,
@@ -489,7 +528,24 @@ export default () => ({
                     ]
                 }
             ],
-            ventas: [32.200, 19.000, 15.200, 25.000, 23.000, 39.000, 36.000, 80.000, 54.000, 75.000, 25.000, 35.000]
+            ventas: [
+                {
+                    zona:'Huancavelica',
+                    venta:  15.200, 
+                },
+                {
+                    zona:'cuzco',
+                    venta: 32.200,
+                },
+                {
+                    zona:'Apurimac',
+                    venta: 36.000
+                },
+                {
+                    zona:'cuzco',
+                    venta:  54.000,
+                },
+            ]
         },
         { 
             id:4,
@@ -533,7 +589,7 @@ export default () => ({
                 },
                 {   
                     id:2,
-                    nombre:'Ayacucho',
+                    nombre:'Apurimac',
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -569,7 +625,24 @@ export default () => ({
                 },
     
             ],
-            ventas:[20.000, 34.000, 52.000, 27.000, 29.000, 34.000, 42.000, 34.000, 73.000, 66.000, 16.000, 49.000]
+            ventas: [
+                {
+                    zona:'Ayacucho',
+                    venta:  52.000, 
+                },
+                {
+                    zona:'cuzco',
+                    venta: 16.000,
+                },
+                {
+                    zona:'Apurimac',
+                    venta: 66.000
+                },
+                {
+                    zona:'cuzco',
+                    venta:  34.000,
+                },
+            ]
         }
     ],
     datasets1: [

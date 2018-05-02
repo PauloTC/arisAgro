@@ -16,6 +16,7 @@ export default {
         if(data) commit('setDataSet1', data)
     },
     agregardata3({ commit,state }, data){
+        console.log(data)
         if(data) commit('setDataSet2', data)
     },
 }
