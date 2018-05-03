@@ -11,7 +11,7 @@
                 .col.s12(style='padding:0')
                     .content-item(v-for='(item, i) in territorios' :key='i')
                             label.config-radio
-                                input(type='radio' name='group1' :value='item' v-model='territorioSeleccionadoModal')
+                                input(:id='inputId' :key='i' type='radio' name='group1' :value='item' v-model='territorioSeleccionadoModal' @click='seleccionarZonas($event, i)')
                                 span 
                                 p {{ item.nombre }}
             .modal-footer
@@ -29,6 +29,7 @@ export default {
         const { territorios } = this.$store.state
         return{
             modalId: v4(),
+            inputId: v4(),
             territorioSeleccionadoModal: null,
             territorioSeleccionado: null,
             territorios,
@@ -38,10 +39,16 @@ export default {
         ...mapActions({
             agregardata1: 'agregardata1',
         }),
+        seleccionarZonas:function(event, i){
+            if(event.target.checked)
+                this.index=  event.target.id;
+            console.log(this.index);
+        },
         cambiarTerritorio:function(){
+            $("#"+this.index).prop( 'checked', true )
             this.territorioSeleccionado = this.territorioSeleccionadoModal; 
             this.$emit('territorio', {valor:this.territorioSeleccionado, indice:this.indice, chartData: this.chartData1 })
-        }
+        }      
     },
     computed:{
         ...mapGetters({

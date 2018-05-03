@@ -29,7 +29,7 @@
                                     td.strong USD 1 363.00
                                 tr
                                     td Meta
-                                    td USd 6 000.00
+                                    td USD 6 000.00
                     .circle2
                         vue-circle(ref="progress2" :progress='60', :size='200', :reverse='true', line-cap='round', :fill='fill2', empty-fill='rgba(0, 0, 0, .1)', :animation-start-value='0.0', :start-angle='4.7', insert-mode='append', :thickness= '14', :show-percent='true', @vue-circle-progress='progress', @vue-circle-end='progress_end')
                             span.pos-mes2 2017
@@ -40,7 +40,7 @@
                                     td.strong USD 1 363.00
                                 tr
                                     td Meta
-                                    td USd 6 000.00
+                                    td USD 6 000.00
 </template>
 <script>
     import { mapGetters, mapActions, mapState } from 'vuex'
