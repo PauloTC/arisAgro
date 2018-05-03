@@ -28,6 +28,42 @@ export default () => ({
                 {
                     nombre:'AGRICOLA CHAPI',
                     venta:'USD 120.00'
+                },
+                {
+                    nombre: 'KEYPERU',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'COMPLEJO AGROINDUSTRIAL',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'AGRICOLA CHAPI',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre: 'KEYPERU',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'COMPLEJO AGROINDUSTRIAL',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'AGRICOLA CHAPI',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre: 'KEYPERU',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'COMPLEJO AGROINDUSTRIAL',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'AGRICOLA CHAPI',
+                    venta:'USD 120.00'
                 }
             ],
             zonas:[
@@ -41,6 +77,50 @@ export default () => ({
                         },
                         {
                             nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
                             venta:'USD 120.00'
                         }
                     ],
@@ -56,7 +136,52 @@ export default () => ({
                         },
                         {
                             nombre: 'KEYPERU',
-                             venta:'USD 120.00'}
+                             venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        }
                     ],
                     ventas: [30.600, 18.000, 15.000, 23.000, 26.000, 96.000, 35.000, 60.000, 44.000, 45.000, 26.000, 34.000]
                 },
@@ -74,6 +199,50 @@ export default () => ({
                         },
                         {
                             nombre: 'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
                             venta:'USD 120.00'
                         }
                     ],
@@ -98,6 +267,50 @@ export default () => ({
                     nombre:'COMPLEJO AGROINDUSTRIAL',
                     venta:'USD 120.00'
                 },
+                {
+                    nombre:'COMPLEJO AGROINDUSTRIAL',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'AGRICOLA CHAPI',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre: 'KEYPERU',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'COMPLEJO AGROINDUSTRIAL',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'AGRICOLA CHAPI',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre: 'KEYPERU',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'COMPLEJO AGROINDUSTRIAL',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'AGRICOLA CHAPI',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre: 'KEYPERU',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'COMPLEJO AGROINDUSTRIAL',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'AGRICOLA CHAPI',
+                    venta:'USD 120.00'
+                }
             ],
             zonas:[
                 { 
@@ -115,6 +328,50 @@ export default () => ({
                         {
                             nombre: 'AGRICOLA CHAPI',
                             venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
                         }
                     ],
                     ventas: [14.000, 26.000, 35.000, 25.000, 23.000, 42.000, 85.000, 16.000, 57.000, 68.000, 55.000, 47.000]
@@ -129,6 +386,50 @@ export default () => ({
                         },
                         {
                             nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
                             venta:'USD 120.00'
                         }
                     ],
@@ -145,6 +446,50 @@ export default () => ({
                         {
                             nombre: 'KEYPERU',
                             venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
                         }
                     ],
                     ventas: [20.000, 19.000, 14.000, 42.000, 27.000, 70.000, 93.000, 33.000, 54.000, 74.000, 45.000, 85.000]
@@ -156,6 +501,50 @@ export default () => ({
             id:'2',
             nombre:'SIERRA SUR',
             clientes:[
+                {
+                    nombre: 'KEYPERU',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'COMPLEJO AGROINDUSTRIAL',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'AGRICOLA CHAPI',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'COMPLEJO AGROINDUSTRIAL',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'AGRICOLA CHAPI',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre: 'KEYPERU',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'COMPLEJO AGROINDUSTRIAL',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'AGRICOLA CHAPI',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre: 'KEYPERU',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'COMPLEJO AGROINDUSTRIAL',
+                    venta:'USD 120.00'
+                },
+                {
+                    nombre:'AGRICOLA CHAPI',
+                    venta:'USD 120.00'
+                },
                 {
                     nombre: 'KEYPERU',
                     venta:'USD 120.00'
@@ -181,6 +570,50 @@ export default () => ({
                         {
                             nombre:'COMPLEJO AGROINDUSTRIAL',
                             venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
                         }
                     ],
                     ventas:[34.000, 56.000, 52.000, 2.85000, 23.000, 34.000, 42.000, 32.000, 77.000, 23.000, 96.000, 19.000]
@@ -195,7 +628,52 @@ export default () => ({
                         },
                         {
                             nombre: 'KEYPERU',
-                             venta:'USD 120.00'}
+                             venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        }
                     ],
                     ventas:[50.000, 34.000, 72.000, 36.000, 28.000, 38.000, 49.000, 37.000, 73.000, 87.000, 16.000, 59.000]
                 },
@@ -213,6 +691,50 @@ export default () => ({
                         },
                         {
                             nombre: 'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre: 'KEYPERU',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'COMPLEJO AGROINDUSTRIAL',
+                            venta:'USD 120.00'
+                        },
+                        {
+                            nombre:'AGRICOLA CHAPI',
                             venta:'USD 120.00'
                         }
                     ],

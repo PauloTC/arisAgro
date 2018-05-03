@@ -84,7 +84,8 @@ export default {
         }, 
         zonasVendedor:function(){
             if(this.indexVendedor!=null){
-                return this.arrayVendedores.length? this.arrayVendedores[this.indexVendedor].zonas: '';
+                console.log(this.indexVendedor)
+                return this.arrayVendedores.length? this.vendedores[this.indexVendedor].zonas: '';
             }                
         },
         ...mapGetters({

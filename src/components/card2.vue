@@ -70,17 +70,32 @@
                         .title
                             div 
                             p  TOP CLIENTES {{ nombreVendedor[0]  || 'NINGUNO' | upperCase }}
-                        topLista(:items='items3[0]' :key="7")
+                        table.striped
+                            tbody(v-if="items3[0]")
+                                tr(v-for='(elem,i) in items3[0]' :key="i")
+                                    td {{ i + 1 }}
+                                    td {{ elem.nombre }}
+                                    td USD {{ elem.venta }}
                     .listatop
                         .title
                             div 
-                            p  TOP CLIENTES {{ nombreVendedor[1] || 'NINGUNO' | upperCase }}  
-                        topLista(:items='items3[1]' :key="8")
+                            p  TOP CLIENTES {{ nombreVendedor[1] || 'NINGUNO' | upperCase }}
+                        table.striped
+                            tbody(v-if="items3[1]")
+                                tr(v-for='(elem,i) in items3[1]' :key="i")
+                                    td {{ i + 1 }}
+                                    td {{ elem.nombre }}
+                                    td USD {{ elem.venta }}
                     .listatop
                         .title
                             div 
                             p  TOP CLIENTES {{ nombreVendedor[2] || 'NINGUNO' | upperCase }}
-                        topLista(:items='items3[2]' :key="9")
+                        table.striped 
+                            tbody(v-if="items3[2]")
+                                tr(v-for='(elem,i) in items3[2]' :key="i")
+                                    td {{ i + 1 }}
+                                    td {{ elem.nombre }}
+                                    td USD {{ elem.venta }}
 </template>
 <script>
     import minicard1 from './minicard1'
@@ -121,7 +136,6 @@ import { functionDeclaration } from 'babel-types';
             pasarItem:function(val){
                 if(val.valor!=null){
                     this.items1.splice(val.indice,1,val.valor);
-                    console.log(this.items1)
                     this.chartData.chart1 = val.chartData;
                     this.mostrarTerritorio = false;
                     this.ocultarTerritorio = true;
@@ -149,17 +163,16 @@ import { functionDeclaration } from 'babel-types';
 
                     return ((x > y)? -1:((x < y)? 1: 0))
                 })
-                if (ventas.length >= 5){
+                if (ventas.length > 10){
                     ventas = ventas.slice(0,10);
                 }
-
                 if(val.valor!=null){
+                    console.log(ventas)
                     this.items3.splice(val.indice,1,ventas);
                     this.nombreVendedor.splice(val.indice,1,val.valor.nombre)
                     this.chartData.chart3 = val.chartData;
                     this.mostrarVendedor = false;
                     this.ocultarVendedor = true;
-                    console.log(this.items3)
                 }
             }
         },
@@ -495,7 +508,7 @@ import { functionDeclaration } from 'babel-types';
         position: absolute; 
         background-color: #F1F5F9;
         top: 0;
-        height: 95%;
+        height: 100%;
         width: 100%;
     }
     .text{
