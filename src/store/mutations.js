@@ -1,13 +1,17 @@
 export default {
     setFecha(state, fecha) {
-        state.fecha = fecha
+        state.fecha = fecha.add(-1, 'month');
     },
     disminuirFecha(state) {
-        state.fecha = state.fecha.clone().add(-1, 'month')
+        const nuevaFecha = state.fecha.clone().add(-1, 'month');
+        console.log(nuevaFecha.diff(this.$moment().clone(), 'months'))
+        if (nuevaFecha.diff(this.$moment().clone(), 'months') > -14 )
+            state.fecha = nuevaFecha;
     },
     aumentarFecha(state) {
-        const newFecha = state.fecha.clone().add(1, 'month')
-        if (newFecha.diff(this.$moment().clone(), 'months') < 1)
+        const newFecha = state.fecha.clone().add(1, 'month');
+        
+        if (newFecha.diff(this.$moment().clone(), 'months') < 0 )
             state.fecha = newFecha;
     },
     setProductos(state, productos) {
