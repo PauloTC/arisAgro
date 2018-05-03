@@ -2,7 +2,7 @@
     .mini-card
         .divleft
         span.ninguno {{ vendedorSeleccionado || 'NINGUNO'}}
-        a.modal-trigger.cambiar(:href='"#" + modalId' @click='habilitar=true') cambiar
+        a.modal-trigger.cambiar(:href='"#" + modalId' @click='deshabilitar=true') cambiar
         div(:id='modalId').modal.modal-fixed-footer.modal3
             .modal-header
                 h6 SELECCIONE VENDEDORES
@@ -21,7 +21,7 @@
                             p(:class='{ textwhite: indexZona.indexOf(zona.id)>-1 }') {{ zona.nombre }}
             .modal-footer
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='seleccionarVendedor(); agregardata3({vendedor, indice,zonasSeleccionadas})' :class='{ disabled: habilitar}') Aceptar
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='seleccionarVendedor(); agregardata3({vendedor, indice,zonasSeleccionadas})' :class='{ disabled: deshabilitar}') Aceptar
 </template>
 <script>
 import { v4 } from 'uuid';
@@ -44,7 +44,7 @@ export default {
             vendedor:[],
             zonasSeleccionadas:[],
             ventas:[],
-            habilitar:true
+            deshabilitar:true
         }
     },
     methods:{
@@ -61,7 +61,7 @@ export default {
             $('#' + this.modalId).find(".zonas").prop("checked", false); 
         },
         seleccionarZona(zona,i,event){
-            this.habilitar = false
+            this.deshabilitar = false
             if(event.checked){
                 this.indexZona.push(i);
                 this.zonasSeleccionadas.push(zona);

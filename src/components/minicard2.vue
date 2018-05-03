@@ -2,7 +2,7 @@
     .mini-card
         .divleft
         span.ninguno {{ (zonaSeleccionada || {}).nombre || 'NINGUNO' }}
-        a.modal-trigger.cambiar(:href='"#" + modalId') cambiar
+        a.modal-trigger.cambiar(:href='"#" + modalId' @click='deshabilitar=true') cambiar
         div(:id='modalId').modal.modal-fixed-footer.modal2
             .modal-header
                 h6 SELECCIONE ZONA
@@ -21,7 +21,7 @@
                             p {{ item.nombre }}
             .modal-footer
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarZona(), agregardata2({zonaSeleccionada, indice})') Aceptar
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarZona(), agregardata2({zonaSeleccionada, indice})' :class='{ disabled: deshabilitar}') Aceptar
 </template>
 <script>
 import { v4 } from 'uuid';
@@ -39,7 +39,8 @@ export default {
             territorios,
             zonaClientes:[],
             isactive: '',
-            i: ''
+            i: '',
+            deshabilitar: true
         }
     },
     methods:{
@@ -62,6 +63,7 @@ export default {
             this.$emit('zonas', {valor:this.zonaSeleccionada, indice:this.indice, chartData: this.chartData2})
         },
         background(ind,item){
+            this.deshabilitar = false;
             this.i = ind;
             console.log(this.i)
         }

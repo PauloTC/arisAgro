@@ -2,7 +2,7 @@
     .mini-card
         .divleft
         span.ninguno {{ (territorioSeleccionado || {}).nombre || 'NINGUNO' }}
-        a.modal-trigger.cambiar(:href='"#" + modalId') cambiar
+        a.modal-trigger.cambiar(:href='"#" + modalId' @click='deshabilitar=true') cambiar
         div(:id='modalId').modal.modal-fixed-footer.modal1
             .modal-header
                 h6 SELECCIONE TERRITORIO
@@ -16,7 +16,7 @@
                                 p {{ item.nombre }}
             .modal-footer
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
-                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarTerritorio(), agregardata1({territorioSeleccionado,indice})') Aceptar
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarTerritorio(), agregardata1({territorioSeleccionado,indice})' :class='{disabled: deshabilitar}') Aceptar
 </template>
 <script>
 import { v4 } from 'uuid'
@@ -33,6 +33,7 @@ export default {
             territorioSeleccionadoModal: null,
             territorioSeleccionado: null,
             territorios,
+            deshabilitar:true
         }
     },
     methods:{
@@ -40,12 +41,13 @@ export default {
             agregardata1: 'agregardata1',
         }),
         seleccionarZonas:function(event, i){
+            this.deshabilitar= false;
             if(event.target.checked)
                 this.index=  event.target.id;
             console.log(this.index);
         },
         cambiarTerritorio:function(){
-            $("#"+this.index).prop( 'checked', true )
+            $('#'+ this.modalId).find("#"+this.inputId).prop( 'checked', true )
             this.territorioSeleccionado = this.territorioSeleccionadoModal; 
             this.$emit('territorio', {valor:this.territorioSeleccionado, indice:this.indice, chartData: this.chartData1 })
         }      
