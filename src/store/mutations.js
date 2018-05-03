@@ -7,7 +7,7 @@ export default {
     },
     aumentarFecha(state) {
         const newFecha = state.fecha.clone().add(1, 'month')
-        if (newFecha.diff(this.$moment().clone(), 'months') <= 0)
+        if (newFecha.diff(this.$moment().clone(), 'months') < 1)
             state.fecha = newFecha;
     },
     setProductos(state, productos) {

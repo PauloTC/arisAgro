@@ -20,7 +20,7 @@
                             span
                             p(:class='{ textwhite: indexZona.indexOf(zona.id)>-1 }') {{ zona.nombre }}
             .modal-footer
-                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!' @click= 'cleanCheck()') Cancelar
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='seleccionarVendedor(); agregardata3({vendedor, indice,zonasSeleccionadas})') Aceptar
 </template>
 <script>
@@ -42,6 +42,7 @@ export default {
             vendedores,
             vendedor:[],
             zonasSeleccionadas:[],
+            ventas:[]
         }
     },
     methods:{
@@ -49,6 +50,7 @@ export default {
             agregardata3: 'agregardata3',
         }),
         mostrarZonas:function(item,i){
+            this.ventas =[];
             this.vendedor = item;
             this.indexVendedor = item.id;
             this.vendedorSeleccionadoModal = item.nombre;   
@@ -68,10 +70,26 @@ export default {
             }
         }, 
         seleccionarVendedor:function(){
-            this.indexZona= [];
+            let clientes = this.zonasSeleccionadas.map(element => {
+                return element.clientes                      
+            });
+            clientes.forEach(elemento => elemento.map((elem)=> this.ventas.push(elem))) 
+            
+            this.ventas = this.ventas.sort(function(a,b){
+                let x = (a.venta),
+                    y = (b.venta);
+
+                return ((x > y)? -1:((x < y)? 1: 0))
+            })
+            if (this.ventas.length > 10){
+                this.ventas = this.ventas.slice(0,10);
+            }
             this.vendedorSeleccionado = this.vendedorSeleccionadoModal;
-            this.$emit('vendedor', {valor:this.vendedor, zonas: this.zonasSeleccionadas, indice:this.indice, chartData: this.chartData3})
-            $(".zonas").prop("checked", false);
+            this.$emit('vendedor', {valor:this.vendedor, ventas: this.ventas, indice:this.indice, chartData: this.chartData3})
+        },
+        cleanCheck:function(){
+            this.indexZona= [];
+            $(".zonas").prop("checked", false); 
         }
     },
     computed:{

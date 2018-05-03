@@ -15,7 +15,7 @@
                             tr(v-for='(producto,i) in productos' :key="i")
                                 td {{ i + 1 }}
                                 td {{ producto.nombre }}
-                                td {{ producto.precio }}
+                                td USD {{ producto.precio }}
             .col.s12.m8.progres
                 h3 MONTO TOTAL VENDIDO
                 .prog-bar

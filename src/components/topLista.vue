@@ -15,10 +15,16 @@ export default {
     computed:{
         limiteClientes: function(){
             let clientesArray = this.items.clientes;
-            if (clientesArray.length > 10){
-                clientesArray = clientesArray.slice(0,10);
+            let clientesOrdenados = clientesArray.slice().sort(function(a,b){
+                let x = (a.venta),
+                    y = (b.venta);
+
+                return ((x > y)? -1:((x < y)? 1: 0))
+            })
+            if (clientesOrdenados.length > 10){
+                clientesOrdenados = clientesOrdenados.slice(0,10);
             }
-            return clientesArray;
+            return clientesOrdenados;
         }
     }
 }

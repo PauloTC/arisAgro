@@ -58,7 +58,7 @@ export default {
         },
         cambiarZona:function(){
             this.zonaSeleccionada = this.zonaSeleccionadaModal
-            console.log(this.indice)
+            console.log(this.zonaSeleccionada)
             this.$emit('zonas', {valor:this.zonaSeleccionada, indice:this.indice, chartData: this.chartData2})
         },
         background(ind,item){

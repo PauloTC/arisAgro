@@ -150,25 +150,8 @@ import { functionDeclaration } from 'babel-types';
                 }
             },
             pasarVendedor:function(val){
-                console.log(val.zonas)
-                let clientes = val.zonas.map(element => {
-                    return element.clientes                      
-                });
-                let ventas = []
-                clientes.forEach(elemento => elemento.map((elem)=> ventas.push(elem))) 
-                
-                ventas = ventas.sort(function(a,b){
-                    let x = (a.venta),
-                        y = (b.venta);
-
-                    return ((x > y)? -1:((x < y)? 1: 0))
-                })
-                if (ventas.length > 10){
-                    ventas = ventas.slice(0,10);
-                }
                 if(val.valor!=null){
-                    console.log(ventas)
-                    this.items3.splice(val.indice,1,ventas);
+                    this.items3.splice(val.indice,1,val.ventas);
                     this.nombreVendedor.splice(val.indice,1,val.valor.nombre)
                     this.chartData.chart3 = val.chartData;
                     this.mostrarVendedor = false;
