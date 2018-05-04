@@ -11,7 +11,7 @@
                 .col.s12(style='padding:0')
                     .content-item(v-for='(item, i) in territorios' :key='i')
                             label.config-radio
-                                input(:id='inputId' :key='i' type='radio' name='group1' :value='item' v-model='territorioSeleccionadoModal' @click='seleccionarZonas($event)')
+                                input(:id="'inputId'+ i" class='inputTerritorio' :key='i' type='radio' name='group1' :value='item' v-model='territorioSeleccionadoModal' @click='seleccionarZonas($event)')
                                 span 
                                 p {{ item.nombre }}
             .modal-footer
@@ -35,7 +35,9 @@ export default {
             territorios,
             deshabilitar:true,
             index: '',
-            evento:''
+            evento:'',
+            eventoId: []
+
         }
     },
     methods:{
@@ -44,14 +46,18 @@ export default {
         }),
         seleccionarZonas:function(event){
             this.deshabilitar= false;
-            this.evento = event.target.id 
+            this.evento = event.target.id;
+            console.log(this.evento)
         },
-        cambiarTerritorio:function(){     
+        cambiarTerritorio:function(){
+            console.log(this.indice)
+            this.eventoId[this.indice] = this.evento;
             this.territorioSeleccionado = this.territorioSeleccionadoModal; 
             this.$emit('territorio', {valor:this.territorioSeleccionado, indice:this.indice, chartData: this.chartData1 })
         },
         quitarCheck:function(){
-            $("#"+ this.modalId).find("#"+this.evento).prop( 'checked', false )
+            $('.inputTerritorio').prop('checked', false )
+            $('#' + this.modalId).find('#'+ this.eventoId[this.indice]).click()
         }      
     },
     computed:{
@@ -61,7 +67,7 @@ export default {
     },
     mounted: function () {
         this.$nextTick(function () {
-            $('.modal1').modal({
+            $('.modal').modal({
                 dismissible: false
             });
         })

@@ -2,7 +2,7 @@
     .mini-card
         .divleft
         span.ninguno {{ (zonaSeleccionada || {}).nombre || 'NINGUNO' }}
-        a.modal-trigger.cambiar(:href='"#" + modalId' @click='deshabilitar=true') cambiar
+        a.modal-trigger.cambiar(:href='"#" + modalId' @click='deshabilitar=true; quitarCheck2()') cambiar
         div(:id='modalId').modal.modal-fixed-footer.modal2
             .modal-header
                 h6 SELECCIONE ZONA
@@ -10,13 +10,13 @@
                 .col.s6(style = 'padding:0')
                     h6.subtitle Territorio
                     ul 
-                        li(v-for='(item , i) in territorios' @click='zonasTerritorio(item,i)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
+                        li(:id="'inputIn'+i"  v-for='(item , i) in territorios' @click='zonasTerritorio(item,i,$event)' :class='{ "activediv": item.id == isactive }') {{ item.nombre }}
                             <i class="material-icons" :class='{ show: item.id == isactive }'>chevron_right</i>
                 .col.s6(style = 'padding:0')
                     h6.subtitle Zonas
                     .content-item(v-for='(item,ind) in zonaClientes' :class='{ "classCheck": item.id == i }')
                         label.config-radio 
-                            input(type='radio' name='group2' :value='item' v-model='zonaSeleccionadaModal' @click='background(ind,item)')
+                            input(:id="'input' + ind" class='inputZonas' type='radio' name='group2' :value='item' v-model='zonaSeleccionadaModal' @click='background(ind,item,$event)')
                             span
                             p {{ item.nombre }}
             .modal-footer
@@ -26,6 +26,7 @@
 <script>
 import { v4 } from 'uuid';
 import { mapGetters, mapActions } from 'vuex'
+import { debuggerStatement } from 'babel-types';
 
 export default {
     name: 'minicard2',
@@ -40,31 +41,56 @@ export default {
             zonaClientes:[],
             isactive: '',
             i: '',
-            deshabilitar: true
+            deshabilitar: true,
+            eventModal:'',
+            eventTerritorio:'',
+            eventZonasModal:'',
+            eventZonas2:'',
+            inputEvent2:[]
         }
     },
     methods:{
         ...mapActions({
             agregardata2: 'agregardata2',
         }),
-        zonasTerritorio:function(item,i){
+        zonasTerritorio:function(item,i,event){  
             this.i='';
             this.isactive = i;
             if(item.zonas!==undefined){
                 this.zonaClientes = item.zonas.map(element => {
                     return element;
                 });
-                console.log(this.zonaClientes)
-            }      
+            }
+            this.eventModal= event.target.id;  
+            // $('.inputZonas').prop('checked', false)
+            console.log(this.eventModal)
+            // if(this.inputEvent2.length!=0 && this.eventModal == this.inputEvent2[this.indice].territorio){
+            //     $('#' + this.modalId).find('#'+ this.inputEvent2[this.indice].territorio).click()
+            //     $('#' + this.modalId).find('#'+ this.inputEvent2[this.indice].zona).click()
+            // }    
         },
-        cambiarZona:function(){
-            this.zonaSeleccionada = this.zonaSeleccionadaModal
-            console.log(this.zonaSeleccionada)
-            this.$emit('zonas', {valor:this.zonaSeleccionada, indice:this.indice, chartData: this.chartData2})
-        },
-        background(ind,item){
+        background(ind,item,event){
             this.deshabilitar = false;
             this.i = ind;
+            this.eventZonasModal = event.target.id;
+            console.log(this.eventZonas2);
+        },
+        cambiarZona:function(){
+            this.eventTerritorio = this.eventModal;
+            this.eventZonas2 = this.eventZonasModal;
+            if(this.eventTerritorio!='' && this.eventZonas2!=''){
+                this.inputEvent2[this.indice]= { territorio: this.eventTerritorio, zona:this.eventZonas2 };
+            }  
+            // console.log(this.inputEvent2[this.indice].zona);
+            console.log(this.inputEvent2);
+            this.zonaSeleccionada = this.zonaSeleccionadaModal;
+            this.$emit('zonas', {valor:this.zonaSeleccionada, indice:this.indice, chartData: this.chartData2});
+        },
+        quitarCheck2:function(){
+            if(this.inputEvent2.length!=0  && this.inputEvent2[this.indice].territorio!=undefined){
+                $('#' + this.modalId).find('#'+ this.inputEvent2[this.indice].territorio).slice().click();
+                $('#' + this.modalId).find('#'+ this.inputEvent2[this.indice].zona).slice().click();
+            }
         }
     },
     computed:{

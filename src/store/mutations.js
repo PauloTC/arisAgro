@@ -43,9 +43,9 @@ export default {
                 }               
             }).filter(e=> e!=undefined)
              ventaTotal = venta.reduce((a, b)=> a + b);
-             console.log(ventaTotal)
+            //  console.log(ventaTotal)
             state.datasets3[datos.indice].data = [ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal]
         }
-        console.log(state.datasets3) 
+        // console.log(state.datasets3) 
     }    
 }
