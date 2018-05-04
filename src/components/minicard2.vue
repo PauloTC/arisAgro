@@ -65,7 +65,6 @@ export default {
         background(ind,item){
             this.deshabilitar = false;
             this.i = ind;
-            console.log(this.i)
         }
     },
     computed:{
