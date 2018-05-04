@@ -11,11 +11,11 @@
                 .col.s12(style='padding:0')
                     .content-item(v-for='(item, i) in territorios' :key='i')
                             label.config-radio
-                                input(:id='inputId' :key='i' type='radio' name='group1' :value='item' v-model='territorioSeleccionadoModal' @click='seleccionarZonas($event, i)')
+                                input(:id='inputId' :key='i' type='radio' name='group1' :value='item' v-model='territorioSeleccionadoModal' @click='seleccionarZonas($event)')
                                 span 
                                 p {{ item.nombre }}
             .modal-footer
-                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!') Cancelar
+                a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!' @click='quitarCheck()') Cancelar
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='cambiarTerritorio(), agregardata1({territorioSeleccionado,indice})' :class='{disabled: deshabilitar}') Aceptar
 </template>
 <script>
@@ -33,23 +33,25 @@ export default {
             territorioSeleccionadoModal: null,
             territorioSeleccionado: null,
             territorios,
-            deshabilitar:true
+            deshabilitar:true,
+            index: '',
+            evento:''
         }
     },
     methods:{
         ...mapActions({
             agregardata1: 'agregardata1',
         }),
-        seleccionarZonas:function(event, i){
+        seleccionarZonas:function(event){
             this.deshabilitar= false;
-            if(event.target.checked)
-                this.index=  event.target.id;
-            console.log(this.index);
+            this.evento = event.target.id 
         },
-        cambiarTerritorio:function(){
-            $('#'+ this.modalId).find("#"+this.inputId).prop( 'checked', true )
+        cambiarTerritorio:function(){     
             this.territorioSeleccionado = this.territorioSeleccionadoModal; 
             this.$emit('territorio', {valor:this.territorioSeleccionado, indice:this.indice, chartData: this.chartData1 })
+        },
+        quitarCheck:function(){
+            $("#"+ this.modalId).find("#"+this.evento).prop( 'checked', false )
         }      
     },
     computed:{
