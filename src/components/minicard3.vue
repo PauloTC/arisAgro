@@ -16,7 +16,7 @@
                 .col.s6(style='padding:0')
                     .content-item(v-for='(zona, i) in zonasVendedor' :class='{ check: indexZona.indexOf(zona.id)>-1 }')
                         label.config-radio  
-                            input(:id="'input' + i" class='zonas' type='checkbox' class="filled-in" name='group3' :key='i' @click='seleccionarZona(zona,i,$event.target)')
+                            input(:id="'input' + inputId" class='zonas' type='checkbox' class="filled-in" name='group3' :key='i' @click='seleccionarZona(zona,i,$event.target)')
                             span
                             p(:class='{ textwhite: indexZona.indexOf(zona.id)>-1 }') {{ zona.nombre }}
             .modal-footer
@@ -52,9 +52,10 @@ export default {
     },
     methods:{
         ...mapActions({
-            agregardata3: 'agregardata3',
+            agregardata3: 'agregardata3', //se lanza al aceptar
         }),
-        mostrarZonas:function(item,i,event){
+        mostrarZonas:function(item,i,event){  //Se lanza al click de un vendedor diferente
+
             this.zonasSeleccionadas=[];
             this.ventas =[];
             this.vendedor = item;
@@ -62,22 +63,36 @@ export default {
             this.vendedorSeleccionadoModal = item.nombre;   
             this.indexZona= [];
             this.eventVendedor=event.target.id;
+
             $('.zonas').prop('checked', false)
-            console.log(this.inputEvent)
+
+            console.log(this.inputEvent.length)
+            console.log(this.eventVendedor)
+            console.log(this.inputEvent[this.indice].vendedor)
             
-            if(this.inputEvent.length!=0 && this.eventVendedor == this.inputEvent[this.indice].vendedor){
+            if( this.eventVendedor != this.inputEvent[this.indice].vendedor ){
+
+                console.log("son diferentes")
+
+            }
+             else if(this.inputEvent.length!=0 && this.eventVendedor == this.inputEvent[this.indice].vendedor){
                 console.log((this.inputEvent[this.indice].zona).length);
+                
+                // $('#' + this.modalId).find('#'+ this.inputEvent[this.indice].zona[i]).click()
+                
                 for(let i = 0; i< (this.inputEvent[this.indice].zona).length; i++){
                     $('#' + this.modalId).find('#'+ this.inputEvent[this.indice].zona[i]).click()
                 }
-            }           
+            } 
         },
-        seleccionarZona(zona,i,event){
-            console.log(this.eventZonas)
+        seleccionarZona(zona,i,event){ //se lanza cuando seleciono otra zona
+            console.log(zona)
+            console.log(i)
+            console.log(event)      
             this.deshabilitar = false
-            if(event.checked){
-                this.indexZona.push(i);
-                this.zonasSeleccionadas.push(zona);
+            if(event.checked){ // Si el input esta checkeado
+                this.indexZona.push(i); // pusheo al array vacio la posicion del elemento en el array padre ejem: 2 , 3 ,5
+                this.zonasSeleccionadas.push(zona); // pusheo un objeto con parametro clienes , id , nombre de la zona
                 if(this.eventZonas.indexOf(event.id)==-1)
                     this.eventZonas.push(event.id)            
             }else{
@@ -85,10 +100,13 @@ export default {
                 this.indexZona.splice(indexRemover,1);
                 let zonaRemover=this.zonasSeleccionadas.indexOf(zona);
                 this.zonasSeleccionadas.splice(zonaRemover,1);
+                console.log(this.zonasSeleccionadas)
             }
-            console.log(this.eventZonas)
+            if (this.zonasSeleccionadas.length  == 0){
+                  this.deshabilitar = true
+            }   
         }, 
-        seleccionarVendedor:function(){
+        seleccionarVendedor:function(){    //Se ejecuta al aceptar
            let clientes = this.zonasSeleccionadas.map(element => {
                 return element.clientes                      
             });
@@ -105,20 +123,21 @@ export default {
             }
             if(this.zonasSeleccionadas.length!=0)
                 this.inputEvent[this.indice]= {vendedor:this.eventVendedor,zona:this.eventZonas};
-                console.log(this.inputEvent)
                 this.vendedorSeleccionado = this.vendedorSeleccionadoModal;
-            this.$emit('vendedor', {valor:this.vendedor, ventas: this.ventas, indice:this.indice, chartData: this.chartData3})
+                this.$emit('vendedor', {valor:this.vendedor, ventas: this.ventas, indice:this.indice, chartData: this.chartData3})
         },
         quitarCheck:function(){ 
             if( this.inputEvent.length!=0){
-                $('#' + this.modalId).find('#'+ this.inputEvent[this.indice].vendedor).click();
-                for(let i = 0; i<=0; i++){
-                    let n = 0;
-                    while(n<this.inputEvent[this.indice].zona.length){
-                        $('#' + this.modalId).find('#'+ this.inputEvent[this.indice].zona[i]).click();
-                        n++;
-                    } 
-                } 
+
+                
+                // $('#' + this.modalId).find('#'+ this.inputEvent[this.indice].vendedor).click();
+                // for(let i = 0; i<=0; i++){
+                //     let n = 0;
+                //     while(n<this.inputEvent[this.indice].zona.length){
+                //         $('#' + this.modalId).find('#'+ this.inputEvent[this.indice].zona[i]).click();
+                //         n++;
+                //     } 
+                // } 
             }                
         }
     },
