@@ -786,6 +786,7 @@ export default () => ({
                 {
                     id:0,
                     nombre:'Ayacucho',
+                    checkActive: false,
                     clientes:[
                         {
                             nombre:'KEYPERU',
@@ -800,6 +801,7 @@ export default () => ({
                 {
                     id:1,
                     nombre:'Cuzco',
+                    checkActive: false,
                     clientes:[
                         {
                             nombre:'KEYPERU',
@@ -814,6 +816,7 @@ export default () => ({
                 {   
                     id:2,
                     nombre:'Huancavelica',
+                    checkActive: false,
                     clientes:[
                         {
                             nombre:'FUNDO SAN FERNANDO',
@@ -848,6 +851,7 @@ export default () => ({
                 {
                     id:10,
                     nombre:'Lima',
+                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -866,6 +870,7 @@ export default () => ({
                 {
                     id:11,
                     nombre:'Huancavelica',
+                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -884,6 +889,7 @@ export default () => ({
                 {   
                     id:12,
                     nombre:'Cuzco',
+                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -922,6 +928,7 @@ export default () => ({
                 {
                     id:20,
                     nombre:'Pisco',
+                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -940,6 +947,7 @@ export default () => ({
                 {
                     id:21,
                     nombre:'Huancavelica',
+                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -958,6 +966,7 @@ export default () => ({
                 {   
                     id:22,
                     nombre:'Puno',
+                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -974,8 +983,9 @@ export default () => ({
                     ]
                 },
                 {
-                    id:3,
+                    id:23,
                     nombre:'Cuzco',
+                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -1014,6 +1024,7 @@ export default () => ({
                 {
                     id:30,
                     nombre:'Huancavelica',
+                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -1032,6 +1043,7 @@ export default () => ({
                 {
                     id:31,
                     nombre:'Cuzco',
+                    checkActive: false,
                     clientes: [
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -1050,6 +1062,7 @@ export default () => ({
                 {   
                     id:32,
                     nombre:'Apurimac',
+                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -1068,6 +1081,7 @@ export default () => ({
                 {
                     id:33,
                     nombre:'Cuzco',
+                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -1110,6 +1124,7 @@ export default () => ({
                 {
                     id:40,
                     nombre:'Ayacucho',
+                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -1128,6 +1143,7 @@ export default () => ({
                 {
                     id:41,
                     nombre:'Cuzco',
+                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -1146,6 +1162,7 @@ export default () => ({
                 {   
                     id:42,
                     nombre:'Apurimac',
+                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -1164,6 +1181,7 @@ export default () => ({
                 {
                     id:43,
                     nombre:'Cuzco',
+                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',

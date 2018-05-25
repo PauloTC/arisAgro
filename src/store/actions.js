@@ -17,6 +17,7 @@ export default {
     },
     agregardata3({ commit,state }, data){
         console.log(data)
+        console.log("arrriba la data")
         if(data) commit('setDataSet2', data)
     },
 }

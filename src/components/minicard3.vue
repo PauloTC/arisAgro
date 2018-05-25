@@ -14,11 +14,11 @@
                     ul 
                         li(:id="'inputVend' + i" v-for='(item,i) in arrayVendedores' :key='item.id'  @click='mostrarZonas(item,i,$event)' :class='{ "activediv": item.id == indexVendedor }') {{ item.nombre }}
                 .col.s6(style='padding:0')
-                    .content-item(v-for='(zona, i) in zonasVendedor' :class='{ check: indexZona.indexOf(zona.id)>-1 }')
+                    .content-item(v-for='(zona, i) in zonasVendedor' v-bind:class='{ check: zona.checkActive }')
                         label.config-radio  
                             input(:id="'input' + i" class='zonas' type='checkbox' class="filled-in" name='group3' :key='i' @click='seleccionarZona(zona,i,$event.target)')
                             span
-                            p(:class='{ textwhite: indexZona.indexOf(zona.id)>-1 }') {{ zona.nombre }}
+                            p(:class='{textwhite:zona.checkActive}') {{ zona.nombre }}
             .modal-footer
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-cancel(href='#!' ) Cancelar
                 a.modal-action.modal-close.waves-effect.waves-green.btn-flat.btn-aceptar(href='#!' @click='seleccionarVendedor(); agregardata3({vendedor, indice,zonasSeleccionadas})' :class='{ disabled: deshabilitar}') Aceptar
@@ -66,31 +66,29 @@ export default {
             this.eventVendedor=event.target.id;
 
             $('.zonas').prop('checked', false)
+                        
+            for(let i = 0; i < this.zonasVendedor.length; i++ ){
 
-            if( this.eventVendedor != this.inputEvent[this.indice].vendedor ){
-
-                console.log("son diferentes")
-                console.log(this.inputEvent )
-                console.log(this.indice)
-                
+                this.zonasVendedor[i].checkActive = false
             }
-             else if(this.inputEvent.length!=0 && this.eventVendedor == this.inputEvent[this.indice].vendedor){
-                console.log((this.inputEvent[this.indice].zona).length);
-                
-                // $('#' + this.modalId).find('#'+ this.inputEvent[this.indice].zona[i]).click()
-                console.log(this.inputEvent)
-                console.log(this.indice)
-                // for(let i = 0; i< (this.inputEvent[this.indice].zona).length; i++){
-                //     $('#' + this.modalId).find('#'+ this.inputEvent[this.indice].zona[i]).click()
-                // }
-            } 
+
+            if( this.vendedorSeleccionado !== this.vendedorSeleccionadoModal ){
+                $('.zonas').prop('checked', false)
+            }
         },
         seleccionarZona(zona,i,event){ //se lanza cuando seleciono otra zona
+            
+            this.deshabilitar = false // habilita el boton aceptar
 
-            this.deshabilitar = false
+            if(event.checked){
+                this.zonasVendedor[i].checkActive = true
+                this.zonasSeleccionadas.push(zona); // pusheo un objeto con parametro clienes , id , nombre de la zona
+            }else{
+                this.zonasVendedor[i].checkActive = false                
+            }
+
             if(event.checked){ // Si el input esta checkeado
                 this.indexZona.push(i); // pusheo al array vacio la posicion del elemento en el array padre ejem: 2 , 3 ,5
-                this.zonasSeleccionadas.push(zona); // pusheo un objeto con parametro clienes , id , nombre de la zona
                 if(this.eventZonas.indexOf(event.id)==-1)
                     this.eventZonas.push(event.id)            
             }else{
@@ -98,16 +96,17 @@ export default {
                 this.indexZona.splice(indexRemover,1);
                 let zonaRemover=this.zonasSeleccionadas.indexOf(zona);
                 this.zonasSeleccionadas.splice(zonaRemover,1);
-                console.log(this.zonasSeleccionadas)
             }
             if (this.zonasSeleccionadas.length  == 0){
                   this.deshabilitar = true
             }   
         }, 
         seleccionarVendedor:function(){    //Se ejecuta al aceptar
+
            let clientes = this.zonasSeleccionadas.map(element => {
                 return element.clientes                      
             });
+
             clientes.forEach(elemento => elemento.map((elem)=> this.ventas.push(elem))) 
             
             this.ventas = this.ventas.sort(function(a,b){
@@ -125,24 +124,11 @@ export default {
                 this.$emit('vendedor', {valor:this.vendedor, ventas: this.ventas, indice:this.indice, chartData: this.chartData3})
         },
         quitarCheck:function(){ 
-            if( this.inputEvent.length!=0){
-                console.log("sdfsdfsdfsdfsdf")
-                console.log(this.zonasSeleccionadas)
-                console.log(this.zonasSeleccionadas.length)
+            if( this.zonasSeleccionadas.length > 0){
                for( let i = 0; i < this.zonasSeleccionadas.length; i++ ){
-                   console.log(this.zonasSeleccionadas[i].nombre)
                    $('#' + this.modalId).find(this.zonasSeleccionadas[i].nombre).closets('label').click();
-                   console.log("se clickea")
                }
-                console.log("sdfsdfsdfsdfsdf")
 
-                //$('#' + this.modalId)     ------------->   contiene todo el modal
-                //this.inputEvent[this.indice].vendedor   ------------->  me arroja el id de del vendedor
-                $('#' + this.modalId).find('#'+ this.inputEvent[this.indice].vendedor).click();
-
-
-
-                
             }                
         }
     },
