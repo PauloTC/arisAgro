@@ -16,7 +16,7 @@
                 .col.s6(style='padding:0')
                     .content-item(v-for='(zona, i) in zonasVendedor' :class='{ check: indexZona.indexOf(zona.id)>-1 }')
                         label.config-radio  
-                            input(:id="'input' + inputId" class='zonas' type='checkbox' class="filled-in" name='group3' :key='i' @click='seleccionarZona(zona,i,$event.target)')
+                            input(:id="'input' + i" class='zonas' type='checkbox' class="filled-in" name='group3' :key='i' @click='seleccionarZona(zona,i,$event.target)')
                             span
                             p(:class='{ textwhite: indexZona.indexOf(zona.id)>-1 }') {{ zona.nombre }}
             .modal-footer
@@ -26,6 +26,7 @@
 <script>
 import { v4 } from 'uuid';
 import { mapGetters, mapActions } from 'vuex'
+import { forStatement } from 'babel-types';
 
 export default {
     name: 'minicard3',
@@ -66,29 +67,26 @@ export default {
 
             $('.zonas').prop('checked', false)
 
-            console.log(this.inputEvent.length)
-            console.log(this.eventVendedor)
-            console.log(this.inputEvent[this.indice].vendedor)
-            
             if( this.eventVendedor != this.inputEvent[this.indice].vendedor ){
 
                 console.log("son diferentes")
-
+                console.log(this.inputEvent )
+                console.log(this.indice)
+                
             }
              else if(this.inputEvent.length!=0 && this.eventVendedor == this.inputEvent[this.indice].vendedor){
                 console.log((this.inputEvent[this.indice].zona).length);
                 
                 // $('#' + this.modalId).find('#'+ this.inputEvent[this.indice].zona[i]).click()
-                
-                for(let i = 0; i< (this.inputEvent[this.indice].zona).length; i++){
-                    $('#' + this.modalId).find('#'+ this.inputEvent[this.indice].zona[i]).click()
-                }
+                console.log(this.inputEvent)
+                console.log(this.indice)
+                // for(let i = 0; i< (this.inputEvent[this.indice].zona).length; i++){
+                //     $('#' + this.modalId).find('#'+ this.inputEvent[this.indice].zona[i]).click()
+                // }
             } 
         },
         seleccionarZona(zona,i,event){ //se lanza cuando seleciono otra zona
-            console.log(zona)
-            console.log(i)
-            console.log(event)      
+
             this.deshabilitar = false
             if(event.checked){ // Si el input esta checkeado
                 this.indexZona.push(i); // pusheo al array vacio la posicion del elemento en el array padre ejem: 2 , 3 ,5
@@ -128,16 +126,23 @@ export default {
         },
         quitarCheck:function(){ 
             if( this.inputEvent.length!=0){
+                console.log("sdfsdfsdfsdfsdf")
+                console.log(this.zonasSeleccionadas)
+                console.log(this.zonasSeleccionadas.length)
+               for( let i = 0; i < this.zonasSeleccionadas.length; i++ ){
+                   console.log(this.zonasSeleccionadas[i].nombre)
+                   $('#' + this.modalId).find(this.zonasSeleccionadas[i].nombre).closets('label').click();
+                   console.log("se clickea")
+               }
+                console.log("sdfsdfsdfsdfsdf")
+
+                //$('#' + this.modalId)     ------------->   contiene todo el modal
+                //this.inputEvent[this.indice].vendedor   ------------->  me arroja el id de del vendedor
+                $('#' + this.modalId).find('#'+ this.inputEvent[this.indice].vendedor).click();
+
+
 
                 
-                // $('#' + this.modalId).find('#'+ this.inputEvent[this.indice].vendedor).click();
-                // for(let i = 0; i<=0; i++){
-                //     let n = 0;
-                //     while(n<this.inputEvent[this.indice].zona.length){
-                //         $('#' + this.modalId).find('#'+ this.inputEvent[this.indice].zona[i]).click();
-                //         n++;
-                //     } 
-                // } 
             }                
         }
     },

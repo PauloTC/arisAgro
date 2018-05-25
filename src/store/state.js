@@ -846,7 +846,7 @@ export default () => ({
             nombre:'Randy Ingram',
             zonas:[  
                 {
-                    id:0,
+                    id:10,
                     nombre:'Lima',
                     clientes:[
                         {
@@ -864,7 +864,7 @@ export default () => ({
                     ]
                 },
                 {
-                    id:1,
+                    id:11,
                     nombre:'Huancavelica',
                     clientes:[
                         {
@@ -882,7 +882,7 @@ export default () => ({
                     ]
                 },
                 {   
-                    id:2,
+                    id:12,
                     nombre:'Cuzco',
                     clientes:[
                         {
@@ -920,7 +920,7 @@ export default () => ({
             nombre:'Jayden McLaughlin',
             zonas:[
                 {
-                    id:0,
+                    id:20,
                     nombre:'Pisco',
                     clientes:[
                         {
@@ -938,7 +938,7 @@ export default () => ({
                     ]
                 },
                 {
-                    id:1,
+                    id:21,
                     nombre:'Huancavelica',
                     clientes:[
                         {
@@ -956,7 +956,7 @@ export default () => ({
                     ]
                 },
                 {   
-                    id:2,
+                    id:22,
                     nombre:'Puno',
                     clientes:[
                         {
@@ -1012,7 +1012,7 @@ export default () => ({
             nombre:'Adele Fields', 
             zonas:[
                 {
-                    id:0,
+                    id:30,
                     nombre:'Huancavelica',
                     clientes:[
                         {
@@ -1030,7 +1030,7 @@ export default () => ({
                     ]
                 },
                 {
-                    id:1,
+                    id:31,
                     nombre:'Cuzco',
                     clientes: [
                         {
@@ -1048,7 +1048,7 @@ export default () => ({
                     ]
                 },
                 {   
-                    id:2,
+                    id:32,
                     nombre:'Apurimac',
                     clientes:[
                         {
@@ -1066,7 +1066,7 @@ export default () => ({
                     ]
                 },
                 {
-                    id:3,
+                    id:33,
                     nombre:'Cuzco',
                     clientes:[
                         {
@@ -1108,7 +1108,7 @@ export default () => ({
             nombre:'Cynthia Vasquez',
             zonas:[
                 {
-                    id:0,
+                    id:40,
                     nombre:'Ayacucho',
                     clientes:[
                         {
@@ -1126,7 +1126,7 @@ export default () => ({
                     ]
                 },
                 {
-                    id:1,
+                    id:41,
                     nombre:'Cuzco',
                     clientes:[
                         {
@@ -1144,7 +1144,7 @@ export default () => ({
                     ]
                 },
                 {   
-                    id:2,
+                    id:42,
                     nombre:'Apurimac',
                     clientes:[
                         {
@@ -1162,7 +1162,7 @@ export default () => ({
                     ]
                 },
                 {
-                    id:3,
+                    id:43,
                     nombre:'Cuzco',
                     clientes:[
                         {
