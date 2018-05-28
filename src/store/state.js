@@ -786,7 +786,6 @@ export default () => ({
                 {
                     id:0,
                     nombre:'Ayacucho',
-                    checkActive: false,
                     clientes:[
                         {
                             nombre:'KEYPERU',
@@ -801,7 +800,6 @@ export default () => ({
                 {
                     id:1,
                     nombre:'Cuzco',
-                    checkActive: false,
                     clientes:[
                         {
                             nombre:'KEYPERU',
@@ -816,7 +814,6 @@ export default () => ({
                 {   
                     id:2,
                     nombre:'Huancavelica',
-                    checkActive: false,
                     clientes:[
                         {
                             nombre:'FUNDO SAN FERNANDO',
@@ -849,9 +846,8 @@ export default () => ({
             nombre:'Randy Ingram',
             zonas:[  
                 {
-                    id:10,
+                    id:0,
                     nombre:'Lima',
-                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -868,9 +864,8 @@ export default () => ({
                     ]
                 },
                 {
-                    id:11,
+                    id:1,
                     nombre:'Huancavelica',
-                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -887,9 +882,8 @@ export default () => ({
                     ]
                 },
                 {   
-                    id:12,
+                    id:2,
                     nombre:'Cuzco',
-                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -926,9 +920,8 @@ export default () => ({
             nombre:'Jayden McLaughlin',
             zonas:[
                 {
-                    id:20,
+                    id:0,
                     nombre:'Pisco',
-                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -945,9 +938,8 @@ export default () => ({
                     ]
                 },
                 {
-                    id:21,
+                    id:1,
                     nombre:'Huancavelica',
-                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -964,9 +956,8 @@ export default () => ({
                     ]
                 },
                 {   
-                    id:22,
+                    id:2,
                     nombre:'Puno',
-                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -983,9 +974,8 @@ export default () => ({
                     ]
                 },
                 {
-                    id:23,
+                    id:3,
                     nombre:'Cuzco',
-                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -1022,9 +1012,8 @@ export default () => ({
             nombre:'Adele Fields', 
             zonas:[
                 {
-                    id:30,
+                    id:0,
                     nombre:'Huancavelica',
-                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -1041,9 +1030,8 @@ export default () => ({
                     ]
                 },
                 {
-                    id:31,
+                    id:1,
                     nombre:'Cuzco',
-                    checkActive: false,
                     clientes: [
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -1060,9 +1048,8 @@ export default () => ({
                     ]
                 },
                 {   
-                    id:32,
+                    id:2,
                     nombre:'Apurimac',
-                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -1079,9 +1066,8 @@ export default () => ({
                     ]
                 },
                 {
-                    id:33,
+                    id:3,
                     nombre:'Cuzco',
-                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -1122,9 +1108,8 @@ export default () => ({
             nombre:'Cynthia Vasquez',
             zonas:[
                 {
-                    id:40,
+                    id:0,
                     nombre:'Ayacucho',
-                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -1141,9 +1126,8 @@ export default () => ({
                     ]
                 },
                 {
-                    id:41,
+                    id:1,
                     nombre:'Cuzco',
-                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -1160,9 +1144,8 @@ export default () => ({
                     ]
                 },
                 {   
-                    id:42,
+                    id:2,
                     nombre:'Apurimac',
-                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',
@@ -1179,9 +1162,8 @@ export default () => ({
                     ]
                 },
                 {
-                    id:43,
+                    id:3,
                     nombre:'Cuzco',
-                    checkActive: false,
                     clientes:[
                         {
                             nombre:'AGRICOLA CHAPI',

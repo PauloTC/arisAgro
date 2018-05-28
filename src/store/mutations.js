@@ -28,14 +28,13 @@ export default {
             state.datasets2[datos.indice].data = datos.zonaSeleccionada.ventas;
         } 
     },
-    setDataSet2(state, datos){ 
+    setDataSet2(state, datos){
         let venta=0;
         let ventaTotal='';
-        let ids=[]; 
-        console.log(state)
-        console.log(datos)        
+        let ids=[];    
         if(datos.vendedor!=null && datos.vendedor){
             ids = datos.zonasSeleccionadas.map(element=>element.id);
+            
             const arrayVentas = datos.vendedor.ventas;
 
             venta = arrayVentas.map((element,i) => {
@@ -43,9 +42,10 @@ export default {
                     return element.venta
                 }               
             }).filter(e=> e!=undefined)
-                ventaTotal = venta.reduce((a, b)=> a + b);
-                console.log(ventaTotal)
-                state.datasets3[datos.indice].data = [ventaTotal]
+             ventaTotal = venta.reduce((a, b)=> a + b);
+            //  console.log(ventaTotal)
+            state.datasets3[datos.indice].data = [ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal,ventaTotal]
         }
+        // console.log(state.datasets3) 
     }    
 }

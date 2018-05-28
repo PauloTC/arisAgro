@@ -117,10 +117,6 @@ export default {
     .classCheck{
         background-color: #CDD8E3!important;
     }
-    .content-item.classCheck span:after{
-        background-color: #768EA6 !important;
-        transform: scale(1.02);
-    }
     .config-radio [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
         background-color: #768EA6;
     }

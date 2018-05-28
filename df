@@ -1,0 +1,257 @@
+[33mcommit 937f83b186bfc047ed58cbb728ce7949c508dd5f[m[33m ([m[1;36mHEAD -> [m[1;32mcorreciones[m[33m, [m[1;31morigin/correciones[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: John Doe <paulo.tejada@tismartperu.com>
+Date:   Fri May 25 12:43:16 2018 -0500
+
+    falta revisar el reduce
+
+[33mcommit 718861d164885c962bcebdbe752cd41e3ed317c1[m
+Author: unknown <paulotejada.123a@gmail.com>
+Date:   Fri May 25 01:23:28 2018 -0500
+
+    resolviendo provisionalmente con closets
+
+[33mcommit a19d5a6a162cad5c44267cc28fa03cfe33b096a3[m
+Author: John Doe <paulo.tejada@tismartperu.com>
+Date:   Wed May 23 17:13:48 2018 -0500
+
+    se soluciona problema de los id
+
+[33mcommit ae8b1f91b4cf2bbe851d77b9648f97d8169a2aba[m
+Author: John Doe <paulo.tejada@tismartperu.com>
+Date:   Wed May 23 08:26:10 2018 -0500
+
+    se trabaja en el card
+
+[33mcommit f090da3bdd13156e625e1620ab27a0e5f6c1bf23[m
+Author: Erika Vidal <erika.diana.vidal@gmail.com>
+Date:   Fri May 4 16:59:05 2018 -0500
+
+    end
+
+[33mcommit 062274cb0c67128c62a0cc5d37ed42796998867f[m
+Author: Erika Vidal <erika.diana.vidal@gmail.com>
+Date:   Thu May 3 19:22:58 2018 -0500
+
+    falta al cancelar 2
+
+[33mcommit 19458ad12bf9a5d4c26861482483f468bb72b3a4[m
+Author: Erika Vidal <erika.diana.vidal@gmail.com>
+Date:   Thu May 3 19:21:10 2018 -0500
+
+    falta al cancelar
+
+[33mcommit f66fdc71f9794e6d6ea55d24412b0e7f07698740[m
+Author: Erika Vidal <erika.diana.vidal@gmail.com>
+Date:   Thu May 3 18:35:10 2018 -0500
+
+    falta check al cancelar
+
+[33mcommit d354c0a6d78e6295ef9640553dde7f2957d68c20[m
+Author: Erika Vidal <erika.diana.vidal@gmail.com>
+Date:   Thu May 3 18:14:32 2018 -0500
+
+    mantener check vendedores
+
+[33mcommit 26fcefe17d144b07605cc8a4006e0f1994b65022[m
+Author: Erika Vidal <erika.diana.vidal@gmail.com>
+Date:   Thu May 3 14:22:59 2018 -0500
+
+    diff moment solo 12 meses
+
+[33mcommit af5324bab88aa2a684224051f5d91ec66ffe5c07[m
+Author: Erika Vidal <erika.diana.vidal@gmail.com>
+Date:   Thu May 3 12:14:25 2018 -0500
+
+    top clientes ordenados
+
+[33mcommit 8adec757c09ed6b518d57079ac8e163a1f3277a5[m
+Author: Erika Vidal <erika.diana.vidal@gmail.com>
+Date:   Thu May 3 09:35:10 2018 -0500
+
+    filtro vendedores
+
+[33mcommit 7081f6e7396317b534c5dd495b6dc11f7e9b2d37[m
+Author: Erika Vidal <erika.diana.vidal@gmail.com>
+Date:   Wed May 2 17:45:52 2018 -0500
+
+    falta fecha 2
+
+[33mcommit 391e3bc719bb4515806b8e64997b565aba245972[m
+Author: Erika Vidal <erika.diana.vidal@gmail.com>
+Date:   Wed May 2 17:35:54 2018 -0500
+
+    falta fecha
+
+[33mcommit 1eb14f27bb47c61f1771cbdf7653169598587d15[m
+Author: Erika Vidal <erika.diana.vidal@gmail.com>
+Date:   Wed May 2 15:23:15 2018 -0500
+
+    ordenando top clientes
+
+[33mcommit 4f0eb3808b41ce882bcbd8930a6b84680578a3c6[m
+Author: Erika Vidal <erika.diana.vidal@gmail.com>
+Date:   Wed May 2 10:42:37 2018 -0500
+
+    unchecked
+
+[33mcommit 256cc39abe4381360a34ffa45f8cc5faedf1f9ca[m
+Author: Erika Vidal <diann852@gmail.com>
+Date:   Tue May 1 23:01:02 2018 -0500
+
+    background zonas seleccionadas
+
+[33mcommit 0f716a35c51322c84d46663419a18383fd4772f5[m
+Author: Erika Vidal <erika.diana.vidal@gmail.com>
+Date:   Mon Apr 30 17:44:41 2018 -0500
+
+    falta vendedores chartjs
+
+[33mcommit 66273fb3765b681e29ca241dcecf2b5d0a9bc3db[m
+Author: Erika Vidal <erika.diana.vidal@gmail.com>
+Date:   Mon Apr 30 08:02:55 2018 -0500
+
+    configurando chart
+
+[33mcommit 1dd080fcedf034d9a3b1086e3792cd027262f636[m
+Author: Erika Vidal <diann852@gmail.com>
+Date:   Sun Apr 29 23:37:47 2018 -0500
+
+    falta modal
+
+[33mcommit 289e92e3429b8e96f851c8ab76a6bf38030013ec[m
+Author: Erika Vidal <diann852@gmail.com>
+Date:   Sun Apr 29 17:38:44 2018 -0500
+
+    background body
+
+[33mcommit 09537fd592d5cacc4431d967dcfab2ab0df74a4e[m
+Author: Erika Vidal <diann852@gmail.com>
+Date:   Sun Apr 29 17:12:24 2018 -0500
+
+    icono toolbar
+
+[33mcommit 72788b7cce40d4f72f7401900e65d54ad7ba4605[m
+Author: Erika Vidal <diann852@gmail.com>
+Date:   Sun Apr 29 00:26:51 2018 -0500
+
+    div superpuesto chart
+
+[33mcommit 0ab6d1917ecfe15404d755e1342874849e59e4d1[m
+Author: Erika Vidal <erika.diana.vidal@gmail.com>
+Date:   Fri Apr 27 18:45:52 2018 -0500
+
+    top clientes
+
+[33mcommit 4d36c1c30727f3df4a4e5570b97e37330d194ada[m
+Author: Erika Vidal <erika.diana.vidal@gmail.com>
+Date:   Fri Apr 27 13:38:38 2018 -0500
+
+    barchart
+
+[33mcommit 44818ee68d92428fef706a9141cc3f465a1997c1[m
+Author: Erika Vidal <diann852@gmail.com>
+Date:   Fri Apr 27 00:56:39 2018 -0500
+
+    top clientes
+
+[33mcommit 4a0e20baf48a9a27fd073b55d13edc3558be0353[m
+Author: Erika Vidal <erika.diana.vidal@gmail.com>
+Date:   Thu Apr 26 19:54:57 2018 -0500
+
+    modal no close
+
+[33mcommit d44ec0e611fa8a8c7ece4948b1bd3c8c27ffb0ca[m
+Author: Erika Vidal <erika.diana.vidal@gmail.com>
+Date:   Thu Apr 26 17:34:23 2018 -0500
+
+    creando componentes II
+
+[33mcommit 8b295ed01fe996af3c25351ffba8a6ce1dc23656[m
+Author: Erika Vidal <erika.diana.vidal@gmail.com>
+Date:   Thu Apr 26 16:14:04 2018 -0500
+
+    creando componentes
+
+[33mcommit 582701688fd43d0abb3bde8c3c16b4b3bd57fee7[m
+Author: Erika Vidal Capillo <erika.vidal@tismartperu.com>
+Date:   Thu Apr 26 07:49:16 2018 -0500
+
+    subiendo minicard
+
+[33mcommit e0796f2b7e778b77dcca180ca5417620ed4c5d87[m
+Author: Erika Vidal Capillo <erika.vidal@tismartperu.com>
+Date:   Wed Apr 25 17:26:50 2018 -0500
+
+    ids únicos
+
+[33mcommit 78ab91ea57880615dbe3de9a34235625fe981b50[m
+Author: Erika Vidal Capillo <erika.vidal@tismartperu.com>
+Date:   Wed Apr 25 17:01:01 2018 -0500
+
+    creando componente minicard
+
+[33mcommit 46b7ad1bfc0974301f99140ddc4ba269666e56c7[m
+Author: Erika Vidal Capillo <erika.vidal@tismartperu.com>
+Date:   Wed Apr 25 11:36:43 2018 -0500
+
+    creando componente minicard
+
+[33mcommit 510f8e4c8829d203e53bd857945544eca5214dd2[m
+Author: Erika Vidal Capillo <erika.vidal@tismartperu.com>
+Date:   Tue Apr 24 17:04:12 2018 -0500
+
+    bar desde veux
+
+[33mcommit 10840f8f1534bc13085ce1a7d64b51fba4db9320[m
+Author: Erika Vidal Capillo <erika.vidal@tismartperu.com>
+Date:   Mon Apr 23 19:11:51 2018 -0500
+
+    rama
+
+[33mcommit 5f03f3641c61a84f1b16cf510f5d34381bc58557[m
+Author: Erika Vidal Capillo <erika.vidal@tismartperu.com>
+Date:   Mon Apr 23 19:10:13 2018 -0500
+
+    vuex
+
+[33mcommit 8103ac3c413e9189565b5c1ecc0a2973ebd776c7[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Erika Vidal Capillo <erika.vidal@tismartperu.com>
+Date:   Mon Apr 23 16:36:52 2018 -0500
+
+    meses con momemtjs
+
+[33mcommit f6248d97ed4817dcb813f767f4a01f3895f5e638[m
+Author: Erika Vidal Capillo <erika.vidal@tismartperu.com>
+Date:   Fri Apr 20 17:25:01 2018 -0500
+
+    click vendedores I
+
+[33mcommit 1d43c9e5ec0dc55d9004e375d4d9de1491303c2b[m
+Author: Erika Vidal Capillo <erika.vidal@tismartperu.com>
+Date:   Fri Apr 20 15:47:01 2018 -0500
+
+    indicator tabs center
+
+[33mcommit 99fba8405341143ab41b7a91711eeb6543e17062[m
+Author: Erika Vidal Capillo <erika.vidal@tismartperu.com>
+Date:   Fri Apr 20 11:15:51 2018 -0500
+
+    checkbox y radio personalizados
+
+[33mcommit 85ce1bf82f42cb37ac379dacaf44fcf8669ccccc[m
+Author: Erika Vidal Capillo <erika.vidal@tismartperu.com>
+Date:   Fri Apr 20 08:23:43 2018 -0500
+
+    filtro vendedores II
+
+[33mcommit bdb368f287443e82d124ee403c2e890657c18ee7[m
+Author: Erika Vidal Capillo <erika.vidal@tismartperu.com>
+Date:   Thu Apr 19 17:37:16 2018 -0500
+
+    filtro vendedores I
+
+[33mcommit ec1a0f69f18f378ee42413c94349a1d6afb612c6[m
+Author: Erika Vidal Capillo <erika.vidal@tismartperu.com>
+Date:   Thu Apr 19 16:20:59 2018 -0500
+
+    primer commit

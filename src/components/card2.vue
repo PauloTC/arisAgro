@@ -104,7 +104,7 @@
     import topLista from './topLista'
 
     import { mapGetters } from 'vuex'
-    import { functionDeclaration } from 'babel-types';
+import { functionDeclaration } from 'babel-types';
 
     export default {
         name:'card2',
